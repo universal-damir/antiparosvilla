@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { roomData } from "../data/roomData";
 import { 
   ChevronLeft, 
@@ -11,7 +11,8 @@ import {
   Baby, 
   Brush,
   Hotel,
-  Shield
+  Shield,
+  X
 } from "lucide-react";
 
 const getAmenityIcon = (amenity: string) => {
@@ -31,8 +32,129 @@ const getAmenityIcon = (amenity: string) => {
   return <ChevronRight className="w-4 h-4 text-[#59452E]" />;
 };
 
+type GalleryModalProps = {
+  images: string[];
+  currentIndex: number;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+};
+
+const GalleryModal: React.FC<GalleryModalProps> = ({
+  images,
+  currentIndex,
+  onClose,
+  onPrev,
+  onNext
+}) => {
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  
+  // Minimum swipe distance (px)
+  const minSwipeDistance = 50;
+  
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+    setTouchEnd(null);
+  };
+  
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      onNext();
+    } else if (isRightSwipe) {
+      onPrev();
+    }
+  };
+  
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') {
+      onPrev();
+    } else if (e.key === 'ArrowRight') {
+      onNext();
+    } else if (e.key === 'Escape') {
+      onClose();
+    }
+  }, [onPrev, onNext, onClose]);
+  
+  useEffect(() => {
+    // Add keyboard event listener
+    window.addEventListener('keydown', handleKeyDown);
+    
+    // Add body class to prevent scrolling
+    document.body.classList.add('overflow-hidden');
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [handleKeyDown]);
+  
+  return (
+    <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
+      <div 
+        className="w-full h-full relative"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 bg-white/20 rounded-full z-10 hover:bg-white/40 transition-colors"
+          aria-label="Close gallery"
+          tabIndex={0}
+        >
+          <X className="w-6 h-6 text-white" />
+        </button>
+        
+        <div className="absolute inset-0 flex items-center justify-center p-4">
+          <img
+            src={images[currentIndex]}
+            alt={`Gallery image ${currentIndex + 1}`}
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
+        
+        <button
+          onClick={onPrev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 rounded-full hover:bg-white/40 transition-colors"
+          aria-label="Previous image"
+          tabIndex={0}
+        >
+          <ChevronLeft className="w-6 h-6 text-white" />
+        </button>
+        
+        <button
+          onClick={onNext}
+          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 rounded-full hover:bg-white/40 transition-colors"
+          aria-label="Next image"
+          tabIndex={0}
+        >
+          <ChevronRight className="w-6 h-6 text-white" />
+        </button>
+        
+        <div className="absolute bottom-6 left-0 right-0 text-center text-white">
+          {currentIndex + 1} / {images.length}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Rooms: React.FC = () => {
   const [currentImageIndexes, setCurrentImageIndexes] = useState<{ [key: string]: number }>({});
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [activeRoom, setActiveRoom] = useState<string | null>(null);
 
   useEffect(() => {
     const initialIndexes = roomData.reduce((acc, room) => {
@@ -73,6 +195,16 @@ const Rooms: React.FC = () => {
         [roomId]: newIndex
       };
     });
+  };
+  
+  const openGallery = (roomId: string) => {
+    setActiveRoom(roomId);
+    setGalleryOpen(true);
+  };
+  
+  const closeGallery = () => {
+    setGalleryOpen(false);
+    setActiveRoom(null);
   };
 
   return (
@@ -125,9 +257,15 @@ const Rooms: React.FC = () => {
                 >
                   <ChevronRight className="w-5 h-5 text-[#3A3532]" />
                 </button>
-                <div className="absolute bottom-6 left-6 bg-white/80 px-4 py-1 uppercase text-sm font-medium">
+                <button 
+                  onClick={() => openGallery(room.id)}
+                  className="absolute bottom-6 left-6 bg-white/80 px-4 py-1 uppercase text-sm font-medium hover:bg-white transition-colors"
+                  aria-label="Open gallery"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && openGallery(room.id)}
+                >
                   Gallery
-                </div>
+                </button>
               </div>
 
               {/* Content Section - Improved spacing and layout */}
@@ -159,6 +297,17 @@ const Rooms: React.FC = () => {
           </div>
         ))}
       </div>
+      
+      {/* Fullscreen Gallery Modal */}
+      {galleryOpen && activeRoom && (
+        <GalleryModal
+          images={roomData.find(r => r.id === activeRoom)?.images || []}
+          currentIndex={currentImageIndexes[activeRoom] || 0}
+          onClose={closeGallery}
+          onPrev={() => handlePrevImage(activeRoom)}
+          onNext={() => handleNextImage(activeRoom)}
+        />
+      )}
     </section>
   );
 };
