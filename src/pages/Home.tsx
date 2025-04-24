@@ -7,7 +7,6 @@ import EatDrink from '../components/EatDrink';
 import Destination from '../components/Destination';
 import GalleryPreview from '../components/GalleryPreview';
 import Amenities from '../components/Amenities';
-import Booking from '../components/Booking';
 
 const RoomsPreview: React.FC = () => {
   return (
