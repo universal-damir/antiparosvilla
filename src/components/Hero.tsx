@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
       {/* Content */}
       <div className="relative h-full flex items-center justify-center">
         <div className="text-center px-4 sm:px-6 max-w-3xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-['American_Typewriter'] text-white mb-4 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-['Roboto'] text-white mb-4 leading-tight">
             WELCOME TO ANTIPAROS
           </h1>
         </div>

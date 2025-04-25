@@ -8,15 +8,15 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <h3 className="text-xl font-['American_Typewriter'] mb-6">
+            <h3 className="text-xl font-['Roboto'] mb-6">
               Indigo Chic Villas
             </h3>
-            <p className="mb-4 font-['American_Typewriter']">
+            <p className="mb-4 font-['Roboto']">
               Agios Georgios, Antiparos 84007
               <br />
               Cyclades, Greece
             </p>
-            <p className="font-['American_Typewriter']">
+            <p className="font-['Roboto']">
               Tel: +30 22840 61000
               <br />
               Email: contact@icantiparos.com
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-['American_Typewriter'] mb-6">
+            <h3 className="text-xl font-['Roboto'] mb-6">
               Navigation
             </h3>
             <ul className="space-y-3">
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="font-['American_Typewriter'] hover:text-[#8E7D67] transition-colors"
+                    className="font-['Roboto'] hover:text-[#8E7D67] transition-colors"
                   >
                     {item.label}
                   </a>
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-['American_Typewriter'] mb-6">
+            <h3 className="text-xl font-['Roboto'] mb-6">
               Connect With Us
             </h3>
             <div className="flex space-x-4 mb-8">
@@ -68,13 +68,13 @@ const Footer: React.FC = () => {
             <div className="mt-4 space-y-3">
               <a 
                 href="/privacy-policy" 
-                className="block font-['American_Typewriter'] hover:text-[#8E7D67] transition-colors"
+                className="block font-['Roboto'] hover:text-[#8E7D67] transition-colors"
               >
                 Privacy Policy
               </a>
               <a 
                 href="/cookies-policy" 
-                className="block font-['American_Typewriter'] hover:text-[#8E7D67] transition-colors"
+                className="block font-['Roboto'] hover:text-[#8E7D67] transition-colors"
               >
                 Cookies Policy
               </a>
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-[#3A3532]/20 pt-8 text-center">
-          <p className="font-['American_Typewriter'] text-sm">
+          <p className="font-['Roboto'] text-sm">
             &copy; {new Date().getFullYear()} Indigo Chic Villas. All rights reserved.
           </p>
         </div>

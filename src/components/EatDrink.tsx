@@ -20,15 +20,15 @@ const EatDrink: React.FC = () => {
           </div>
           
           <div className="pt-8 pb-8">
-            <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+            <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
               EAT & DRINK
             </p>
             
-            <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+            <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
               Sun-kissed food for the soul
             </h2>
             
-            <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+            <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
               Our food philosophy centres on community and inclusivity, inviting guests 
               to savor a diverse array of Mediterranean-inspired small plates and 
               wholesome dishes, all made with top-quality, locally sourced ingredients.
@@ -39,7 +39,7 @@ const EatDrink: React.FC = () => {
             <div className="mt-8">
               <Link
                 to="/eat-drink"
-                className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['American_Typewriter'] uppercase"
+                className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase"
               >
                 Find out more
               </Link>
@@ -67,7 +67,7 @@ const EatDrink: React.FC = () => {
         {/* Content */}
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center px-4 sm:px-6 max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-['American_Typewriter'] text-white mb-4 leading-tight uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-['Roboto'] text-white mb-4 leading-tight uppercase">
               A CULINARY JOURNEY THROUGH GREECE
             </h1>
           </div>
@@ -77,7 +77,7 @@ const EatDrink: React.FC = () => {
       {/* Eat & Drink content */}
       <div className="container mx-auto px-4 py-16 max-w-6xl">
         <div className="text-center mb-12">
-          <p className="text-[#3A3532] text-lg md:text-xl font-['American_Typewriter'] leading-relaxed max-w-4xl mx-auto">
+          <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto">
             At Villa Antiparos, we celebrate Greece's rich culinary heritage. From our in-villa dining 
             experiences to the island's finest tavernas, every meal becomes a memorable part of your journey. 
             Discover traditional recipes made with locally-sourced ingredients, paired with exceptional Greek wines 
@@ -100,13 +100,13 @@ const EatDrink: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   PRIVATE DINING
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   VILLA GASTRONOMY
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   Experience exceptional dining without leaving the comfort of your villa. Our chef 
                   creates personalized menus featuring the finest local ingredients - from fresh seafood caught 
                   that morning to vegetables from nearby organic farms. Enjoy intimate breakfasts on your terrace, 
@@ -127,16 +127,16 @@ const EatDrink: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   ISLAND FLAVORS
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   LOCAL RECOMMENDATIONS
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   Explore Antiparos' vibrant culinary scene with our carefully curated recommendations:
                 </p>
-                <ul className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed space-y-3">
+                <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
                   <li><span className="font-semibold">Captain Pipinos</span> - Waterfront taverna famous for fresh-caught fish and octopus dried in the Aegean sun.</li>
                   <li><span className="font-semibold">Kalokeri</span> - Farm-to-table dining featuring produce from their organic garden.</li>
                   <li><span className="font-semibold">Ageri</span> - Traditional meze with a modern twist in Antiparos Town's charming center.</li>
@@ -158,26 +158,26 @@ const EatDrink: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   TASTE OF GREECE
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   TRADITIONAL RECIPES
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   Take a piece of Greece home with you by mastering these simple yet authentic recipes:
                 </p>
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-[#3A3532] font-['American_Typewriter']">Authentic Greek Salad (Horiatiki)</h3>
-                    <p className="text-[#3A3532] font-['American_Typewriter'] leading-relaxed">
+                    <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto']">Authentic Greek Salad (Horiatiki)</h3>
+                    <p className="text-[#3A3532] font-['Roboto'] leading-relaxed">
                       Combine ripe tomatoes, cucumber, green bell pepper, red onion, Kalamata olives, and a thick slice of feta. 
                       Dress with extra virgin olive oil, a splash of red wine vinegar, dried oregano, and sea salt.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#3A3532] font-['American_Typewriter']">Tzatziki</h3>
-                    <p className="text-[#3A3532] font-['American_Typewriter'] leading-relaxed">
+                    <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto']">Tzatziki</h3>
+                    <p className="text-[#3A3532] font-['Roboto'] leading-relaxed">
                       Strain Greek yogurt, then mix with grated cucumber (water squeezed out), minced garlic, 
                       olive oil, fresh dill, and a splash of lemon juice. Perfect with grilled meats or as a dip.
                     </p>
@@ -196,17 +196,17 @@ const EatDrink: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   ISLAND BOUNTY
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   LOCAL DELICACIES
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   The Cycladic islands are known for their exceptional local products. During your stay, 
                   be sure to sample these specialties:
                 </p>
-                <ul className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed space-y-3">
+                <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
                   <li><span className="font-semibold">Cycladic Cheeses</span> - From mild anthotyro to tangy kopanisti, the islands produce distinct varieties worth discovering.</li>
                   <li><span className="font-semibold">Caper Leaves</span> - Wild-harvested from rocky outcroppings and preserved, these add bright flavor to salads and fish dishes.</li>
                   <li><span className="font-semibold">Thyme Honey</span> - Produced from the abundant wild thyme growing across the islands, with a distinctive aroma and flavor.</li>

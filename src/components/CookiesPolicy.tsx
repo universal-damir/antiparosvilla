@@ -13,33 +13,33 @@ const CookiesPolicy: React.FC = () => {
     <section className="bg-[#F4F3EB] w-full pt-28 md:pt-32">
       {/* Header Section with increased top padding to avoid navbar overlap */}
       <div className="max-w-6xl mx-auto px-4 pb-8 text-center">
-        <h2 className="text-5xl font-['American_Typewriter'] text-[#3A3532] uppercase tracking-wide leading-tight mb-8">
+        <h2 className="text-5xl font-['Roboto'] text-[#3A3532] uppercase tracking-wide leading-tight mb-8">
           Cookies Policy
         </h2>
         <div className="w-24 h-px bg-[#8E7D67] mx-auto mb-8"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl pb-20">
-        <div className="prose prose-lg max-w-none text-[#3A3532] font-['American_Typewriter']">
+        <div className="prose prose-lg max-w-none text-[#3A3532] font-['Roboto']">
           <p className="mb-6 leading-relaxed">
             Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
           </p>
           
-          <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mt-10 mb-4">
+          <h3 className="text-xl font-['Roboto'] text-[#3A3532] mt-10 mb-4">
             1. Introduction
           </h3>
           <p className="mb-6 leading-relaxed">
             Welcome to Indigo Chic Villas. This Cookies Policy explains how we use cookies and similar technologies on our website (www.icantiparos.com). By continuing to browse our site, you consent to our use of cookies as described in this policy.
           </p>
           
-          <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mt-10 mb-4">
+          <h3 className="text-xl font-['Roboto'] text-[#3A3532] mt-10 mb-4">
             2. What Are Cookies?
           </h3>
           <p className="mb-6 leading-relaxed">
             Cookies are small text files that are stored on your device (computer, tablet, or mobile) when you visit websites. They are widely used to make websites work more efficiently, provide a better browsing experience, and give website owners information about how visitors use their site.
           </p>
 
-          <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mt-10 mb-4">
+          <h3 className="text-xl font-['Roboto'] text-[#3A3532] mt-10 mb-4">
             3. Types of Cookies We Use
           </h3>
           <p className="mb-4 leading-relaxed">
@@ -60,7 +60,7 @@ const CookiesPolicy: React.FC = () => {
             </li>
           </ul>
 
-          <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mt-10 mb-4">
+          <h3 className="text-xl font-['Roboto'] text-[#3A3532] mt-10 mb-4">
             4. Specific Cookies We Use
           </h3>
           <div className="overflow-x-auto mb-6">
@@ -102,7 +102,7 @@ const CookiesPolicy: React.FC = () => {
             </table>
           </div>
 
-          <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mt-10 mb-4">
+          <h3 className="text-xl font-['Roboto'] text-[#3A3532] mt-10 mb-4">
             5. Third-Party Cookies
           </h3>
           <p className="mb-6 leading-relaxed">
@@ -118,7 +118,7 @@ const CookiesPolicy: React.FC = () => {
             These third parties may use cookies, web beacons, and similar technologies to collect or receive information from our website. This information may be used to provide measurement services, target ads, or enhance the functionality of our booking systems.
           </p>
 
-          <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mt-10 mb-4">
+          <h3 className="text-xl font-['Roboto'] text-[#3A3532] mt-10 mb-4">
             6. Managing Cookies
           </h3>
           <p className="mb-6 leading-relaxed">
@@ -128,21 +128,21 @@ const CookiesPolicy: React.FC = () => {
             Please note that blocking or deleting cookies may impact your experience on our website, as some features may not function properly without cookies.
           </p>
 
-          <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mt-10 mb-4">
+          <h3 className="text-xl font-['Roboto'] text-[#3A3532] mt-10 mb-4">
             7. Cookie Consent
           </h3>
           <p className="mb-6 leading-relaxed">
             When you first visit our website, you will be shown a cookie banner requesting your consent to set non-essential cookies. You can change your cookie preferences at any time by clicking on the "Cookie Settings" link in the footer of our website.
           </p>
 
-          <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mt-10 mb-4">
+          <h3 className="text-xl font-['Roboto'] text-[#3A3532] mt-10 mb-4">
             8. Changes to Our Cookies Policy
           </h3>
           <p className="mb-6 leading-relaxed">
             We may update this Cookies Policy from time to time to reflect changes in technology, regulation, or our business practices. Any changes will be posted on this page with an updated revision date.
           </p>
 
-          <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mt-10 mb-4">
+          <h3 className="text-xl font-['Roboto'] text-[#3A3532] mt-10 mb-4">
             9. Contact Us
           </h3>
           <p className="mb-6 leading-relaxed">

@@ -94,13 +94,13 @@ const Gallery: React.FC = () => {
       {/* Gallery Header */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="text-center">
-          <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+          <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
             GALLERY
           </p>
-          <h1 className="text-4xl font-['American_Typewriter'] text-[#3A3532] mb-8 uppercase">
+          <h1 className="text-4xl font-['Roboto'] text-[#3A3532] mb-8 uppercase">
             FEAST YOUR EYES
           </h1>
-          <p className="text-[#3A3532] max-w-4xl mx-auto font-['American_Typewriter'] leading-relaxed">
+          <p className="text-[#3A3532] max-w-4xl mx-auto font-['Roboto'] leading-relaxed">
             Explore our visual journey through Antiparos paradise. From our elegant villa interiors 
             to stunning Aegean Sea views, lush gardens to serene poolside retreats. Discover the 
             perfect blend of traditional Cycladic architecture and contemporary luxury design, 
@@ -127,7 +127,7 @@ const Gallery: React.FC = () => {
                 className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <span className="text-white font-['American_Typewriter'] text-lg">View</span>
+                <span className="text-white font-['Roboto'] text-lg">View</span>
               </div>
             </div>
           ))}
@@ -182,7 +182,7 @@ const Gallery: React.FC = () => {
             <ChevronRight size={28} />
           </button>
           
-          <div className="absolute bottom-6 left-0 right-0 text-center text-white font-['American_Typewriter']">
+          <div className="absolute bottom-6 left-0 right-0 text-center text-white font-['Roboto']">
             {selectedImageIndex + 1} / {galleryImages.length}
           </div>
         </div>

@@ -20,15 +20,15 @@ const Destination: React.FC = () => {
           </div>
           
           <div className="pt-8 pb-4">
-            <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+            <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
               DESTINATION ANTIPAROS
             </p>
             
-            <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+            <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
               Indulge your wanderlust
             </h2>
             
-            <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+            <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
               Explore the island like a local with the best off-beat activities and hidden 
               island nooks. Sail the Aegean, visit natural springs, explore the old town 
               - all from right at your doorstep.
@@ -37,7 +37,7 @@ const Destination: React.FC = () => {
             <div className="mt-8">
               <Link
                 to="/destination"
-                className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['American_Typewriter'] uppercase"
+                className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase"
               >
                 Find out more
               </Link>
@@ -65,7 +65,7 @@ const Destination: React.FC = () => {
         {/* Content */}
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center px-4 sm:px-6 max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-['American_Typewriter'] text-white mb-4 leading-tight uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-['Roboto'] text-white mb-4 leading-tight uppercase">
               DISCOVER THE HIDDEN GEM OF THE CYCLADES
             </h1>
           </div>
@@ -75,7 +75,7 @@ const Destination: React.FC = () => {
       {/* Destination content */}
       <div className="container mx-auto px-4 py-16 max-w-6xl">
         <div className="text-center mb-12">
-          <p className="text-[#3A3532] text-lg md:text-xl font-['American_Typewriter'] leading-relaxed max-w-4xl mx-auto">
+          <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto">
             Antiparos is a small island in the heart of the Cyclades, offering authentic Greek charm without the crowds. 
             Just a short ferry ride from its larger neighbor Paros, this tranquil paradise combines pristine beaches, crystal-clear waters, 
             and traditional villages with a relaxed, unpretentious atmosphere. From the magnificent Cave of Antiparos to secluded coves 
@@ -97,13 +97,13 @@ const Destination: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   ISLAND HERITAGE
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   THE STORY OF ANTIPAROS
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   Antiparos has been inhabited since antiquity, with archaeological finds dating back to the Early Cycladic period. 
                   In medieval times, the island was fortified against pirate raids, with the Castle of Antiparos (Kastro) at its heart. 
                   This Venetian castle, built in the 15th century, forms the historic center of Antiparos Town, with its concentric arrangement 
@@ -124,16 +124,16 @@ const Destination: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   COASTAL PARADISE
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   PRISTINE BEACHES
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   Antiparos is ringed by spectacular beaches, each with its own distinct character. Our favorites include:
                 </p>
-                <ul className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed space-y-3">
+                <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
                   <li><span className="font-semibold">Soros Beach</span> - Fine golden sand and shallow turquoise waters, ideal for families.</li>
                   <li><span className="font-semibold">Livadia</span> - The main beach near Antiparos Town, with beach bars and water sports.</li>
                   <li><span className="font-semibold">Agios Georgios</span> - A tranquil bay with crystal-clear waters, perfect for snorkeling.</li>
@@ -155,13 +155,13 @@ const Destination: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   NATURAL WONDER
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   THE CAVE OF ANTIPAROS
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   One of the island's most impressive attractions is the Cave of Antiparos, a spectacular natural formation 
                   located about 8 km from Antiparos Town. Descending 100 meters below ground through a natural entrance, visitors discover 
                   a magical world of stalactites and stalagmites formed over millions of years. The cave has been known since ancient times, 
@@ -182,16 +182,16 @@ const Destination: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   AUTHENTIC EXPERIENCES
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   ISLAND ACTIVITIES
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   Beyond beaches and landmarks, Antiparos offers numerous ways to experience its authentic charm:
                 </p>
-                <ul className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed space-y-3">
+                <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
                   <li><span className="font-semibold">Island Hopping</span> - Take a day trip to nearby uninhabited Despotiko with its archaeological site, or visit larger Paros.</li>
                   <li><span className="font-semibold">Boat Tours</span> - Circle the island by traditional boat, discovering hidden coves and beaches inaccessible by land.</li>
                   <li><span className="font-semibold">Sunset at Sifneikos Beach</span> - Watch the sun sink into the Aegean from this perfectly positioned western beach.</li>
@@ -203,10 +203,10 @@ const Destination: React.FC = () => {
 
           {/* Photo Gallery */}
           <div className="mt-8 mb-16">
-            <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-4 text-center font-['American_Typewriter']">
+            <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-4 text-center font-['Roboto']">
               DISCOVER ANTIPAROS
             </p>
-            <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-8 uppercase text-center">
+            <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-8 uppercase text-center">
               ISLAND GALLERY
             </h2>
             

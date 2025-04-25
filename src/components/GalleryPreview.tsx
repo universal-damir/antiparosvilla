@@ -10,15 +10,15 @@ const GalleryPreview: React.FC = () => {
     <section id="gallery-preview" className="bg-[#F4F3EB] py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+          <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
             GALLERY
           </p>
-          <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+          <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
             A GLIMPSE OF PARADISE
           </h2>
           <Link
             to="/gallery"
-            className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['American_Typewriter'] uppercase mt-2"
+            className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase mt-2"
           >
             View Full Gallery
           </Link>

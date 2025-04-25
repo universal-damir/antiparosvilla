@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
           <div className="flex justify-center py-4">
             <Link 
               to="/" 
-              className={`text-2xl md:text-3xl font-medium font-['American_Typewriter'] ${
+              className={`text-2xl md:text-3xl font-medium font-['Roboto'] ${
                 shouldUseWhiteText ? "text-white" : "text-[#3A3532]"
               }`}
             >
@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
                   <li key={item.href}>
                     <Link
                       to={item.href}
-                      className={`font-['American_Typewriter'] transition-colors uppercase relative ${
+                      className={`font-['Roboto'] transition-colors uppercase relative ${
                         shouldUseWhiteText
                           ? "text-white hover:text-white/80"
                           : "text-[#3A3532] hover:text-[#8E7D67]"
@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.href}
                   to={item.href}
-                  className={`font-['American_Typewriter'] py-2 border-b last:border-0 uppercase relative ${
+                  className={`font-['Roboto'] py-2 border-b last:border-0 uppercase relative ${
                     shouldUseWhiteText
                       ? "text-white border-white/20"
                       : "text-[#3A3532] border-[#3A3532]/20"

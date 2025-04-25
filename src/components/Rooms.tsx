@@ -211,16 +211,16 @@ const Rooms: React.FC = () => {
     <section className="bg-[#F4F3EB] w-full pt-28 md:pt-40">
       {/* Header Section - Increased vertical spacing and improved centering */}
       <div className="max-w-6xl mx-auto px-4 pb-16 text-center flex flex-col items-center justify-center min-h-[40vh]">
-        <h2 className="text-5xl md:text-6xl font-['American_Typewriter'] text-[#3A3532] uppercase tracking-wide leading-tight mb-12">
+        <h2 className="text-5xl md:text-6xl font-['Roboto'] text-[#3A3532] uppercase tracking-wide leading-tight mb-12">
           STAY IN STYLE
         </h2>
         <div className="max-w-3xl mx-auto">
-          <p className="text-[#3A3532] font-['American_Typewriter'] leading-relaxed text-base md:text-lg mb-8">
+          <p className="text-[#3A3532] font-['Roboto'] leading-relaxed text-base md:text-lg mb-8">
             Inspired by the nomadic way of life, the cozy character comes from natural surfaces and earthy tones.
             Comfy pillows and hand-picked accessories add to the warm, bohemian atmosphere. A personal space in which
             to kick back and slow down.
           </p>
-          <p className="text-[#3A3532] font-['American_Typewriter'] leading-relaxed text-base md:text-lg">
+          <p className="text-[#3A3532] font-['Roboto'] leading-relaxed text-base md:text-lg">
             The true highlights are the private verandas which border a pool. With sunbeds or hammocks for deep
             relaxation, whole days can drift by in your private paradise.
           </p>
@@ -270,17 +270,17 @@ const Rooms: React.FC = () => {
 
               {/* Content Section - Improved spacing and layout */}
               <div className="md:w-1/2 p-8 md:p-12 lg:p-16">
-                <h3 className="text-2xl md:text-3xl font-['American_Typewriter'] text-black uppercase font-bold tracking-wide mb-8">
+                <h3 className="text-2xl md:text-3xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-8">
                   {room.name}
                 </h3>
 
                 <div className="mb-8 space-y-2">
-                  <p className="text-[#59452E] font-['American_Typewriter'] text-sm font-medium">{room.specs.size}</p>
-                  <p className="text-[#59452E] font-['American_Typewriter'] text-sm font-medium uppercase">{room.specs.capacity}</p>
-                  <p className="text-[#59452E] font-['American_Typewriter'] text-sm font-medium uppercase">{room.specs.features}</p>
+                  <p className="text-[#59452E] font-['Roboto'] text-sm font-medium">{room.specs.size}</p>
+                  <p className="text-[#59452E] font-['Roboto'] text-sm font-medium uppercase">{room.specs.capacity}</p>
+                  <p className="text-[#59452E] font-['Roboto'] text-sm font-medium uppercase">{room.specs.features}</p>
                 </div>
 
-                <p className="text-black font-['American_Typewriter'] leading-relaxed text-base md:text-lg mb-8">
+                <p className="text-black font-['Roboto'] leading-relaxed text-base md:text-lg mb-8">
                   {room.description}
                 </p>
 
@@ -288,7 +288,7 @@ const Rooms: React.FC = () => {
                   {room.amenities.map((amenity, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <span className="flex-shrink-0 mt-0.5">{getAmenityIcon(amenity)}</span>
-                      <span className="text-sm text-[#59452E] font-['American_Typewriter']">{amenity}</span>
+                      <span className="text-sm text-[#59452E] font-['Roboto']">{amenity}</span>
                     </div>
                   ))}
                 </div>

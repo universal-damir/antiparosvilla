@@ -20,15 +20,15 @@ const Wellness: React.FC = () => {
           </div>
           
           <div className="pt-8 pb-6">
-            <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+            <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
               WELLNESS
             </p>
             
-            <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+            <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
               Stretch, breath, balance.
             </h2>
             
-            <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+            <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
               Finding your balance can be a physical pursuit, an inner journey, or a
               perfect symbiosis of the two. Let our team of experts, including yoga
               teachers and personal trainers, guide you along the way.
@@ -37,7 +37,7 @@ const Wellness: React.FC = () => {
             <div className="mt-8">
               <Link
                 to="/wellness"
-                className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['American_Typewriter'] uppercase"
+                className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase"
               >
                 Find out more
               </Link>
@@ -65,7 +65,7 @@ const Wellness: React.FC = () => {
         {/* Content */}
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center px-4 sm:px-6 max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-['American_Typewriter'] text-white mb-4 leading-tight uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-['Roboto'] text-white mb-4 leading-tight uppercase">
               GOOD FOR THE MIND, GOOD FOR THE BODY
             </h1>
           </div>
@@ -75,7 +75,7 @@ const Wellness: React.FC = () => {
       {/* Wellness content */}
       <div className="container mx-auto px-4 py-16 max-w-6xl">
         <div className="text-center mb-12">
-          <p className="text-[#3A3532] text-lg md:text-xl font-['American_Typewriter'] leading-relaxed max-w-4xl mx-auto">
+          <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto">
             Continue your routine, or take the time to recharge physically and mentally during your stay at Villa 
             Antiparos using our wellness facilities. We offer indoor and outdoor gym facilities and equipment, yoga
             classes, and hikes in the neighboring natural areas of Antiparos. Immerse yourself in the serene 
@@ -98,13 +98,13 @@ const Wellness: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   ATHLETIC PURSUITS
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   GYM FACILITIES
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   For cardio and weights, our well-equipped gym will ensure every muscle gets 
                   its full attention. For added motivation or help getting started, let 
                   our personal trainer give you a boost with customized routines tailored to your goals.
@@ -122,13 +122,13 @@ const Wellness: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   WATER THERAPY
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   POOLSIDE SERENITY
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   Our infinity pool offers more than just refreshment—it's a sanctuary for the senses.
                   Unwind on comfortable loungers with panoramic views of the Aegean Sea, or enjoy a 
                   gentle swim at sunset. The tranquil waters and Mediterranean breeze create the 
@@ -150,13 +150,13 @@ const Wellness: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   INHALES AND EXHALES
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   YOGA
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   Breathe into the day or evening with an invigorating class on our 
                   seaside yoga deck. Salute the sun with the actual Aegean sunrise or sunset as your backdrop.
                   Classes take place on our open-air terrace with uninterrupted sea views. For those wanting to 
@@ -175,13 +175,13 @@ const Wellness: React.FC = () => {
                 />
               </div>
               <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
                   EXERCISE IN NATURE
                 </p>
-                <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   ISLAND ADVENTURES
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
                   If you prefer to mix nature and culture with your wellness activities, join 
                   our guided hikes across Antiparos' stunning landscapes. From coastal paths to hidden 
                   caves, the island offers diverse terrain for all experience levels. Discover ancient ruins, 

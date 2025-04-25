@@ -52,10 +52,10 @@ const Amenities: React.FC = () => {
     <section id="amenities" className="bg-[#F4F3EB] py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+          <h2 className="text-3xl md:text-4xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
             Villa Amenities
           </h2>
-          <p className="text-[#3A3532] max-w-2xl mx-auto font-['American_Typewriter'] leading-relaxed">
+          <p className="text-[#3A3532] max-w-2xl mx-auto font-['Roboto'] leading-relaxed">
             Everything you need for a perfect stay in our Antiparos villas
           </p>
         </div>
@@ -64,10 +64,10 @@ const Amenities: React.FC = () => {
           {amenitiesList.map((amenity, index) => (
             <div key={index} className="text-center">
               <div className="mb-3 flex justify-center">{amenity.icon}</div>
-              <h3 className="text-xl font-['American_Typewriter'] text-[#3A3532] mb-2">
+              <h3 className="text-xl font-['Roboto'] text-[#3A3532] mb-2">
                 {amenity.title}
               </h3>
-              <p className="text-[#3A3532] font-['American_Typewriter'] text-sm">
+              <p className="text-[#3A3532] font-['Roboto'] text-sm">
                 {amenity.description}
               </p>
             </div>

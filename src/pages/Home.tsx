@@ -21,20 +21,20 @@ const RoomsPreview: React.FC = () => {
       </div>
       
       <div className="pt-4">
-        <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['American_Typewriter']">
+        <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
           ROOMS
         </p>
-        <h2 className="text-2xl md:text-3xl font-['American_Typewriter'] text-[#3A3532] mb-4 uppercase">
+        <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
           Your poolside paradise awaits
         </h2>
-        <p className="text-[#3A3532] mb-6 font-['American_Typewriter'] leading-relaxed">
+        <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
           Dip into the pool from your private veranda or swing in your hammock. Check
           out our bohemian-style rooms. A personal space in which to sink back and
           slow down.
         </p>
         <Link
           to="/rooms"
-          className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['American_Typewriter'] uppercase"
+          className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase"
         >
           Explore Rooms
         </Link>
