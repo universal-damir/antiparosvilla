@@ -6,6 +6,7 @@ export interface NavItem {
 export interface RoomDetails {
   id: string;
   name: string;
+  villaId?: string;
   description: string;
   specs: {
     size: string;
@@ -13,6 +14,15 @@ export interface RoomDetails {
     features: string;
   };
   amenities: string[];
+  images: string[];
+}
+
+export interface VillaDetails {
+  id: string;
+  name: string;
+  description: string;
+  totalSize: string;
+  facilities: string[];
   images: string[];
 }
 
