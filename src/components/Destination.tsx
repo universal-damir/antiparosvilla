@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { galleryImages } from "../data/galleryData";
 
 const Destination: React.FC = () => {
   const location = useLocation();
@@ -12,7 +13,7 @@ const Destination: React.FC = () => {
         <div>
           <div className="overflow-hidden" style={{ height: "460px" }}>
             <img
-              src="https://images.pexels.com/photos/3601426/pexels-photo-3601426.jpeg"
+              src="/src/public/villa ammos r1 7.jpg"
               alt="Traditional white houses in Santorini with blue sea view"
               className="w-full h-full object-cover"
               style={{ objectPosition: "center 60%" }}
@@ -207,87 +208,28 @@ const Destination: React.FC = () => {
               DISCOVER ANTIPAROS
             </p>
             <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-8 uppercase text-center">
-              ISLAND GALLERY
+              GALLERY
             </h2>
-            
+
             <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/1167021/pexels-photo-1167021.jpeg" 
-                  alt="White Cycladic buildings with blue details"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/3601425/pexels-photo-3601425.jpeg" 
-                  alt="Church with iconic blue dome against sea background"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/4388164/pexels-photo-4388164.jpeg" 
-                  alt="Fishing boats in harbor at sunset"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/1711326/pexels-photo-1711326.jpeg" 
-                  alt="Aerial view of turquoise waters and beaches"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/8969237/pexels-photo-8969237.jpeg" 
-                  alt="Greek salad with fresh vegetables and feta"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/4553123/pexels-photo-4553123.jpeg"
-                  alt="Sun loungers on empty beach at sunset"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/3155666/pexels-photo-3155666.jpeg" 
-                  alt="Traditional Greek music instruments"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/548270/pexels-photo-548270.jpeg" 
-                  alt="Windmill in Greece against blue sky"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/6143750/pexels-photo-6143750.jpeg" 
-                  alt="Greek taverna with traditional decor"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/3800117/pexels-photo-3800117.jpeg" 
-                  alt="Crystal clear water in secluded bay"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="break-inside-avoid overflow-hidden rounded-lg">
-                <img 
-                  src="https://images.pexels.com/photos/7177306/pexels-photo-7177306.jpeg" 
-                  alt="Olive trees in Greek countryside"
-                  className="w-full h-auto"
-                />
-              </div>
+              {galleryImages.slice(0, 12).map((image) => (
+                <div key={image.id} className="break-inside-avoid overflow-hidden rounded-lg group cursor-pointer">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <Link
+                to="/gallery"
+                className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase"
+              >
+                View Full Gallery
+              </Link>
             </div>
           </div>
         </div>

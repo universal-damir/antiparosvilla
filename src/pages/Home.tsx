@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import About from '../components/About';
-import Wellness from '../components/Wellness';
+import Events from '../components/Events';
 import EatDrink from '../components/EatDrink';
 import Destination from '../components/Destination';
 import GalleryPreview from '../components/GalleryPreview';
@@ -13,7 +13,7 @@ const RoomsPreview: React.FC = () => {
     <div>
       <div className="overflow-hidden mb-8" style={{ height: "400px" }}>
         <img
-          src="https://images.unsplash.com/photo-1582610116397-edb318620f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+          src="/src/public/villa kyma outdoor 9.jpg"
           alt="Luxury villa room"
           className="w-full h-full object-cover"
           style={{ objectPosition: "center 40%" }}
@@ -56,13 +56,13 @@ const Home: React.FC = () => {
       {/* Magazine-style Layout with Offset Sections */}
       <div className="bg-[#F4F3EB] py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl">
-          {/* First Row - Rooms and Wellness */}
+          {/* First Row - Rooms and Events */}
           <div className="grid md:grid-cols-12 gap-6 md:gap-12 mb-24">
             <div className="md:col-span-7 md:translate-y-24">
               <RoomsPreview />
             </div>
             <div className="md:col-span-5">
-              <Wellness />
+              <Events />
             </div>
           </div>
           

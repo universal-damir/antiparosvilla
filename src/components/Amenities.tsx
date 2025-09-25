@@ -1,12 +1,13 @@
 import React from "react";
-import { 
-  Home, 
-  Palmtree, 
-  Flame, 
-  Waves, 
-  Dumbbell, 
+import {
+  Home,
+  Palmtree,
+  Flame,
+  Waves,
+  Dumbbell,
   Brush,
-  Baby
+  Baby,
+  Wifi
 } from "lucide-react";
 
 const Amenities: React.FC = () => {
@@ -41,10 +42,15 @@ const Amenities: React.FC = () => {
       title: "Maid's Room", 
       description: "Dedicated staff quarters for your convenience." 
     },
-    { 
-      icon: <Baby className="w-6 h-6 text-[#8B7D68]" />, 
-      title: "Kid Friendly", 
-      description: "Family-oriented amenities and spaces for children of all ages." 
+    {
+      icon: <Baby className="w-6 h-6 text-[#8B7D68]" />,
+      title: "Kid Friendly",
+      description: "Family-oriented amenities and spaces for children of all ages."
+    },
+    {
+      icon: <Wifi className="w-6 h-6 text-[#8B7D68]" />,
+      title: "High-Speed WiFi",
+      description: "Reliable internet connectivity throughout both villas."
     }
   ];
 
@@ -60,7 +66,7 @@ const Amenities: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 max-w-6xl mx-auto">
           {amenitiesList.map((amenity, index) => (
             <div key={index} className="text-center">
               <div className="mb-3 flex justify-center">{amenity.icon}</div>

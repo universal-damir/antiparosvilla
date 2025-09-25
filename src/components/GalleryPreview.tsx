@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { galleryImages } from "../data/galleryData";
 
 const GalleryPreview: React.FC = () => {
-  // Take just the first 6 images for the preview
-  const previewImages = galleryImages.slice(0, 6);
+  // Select 6 random images for the preview
+  const [previewImages, setPreviewImages] = useState(galleryImages.slice(0, 6));
+
+  useEffect(() => {
+    // Shuffle and select 6 random images
+    const shuffled = [...galleryImages].sort(() => Math.random() - 0.5);
+    setPreviewImages(shuffled.slice(0, 6));
+  }, []);
   
   return (
     <section id="gallery-preview" className="bg-[#F4F3EB] py-16">

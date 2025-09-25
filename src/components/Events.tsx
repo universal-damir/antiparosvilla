@@ -1,42 +1,46 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { galleryImages } from "../data/galleryData";
 
-const Wellness: React.FC = () => {
+const Events: React.FC = () => {
   const location = useLocation();
-  const isWellnessPage = location.pathname === "/wellness";
+  const isEventsPage = location.pathname === "/events";
+
+  // Use specific image for events section
+  const outdoorImage = "/src/public/villa kyma outdoor 2.jpg";
 
   // This is the section displayed on the homepage
-  if (!isWellnessPage) {
+  if (!isEventsPage) {
     return (
-      <section id="wellness" className="bg-[#F4F3EB]">
+      <section id="events" className="bg-[#F4F3EB]">
         <div>
           <div className="overflow-hidden" style={{ height: "580px" }}>
             <img
-              src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-              alt="Wellness spa treatment"
+              src={outdoorImage}
+              alt="Event space at villa"
               className="w-full h-full object-cover"
               style={{ objectPosition: "center 25%" }}
             />
           </div>
-          
+
           <div className="pt-8 pb-6">
             <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-              WELLNESS
+              EVENTS
             </p>
-            
+
             <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-              Stretch, breath, balance.
+              Unforgettable Celebrations
             </h2>
-            
+
             <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-              Finding your balance can be a physical pursuit, an inner journey, or a
-              perfect symbiosis of the two. Let our team of experts, including yoga
-              teachers and personal trainers, guide you along the way.
+              Transform your special moments into unforgettable memories. Our villas provide
+              the perfect backdrop for intimate weddings, milestone celebrations, and exclusive
+              gatherings with breathtaking Aegean views.
             </p>
-            
+
             <div className="mt-8">
               <Link
-                to="/wellness"
+                to="/events"
                 className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase"
               >
                 Find out more
@@ -48,15 +52,21 @@ const Wellness: React.FC = () => {
     );
   }
 
-  // This is the dedicated wellness page content
+  // Get relevant images for events page
+  const diningImages = galleryImages.filter(img => img.src.includes('dining'));
+  const outdoorImages = galleryImages.filter(img => img.src.includes('outdoor'));
+  const poolImages = galleryImages.filter(img => img.src.includes('pool'));
+  const kitchenImages = galleryImages.filter(img => img.src.includes('kitchen'));
+
+  // This is the dedicated events page content
   return (
     <div className="bg-[#F4F3EB]">
       {/* Hero Banner */}
       <section className="relative w-full h-[80vh] overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-            alt="Person practicing yoga in serene environment"
+            src={outdoorImages[0]?.src || galleryImages[0].src}
+            alt="Stunning event venue with ocean views"
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/30 bg-gradient-to-b from-black/10 to-black/50"></div>
@@ -66,21 +76,21 @@ const Wellness: React.FC = () => {
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center px-4 sm:px-6 max-w-3xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-['Roboto'] text-white mb-4 leading-tight uppercase">
-              GOOD FOR THE MIND, GOOD FOR THE BODY
+              YOUR EXCLUSIVE VENUE IN THE CYCLADES
             </h1>
           </div>
         </div>
       </section>
 
-      {/* Wellness content */}
+      {/* Events content */}
       <div className="container mx-auto px-4 py-16 max-w-6xl">
         <div className="text-center mb-12">
           <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto">
-            Continue your routine, or take the time to recharge physically and mentally during your stay at Villa 
-            Antiparos using our wellness facilities. We offer indoor and outdoor gym facilities and equipment, yoga
-            classes, and hikes in the neighboring natural areas of Antiparos. Immerse yourself in the serene 
-            environment, reconnect with nature, and discover the perfect balance between activity and relaxation
-            in our Mediterranean paradise.
+            Host your dream event at our exclusive Antiparos villas. With capacity for up to 16 guests across
+            8 luxurious bedrooms, our properties offer the perfect blend of privacy, elegance, and breathtaking
+            natural beauty. From intimate wedding ceremonies to milestone birthdays, corporate retreats to family
+            reunions, we provide an unforgettable backdrop for life's most precious celebrations. Our dedicated
+            event team ensures every detail is perfectly orchestrated in this Mediterranean paradise.
           </p>
         </div>
 
@@ -88,51 +98,52 @@ const Wellness: React.FC = () => {
         <div className="mt-16">
           {/* First Row - Gym and Pool */}
           <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-32">
-            {/* Gym Facilities Section */}
+            {/* Wedding & Celebrations Section */}
             <div className="md:col-span-7 md:col-start-1 md:row-start-1">
               <div className="overflow-hidden mb-4" style={{ height: "500px" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                  alt="Modern gym facilities"
+                  src={diningImages[0]?.src || outdoorImages[1]?.src || galleryImages[10].src}
+                  alt="Elegant wedding setup"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="pt-4">
                 <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-                  ATHLETIC PURSUITS
+                  UNFORGETTABLE MOMENTS
                 </p>
                 <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-                  GYM FACILITIES
+                  WEDDINGS & CELEBRATIONS
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  For cardio and weights, our well-equipped gym will ensure every muscle gets 
-                  its full attention. For added motivation or help getting started, let 
-                  our personal trainer give you a boost with customized routines tailored to your goals.
+                  Exchange vows with the Aegean Sea as your witness. Our villas accommodate intimate
+                  ceremonies and receptions for up to 40 guests, featuring stunning outdoor terraces,
+                  infinity pools, and panoramic sunset views. From welcome cocktails to farewell brunches,
+                  every moment is crafted to perfection with local cuisine, fine wines, and impeccable service.
                 </p>
               </div>
             </div>
 
-            {/* Pool Relaxation Section (replacing Spa) */}
+            {/* Corporate Retreats Section */}
             <div className="md:col-span-5 md:col-start-8 md:row-start-1 md:translate-y-28">
               <div className="overflow-hidden mb-4" style={{ height: "620px" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                  alt="Infinity pool with ocean view"
+                  src={poolImages[0]?.src || outdoorImages[2]?.src || galleryImages[20].src}
+                  alt="Professional meeting space with sea views"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="pt-4">
                 <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-                  WATER THERAPY
+                  INSPIRE & INNOVATE
                 </p>
                 <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-                  POOLSIDE SERENITY
+                  CORPORATE RETREATS
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  Our infinity pool offers more than just refreshment—it's a sanctuary for the senses.
-                  Unwind on comfortable loungers with panoramic views of the Aegean Sea, or enjoy a 
-                  gentle swim at sunset. The tranquil waters and Mediterranean breeze create the 
-                  perfect environment for natural relaxation and rejuvenation.
+                  Elevate your next corporate gathering in an inspiring setting. Our villas provide
+                  versatile spaces for board meetings, team building, and creative workshops. With
+                  high-speed internet, multiple gathering areas, and complete privacy, combine productive
+                  sessions with poolside networking and sunset strategy discussions.
                 </p>
               </div>
             </div>
@@ -140,52 +151,53 @@ const Wellness: React.FC = () => {
 
           {/* Second Row - Yoga and Outdoor */}
           <div className="grid md:grid-cols-12 gap-8 md:gap-12">
-            {/* Yoga Section */}
+            {/* Private Dining Section */}
             <div className="md:col-span-5 md:col-start-2 md:row-start-1">
               <div className="overflow-hidden mb-4" style={{ height: "580px" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                  alt="Yoga practice"
+                  src={kitchenImages[0]?.src || diningImages[1]?.src || galleryImages[30].src}
+                  alt="Private chef preparing gourmet meal"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="pt-4">
                 <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-                  INHALES AND EXHALES
+                  CULINARY EXCELLENCE
                 </p>
                 <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-                  YOGA
+                  PRIVATE CHEF & CATERING
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  Breathe into the day or evening with an invigorating class on our 
-                  seaside yoga deck. Salute the sun with the actual Aegean sunrise or sunset as your backdrop.
-                  Classes take place on our open-air terrace with uninterrupted sea views. For those wanting to 
-                  perfect their practice, our experienced instructor is also available for private sessions.
+                  Elevate your event with exceptional cuisine crafted by our private chef. From traditional
+                  Greek feasts to international gourmet menus, every dish showcases the finest local ingredients.
+                  Whether it's a romantic dinner for two, a poolside BBQ, or an elegant reception, our culinary
+                  team creates memorable dining experiences tailored to your preferences.
                 </p>
               </div>
             </div>
 
-            {/* Outdoor Activities Section */}
+            {/* Venue Features Section */}
             <div className="md:col-span-6 md:col-start-7 md:row-start-1 md:translate-y-32">
               <div className="overflow-hidden mb-4" style={{ height: "450px" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
-                  alt="Hiking in nature"
+                  src={outdoorImages[3]?.src || galleryImages[40].src}
+                  alt="Stunning outdoor event spaces"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="pt-4">
                 <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-                  EXERCISE IN NATURE
+                  EXCEPTIONAL SPACES
                 </p>
                 <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-                  ISLAND ADVENTURES
+                  VENUE FEATURES
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  If you prefer to mix nature and culture with your wellness activities, join 
-                  our guided hikes across Antiparos' stunning landscapes. From coastal paths to hidden 
-                  caves, the island offers diverse terrain for all experience levels. Discover ancient ruins, 
-                  breathtaking viewpoints, and secluded beaches on foot for a truly authentic Greek island experience.
+                  Our villas offer extraordinary features perfect for memorable events. Enjoy multiple
+                  outdoor terraces with sunset views, infinity pools with lounging areas, spacious
+                  indoor living areas for gatherings, fully equipped kitchens for catering prep,
+                  and sound systems throughout the property. The natural beauty of Antiparos provides
+                  a stunning backdrop that needs no additional decoration.
                 </p>
               </div>
             </div>
@@ -196,4 +208,4 @@ const Wellness: React.FC = () => {
   );
 };
 
-export default Wellness;
+export default Events;

@@ -22,7 +22,7 @@ export const villaData = [
     description: "Located on the lower level, Villa Ammos offers a tranquil retreat with four elegantly appointed bedrooms, a fully equipped common kitchen, comfortable sitting areas, and an outdoor dining space. The villa features a private pool and includes an indoor gym for fitness enthusiasts.",
     totalSize: "98m² of bedrooms",
     facilities: [
-      "4 Bedrooms (98m² total)",
+      "4 Bedrooms",
       "Common kitchen & sitting area",
       "Private swimming pool",
       "Outdoor dining area",
@@ -46,7 +46,7 @@ export const villaData = [
     description: "Positioned on the upper level with breathtaking views, Villa Kyma features four luxurious bedrooms, a spacious common kitchen, elegant sitting areas, and an outdoor dining space. The highlight is the stunning infinity pool that seems to merge with the horizon.",
     totalSize: "105m² of bedrooms",
     facilities: [
-      "4 Bedrooms (105m² total)",
+      "4 Bedrooms",
       "Common kitchen & sitting area",
       "Infinity swimming pool",
       "Outdoor dining area",
