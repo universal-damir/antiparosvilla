@@ -12,7 +12,7 @@ const EatDrink: React.FC = () => {
         <div>
           <div className="overflow-hidden" style={{ height: "680px" }}>
             <img
-              src="/src/public/villa ammos outdoor 5.jpg"
+              src="/villa ammos outdoor 5.jpg"
               alt="Mediterranean restaurant setting"
               className="w-full h-full object-cover"
               style={{ objectPosition: "center 65%" }}

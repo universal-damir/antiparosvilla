@@ -128,7 +128,7 @@ function getAltText(filename: string): string {
 
 export const galleryImages: GalleryImage[] = photoFiles.map((filename, index) => ({
   id: `img${index + 1}`,
-  src: `/src/public/${filename}`,
+  src: `/${filename}`,
   alt: getAltText(filename),
   width: 800,
   height: 600

@@ -5,12 +5,12 @@ export const propertyOverview = {
   title: "INDIGO CHIC VILLAS",
   description: "Two luxury villas on the hillside of Antiparos, offering stunning views of the Aegean Sea. Each villa features four bedrooms, a common kitchen and sitting area, outdoor dining, and a private pool. Experience the perfect blend of modern comfort and traditional Greek hospitality.",
   images: [
-    "/src/public/DJI_20250725181816_0527_D.jpg",
-    "/src/public/DJI_20250725182120_0532_D.jpg",
-    "/src/public/DJI_20250725182210_0534_D2.jpeg",
-    "/src/public/villa kyma outdoor 11.jpg",
-    "/src/public/villa kyma pool 2.jpg",
-    "/src/public/villa kyma outdoor 32.jpg"
+    "/DJI_20250725181816_0527_D.jpg",
+    "/DJI_20250725182120_0532_D.jpg",
+    "/DJI_20250725182210_0534_D2.jpeg",
+    "/villa kyma outdoor 11.jpg",
+    "/villa kyma pool 2.jpg",
+    "/villa kyma outdoor 32.jpg"
   ]
 };
 
@@ -32,12 +32,12 @@ export const villaData = [
       "Private parking"
     ],
     images: [
-      "/src/public/villa ammos outdoor 2.jpg",
-      "/src/public/villa ammos outdoor 5.jpg",
-      "/src/public/villa ammos outdoor 6.jpg",
-      "/src/public/villa ammos kitchen 1.jpg",
-      "/src/public/villa ammos gym.jpg",
-      "/src/public/entrance.jpg"
+      "/villa ammos outdoor 2.jpg",
+      "/villa ammos outdoor 5.jpg",
+      "/villa ammos outdoor 6.jpg",
+      "/villa ammos kitchen 1.jpg",
+      "/villa ammos gym.jpg",
+      "/entrance.jpg"
     ]
   },
   {
@@ -56,12 +56,12 @@ export const villaData = [
       "Private parking"
     ],
     images: [
-      "/src/public/villa kyma outdoor 11.jpg",
-      "/src/public/villa kyma pool 2.jpg",
-      "/src/public/villa kyma pool 3.jpg",
-      "/src/public/villa kyma dining 2.jpg",
-      "/src/public/villa kyma kitchen 1.jpg",
-      "/src/public/villa kyma bar area 2.jpg"
+      "/villa kyma outdoor 11.jpg",
+      "/villa kyma pool 2.jpg",
+      "/villa kyma pool 3.jpg",
+      "/villa kyma dining 2.jpg",
+      "/villa kyma kitchen 1.jpg",
+      "/villa kyma bar area 2.jpg"
     ]
   }
 ];
@@ -90,13 +90,13 @@ export const roomData: RoomDetails[] = [
       "Complimentary WiFi"
     ],
     images: [
-      "/src/public/villa ammos r1 1.jpg",
-      "/src/public/villa ammos r1 2.jpg",
-      "/src/public/villa ammos r1 4.jpg",
-      "/src/public/villa ammos r1 5.jpg",
-      "/src/public/villa ammos r1 7.jpg",
-      "/src/public/villa ammos r1 8.jpg",
-      "/src/public/villa ammos r1 9.jpg"
+      "/villa ammos r1 1.jpg",
+      "/villa ammos r1 2.jpg",
+      "/villa ammos r1 4.jpg",
+      "/villa ammos r1 5.jpg",
+      "/villa ammos r1 7.jpg",
+      "/villa ammos r1 8.jpg",
+      "/villa ammos r1 9.jpg"
     ]
   },
   {
@@ -120,11 +120,11 @@ export const roomData: RoomDetails[] = [
       "Complimentary WiFi"
     ],
     images: [
-      "/src/public/villa ammos r2 1.jpg",
-      "/src/public/villa ammos r2 2.jpg",
-      "/src/public/villa ammos r2 3.jpg",
-      "/src/public/villa ammos r2 5.jpg",
-      "/src/public/villa ammos r2 6.jpg"
+      "/villa ammos r2 1.jpg",
+      "/villa ammos r2 2.jpg",
+      "/villa ammos r2 3.jpg",
+      "/villa ammos r2 5.jpg",
+      "/villa ammos r2 6.jpg"
     ]
   },
   {
@@ -148,12 +148,12 @@ export const roomData: RoomDetails[] = [
       "Family-friendly setup"
     ],
     images: [
-      "/src/public/villa ammos r3 1.jpg",
-      "/src/public/villa ammos r3 2.jpg",
-      "/src/public/villa ammos r3 3.jpg",
-      "/src/public/villa ammos r3 4.jpg",
-      "/src/public/villa ammos r3 5.jpg",
-      "/src/public/villa ammos r3 6.jpg"
+      "/villa ammos r3 1.jpg",
+      "/villa ammos r3 2.jpg",
+      "/villa ammos r3 3.jpg",
+      "/villa ammos r3 4.jpg",
+      "/villa ammos r3 5.jpg",
+      "/villa ammos r3 6.jpg"
     ]
   },
   {
@@ -177,13 +177,13 @@ export const roomData: RoomDetails[] = [
       "Family-friendly setup"
     ],
     images: [
-      "/src/public/villa ammos r4 1.jpg",
-      "/src/public/villa ammos r4 2.jpg",
-      "/src/public/villa ammos r4 3.jpg",
-      "/src/public/villa ammos r4 6.jpg",
-      "/src/public/villa ammos r4 8.jpg",
-      "/src/public/villa ammos r4 9.jpg",
-      "/src/public/villa ammos r4 10.jpg"
+      "/villa ammos r4 1.jpg",
+      "/villa ammos r4 2.jpg",
+      "/villa ammos r4 3.jpg",
+      "/villa ammos r4 6.jpg",
+      "/villa ammos r4 8.jpg",
+      "/villa ammos r4 9.jpg",
+      "/villa ammos r4 10.jpg"
     ]
   },
 
@@ -209,12 +209,12 @@ export const roomData: RoomDetails[] = [
       "Panoramic views"
     ],
     images: [
-      "/src/public/villa kyma r5 2.jpg",
-      "/src/public/villa kyma r5 3.jpg",
-      "/src/public/villa kyma r5 7.jpg",
-      "/src/public/villa kyma r5 8.jpg",
-      "/src/public/villa kyma r5 9.jpg",
-      "/src/public/villa kyma r5 10.jpg"
+      "/villa kyma r5 2.jpg",
+      "/villa kyma r5 3.jpg",
+      "/villa kyma r5 7.jpg",
+      "/villa kyma r5 8.jpg",
+      "/villa kyma r5 9.jpg",
+      "/villa kyma r5 10.jpg"
     ]
   },
   {
@@ -238,11 +238,11 @@ export const roomData: RoomDetails[] = [
       "Family-friendly setup"
     ],
     images: [
-      "/src/public/villa kyma r6 1.jpg",
-      "/src/public/villa kyma r6 2.jpg",
-      "/src/public/villa kyma r6 3.jpg",
-      "/src/public/villa kyma r6 5.jpg",
-      "/src/public/villa kyma r6 6.jpg"
+      "/villa kyma r6 1.jpg",
+      "/villa kyma r6 2.jpg",
+      "/villa kyma r6 3.jpg",
+      "/villa kyma r6 5.jpg",
+      "/villa kyma r6 6.jpg"
     ]
   },
   {
@@ -266,11 +266,11 @@ export const roomData: RoomDetails[] = [
       "Family-friendly setup"
     ],
     images: [
-      "/src/public/villa kyma r7 1.jpg",
-      "/src/public/villa kyma r7 4.jpg",
-      "/src/public/villa kyma r7 5.jpg",
-      "/src/public/villa kyma r7 6.jpg",
-      "/src/public/villa kyma r7 7.jpg"
+      "/villa kyma r7 1.jpg",
+      "/villa kyma r7 4.jpg",
+      "/villa kyma r7 5.jpg",
+      "/villa kyma r7 6.jpg",
+      "/villa kyma r7 7.jpg"
     ]
   },
   {
@@ -294,14 +294,14 @@ export const roomData: RoomDetails[] = [
       "Spectacular sea views"
     ],
     images: [
-      "/src/public/villa kyma r8 2.jpg",
-      "/src/public/villa kyma r8 4.jpg",
-      "/src/public/villa kyma r8 6.jpg",
-      "/src/public/villa kyma r8 7.jpg",
-      "/src/public/villa kyma r8 8.jpg",
-      "/src/public/villa kyma r8 10.jpg",
-      "/src/public/villa kyma r8 11.jpg",
-      "/src/public/villa kyma r8 12.jpg"
+      "/villa kyma r8 2.jpg",
+      "/villa kyma r8 4.jpg",
+      "/villa kyma r8 6.jpg",
+      "/villa kyma r8 7.jpg",
+      "/villa kyma r8 8.jpg",
+      "/villa kyma r8 10.jpg",
+      "/villa kyma r8 11.jpg",
+      "/villa kyma r8 12.jpg"
     ]
   }
 ];

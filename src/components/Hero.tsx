@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
       {/* Image Background */}
       <div className="absolute inset-0 w-full h-full">
         <img
-          src="/src/public/00 MAIN BACKGROUND.jpg"
+          src="/00 MAIN BACKGROUND.jpg"
           alt="Indigo Chic Villas Antiparos"
           className="absolute inset-0 w-full h-full object-cover"
         />

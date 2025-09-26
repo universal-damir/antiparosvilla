@@ -13,7 +13,7 @@ const RoomsPreview: React.FC = () => {
     <div>
       <div className="overflow-hidden mb-8" style={{ height: "400px" }}>
         <img
-          src="/src/public/villa kyma outdoor 9.jpg"
+          src="/villa kyma outdoor 9.jpg"
           alt="Luxury villa room"
           className="w-full h-full object-cover"
           style={{ objectPosition: "center 40%" }}

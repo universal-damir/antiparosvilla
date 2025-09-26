@@ -7,7 +7,7 @@ const Events: React.FC = () => {
   const isEventsPage = location.pathname === "/events";
 
   // Use specific image for events section
-  const outdoorImage = "/src/public/villa kyma outdoor 2.jpg";
+  const outdoorImage = "/villa kyma outdoor 2.jpg";
 
   // This is the section displayed on the homepage
   if (!isEventsPage) {

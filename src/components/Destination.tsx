@@ -13,7 +13,7 @@ const Destination: React.FC = () => {
         <div>
           <div className="overflow-hidden" style={{ height: "460px" }}>
             <img
-              src="/src/public/villa ammos r1 7.jpg"
+              src="/villa ammos r1 7.jpg"
               alt="Traditional white houses in Santorini with blue sea view"
               className="w-full h-full object-cover"
               style={{ objectPosition: "center 60%" }}
