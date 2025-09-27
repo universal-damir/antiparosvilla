@@ -319,7 +319,7 @@ const Rooms: React.FC = () => {
     : roomData;
 
   return (
-    <section className="bg-[#F4F3EB] w-full pt-28 md:pt-40">
+    <section className="bg-[#F4F3EB] w-full pt-48 md:pt-64">
       {/* Header Section */}
       <div className="max-w-6xl mx-auto px-4 pb-8 text-center">
         <h2 className="text-5xl md:text-6xl font-['Roboto'] text-[#3A3532] uppercase tracking-wide leading-tight mb-12">

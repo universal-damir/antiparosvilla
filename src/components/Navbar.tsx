@@ -57,14 +57,15 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Logo centered at the top - only visible when not scrolled */}
         {!isScrolled && (
-          <div className="flex justify-center py-4">
-            <Link 
-              to="/" 
-              className={`text-2xl md:text-3xl font-medium font-['Roboto'] ${
-                shouldUseWhiteText ? "text-white" : "text-[#3A3532]"
-              }`}
-            >
-              Indigo Chic Villas
+          <div className="flex justify-center py-2">
+            <Link to="/" className="block">
+              <img
+                src="/indigo-antiparos-logo.png"
+                alt="Indigo Chic Villas"
+                className={`h-24 md:h-32 w-auto ${
+                  shouldUseWhiteText ? "brightness-0 invert" : ""
+                }`}
+              />
             </Link>
           </div>
         )}

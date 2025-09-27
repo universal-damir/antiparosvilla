@@ -90,7 +90,7 @@ const Gallery: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#F4F3EB] pt-36">
+    <div className="bg-[#F4F3EB] pt-64">
       {/* Gallery Header */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="text-center">

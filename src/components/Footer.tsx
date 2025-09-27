@@ -1,6 +1,6 @@
 import React from "react";
 import { navItems } from "../data/navItems";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Instagram, MapPin, Phone, Mail } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
@@ -8,18 +8,40 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <h3 className="text-xl font-['Roboto'] mb-6">
-              Indigo Chic Villas
-            </h3>
+            <img
+              src="/indigo-antiparos-logo.png"
+              alt="Indigo Chic Villas"
+              className="h-28 w-auto mb-6"
+            />
             <p className="mb-4 font-['Roboto']">
-              Agios Georgios, Antiparos 84007
-              <br />
-              Cyclades, Greece
+              <a
+                href="https://maps.app.goo.gl/BKVeEKLhF9Bkawh78"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#8E7D67] transition-colors inline-flex items-start"
+              >
+                <MapPin className="w-4 h-4 mt-1 mr-2 flex-shrink-0" />
+                <span>
+                  St.George, Antiparos, Greece 84007
+                </span>
+              </a>
             </p>
-            <p className="font-['Roboto']">
-              Tel: +30 22840 61000
+            <p className="font-['Roboto'] space-y-2">
+              <a
+                href="tel:+302284061000"
+                className="hover:text-[#8E7D67] transition-colors inline-flex items-center"
+              >
+                <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+                <span>+30 22840 61000</span>
+              </a>
               <br />
-              Email: contact@icantiparos.com
+              <a
+                href="mailto:contact@icantiparos.com"
+                className="hover:text-[#8E7D67] transition-colors inline-flex items-center"
+              >
+                <Mail className="w-4 h-4 mr-2 flex-shrink-0" />
+                <span>contact@icantiparos.com</span>
+              </a>
             </p>
           </div>
 
@@ -47,22 +69,12 @@ const Footer: React.FC = () => {
             </h3>
             <div className="flex space-x-4 mb-8">
               <a
-                href="#"
-                className="text-[#3A3532] hover:text-[#8E7D67] transition-colors"
-              >
-                <Facebook />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/indigochic.antiparos/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[#3A3532] hover:text-[#8E7D67] transition-colors"
               >
                 <Instagram />
-              </a>
-              <a
-                href="#"
-                className="text-[#3A3532] hover:text-[#8E7D67] transition-colors"
-              >
-                <Twitter />
               </a>
             </div>
             <div className="mt-4 space-y-3">
