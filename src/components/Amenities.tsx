@@ -12,10 +12,10 @@ import {
 
 const Amenities: React.FC = () => {
   const amenitiesList = [
-    { 
-      icon: <Home className="w-6 h-6 text-[#8B7D68]" />, 
-      title: "2 Villas (4 Rooms)", 
-      description: "Luxurious private villas with four beautifully appointed rooms." 
+    {
+      icon: <Home className="w-6 h-6 text-[#8B7D68]" />,
+      title: "2 Villas (4 Rooms Each)",
+      description: "Two luxurious private villas, each featuring four beautifully appointed rooms."
     },
     { 
       icon: <Palmtree className="w-6 h-6 text-[#8B7D68]" />, 
