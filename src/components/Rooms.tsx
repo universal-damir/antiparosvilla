@@ -328,39 +328,37 @@ const Rooms: React.FC = () => {
         </h2>
 
         {/* Tab Navigation */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex bg-white shadow-sm rounded-sm overflow-hidden">
-            <button
-              onClick={() => setActiveTab('overview')}
-              className={`px-6 py-3 font-['Roboto'] uppercase text-sm tracking-wide transition-colors ${
-                activeTab === 'overview'
-                  ? 'bg-[#3A3532] text-white'
-                  : 'text-[#3A3532] hover:bg-gray-100'
-              }`}
-            >
-              Property Overview
-            </button>
-            <button
-              onClick={() => setActiveTab('villas')}
-              className={`px-6 py-3 font-['Roboto'] uppercase text-sm tracking-wide transition-colors border-l border-gray-200 ${
-                activeTab === 'villas'
-                  ? 'bg-[#3A3532] text-white'
-                  : 'text-[#3A3532] hover:bg-gray-100'
-              }`}
-            >
-              Villas
-            </button>
-            <button
-              onClick={() => setActiveTab('rooms')}
-              className={`px-6 py-3 font-['Roboto'] uppercase text-sm tracking-wide transition-colors border-l border-gray-200 ${
-                activeTab === 'rooms'
-                  ? 'bg-[#3A3532] text-white'
-                  : 'text-[#3A3532] hover:bg-gray-100'
-              }`}
-            >
-              Individual Rooms
-            </button>
-          </div>
+        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mb-16">
+          <button
+            onClick={() => setActiveTab('overview')}
+            className={`px-8 py-3 font-['Roboto'] uppercase text-xs tracking-[0.2em] transition-all duration-300 ${
+              activeTab === 'overview'
+                ? 'bg-[#3A3532] text-white'
+                : 'bg-transparent text-[#3A3532] border border-[#3A3532]/30 hover:border-[#3A3532]/60'
+            }`}
+          >
+            Property Overview
+          </button>
+          <button
+            onClick={() => setActiveTab('villas')}
+            className={`px-8 py-3 font-['Roboto'] uppercase text-xs tracking-[0.2em] transition-all duration-300 ${
+              activeTab === 'villas'
+                ? 'bg-[#3A3532] text-white'
+                : 'bg-transparent text-[#3A3532] border border-[#3A3532]/30 hover:border-[#3A3532]/60'
+            }`}
+          >
+            Villas
+          </button>
+          <button
+            onClick={() => setActiveTab('rooms')}
+            className={`px-8 py-3 font-['Roboto'] uppercase text-xs tracking-[0.2em] transition-all duration-300 ${
+              activeTab === 'rooms'
+                ? 'bg-[#3A3532] text-white'
+                : 'bg-transparent text-[#3A3532] border border-[#3A3532]/30 hover:border-[#3A3532]/60'
+            }`}
+          >
+            Individual Rooms
+          </button>
         </div>
       </div>
 
