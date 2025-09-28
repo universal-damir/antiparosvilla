@@ -19,7 +19,7 @@ const About: React.FC = () => {
             Experience airy, open spaces framed by lush vegetation, multiple pools, and expansive wooden decks and pergolas. Whether you're walking along the broad walkways or unwinding by the pool, Indigo Chic Villas offers an exquisite blend of contemporary design and natural beauty, creating the perfect retreat.
           </p>
           <p className="leading-relaxed">
-            Our philosophy is simple: to provide an authentic Greek island experience with all the comforts and luxuries you deserve. From the moment you arrive, our attentive staff will ensure your stay exceeds all expectations, allowing you to create memories that will last a lifetime.
+            Our philosophy is simple: to provide an authentic Greek island experience with all the comforts and luxuries you deserve. From the moment you arrive, we will ensure your stay exceeds all expectations, allowing you to create memories that will last a lifetime.
           </p>
         </div>
       </div>
