@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
             />
             <p className="mb-4 font-['Roboto']">
               <a
-                href="https://maps.app.goo.gl/BKVeEKLhF9Bkawh78"
+                href="https://www.google.com/maps/place/Indigo+Chic,+Antiparos+Luxury+Villas/@36.9757729,25.0385461,716m/data=!3m2!1e3!4b1!4m14!1m7!3m6!1s0x149867a7d8c11e91:0xe59ef47a3ea11022!2sIndigo+Chic,+Antiparos+Luxury+Villas!8m2!3d36.9757686!4d25.0411264!16s%2Fg%2F11xzlg0fyg!3m5!1s0x149867a7d8c11e91:0xe59ef47a3ea11022!8m2!3d36.9757686!4d25.0411264!16s%2Fg%2F11xzlg0fyg?hl=en-GB&entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#8E7D67] transition-colors inline-flex items-start"
