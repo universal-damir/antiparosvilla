@@ -137,29 +137,29 @@ const Gallery: React.FC = () => {
       {/* Image Modal */}
       {selectedImageIndex !== null && (
         <div 
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-[#3A3532]/95 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={handleCloseModal}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <button 
-            className="absolute top-4 right-4 text-white z-10 p-2 rounded-full hover:bg-white/10"
+          <button
+            className="absolute top-6 right-6 text-[#F4F3EB]/50 z-10 hover:text-[#F4F3EB]/80 transition-colors"
             onClick={handleCloseModal}
             aria-label="Close image"
           >
-            <X size={24} />
+            <X size={20} strokeWidth={1} />
           </button>
           
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+            className="absolute left-8 top-1/2 -translate-y-1/2 text-[#F4F3EB]/50 hover:text-[#F4F3EB]/80 transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               handlePrevImage();
             }}
             aria-label="Previous image"
           >
-            <ChevronLeft size={28} />
+            <ChevronLeft size={40} strokeWidth={1} />
           </button>
           
           <div className="relative max-w-6xl max-h-[90vh] w-full h-full flex items-center justify-center">
@@ -172,18 +172,18 @@ const Gallery: React.FC = () => {
           </div>
           
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+            className="absolute right-8 top-1/2 -translate-y-1/2 text-[#F4F3EB]/50 hover:text-[#F4F3EB]/80 transition-colors"
             onClick={(e) => {
               e.stopPropagation();
               handleNextImage();
             }}
             aria-label="Next image"
           >
-            <ChevronRight size={28} />
+            <ChevronRight size={40} strokeWidth={1} />
           </button>
           
-          <div className="absolute bottom-6 left-0 right-0 text-center text-white font-['Roboto']">
-            {selectedImageIndex + 1} / {galleryImages.length}
+          <div className="absolute bottom-6 left-0 right-0 text-center text-[#F4F3EB]/40 font-['Roboto'] text-xs tracking-wider">
+            {selectedImageIndex + 1} — {galleryImages.length}
           </div>
         </div>
       )}

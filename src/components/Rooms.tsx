@@ -62,11 +62,12 @@ const ImageCarousel: React.FC<{
             <img
               src={image}
               alt={`${alt} ${index + 1}`}
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 w-full h-full cursor-pointer"
               style={{
                 objectFit: 'cover',
                 objectPosition: 'center'
               }}
+              onClick={onGalleryOpen}
             />
           </div>
         ))}
@@ -74,30 +75,30 @@ const ImageCarousel: React.FC<{
 
       <button
         onClick={onPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-2.5 rounded-full hover:bg-white hover:scale-110 transition-all duration-200 shadow-lg backdrop-blur-sm"
+        className="absolute left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-200"
         aria-label="Previous image"
       >
-        <ChevronLeft className="w-5 h-5 text-[#3A3532]" />
+        <ChevronLeft className="w-8 h-8" strokeWidth={1} />
       </button>
 
       <button
         onClick={onNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-2.5 rounded-full hover:bg-white hover:scale-110 transition-all duration-200 shadow-lg backdrop-blur-sm"
+        className="absolute right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-200"
         aria-label="Next image"
       >
-        <ChevronRight className="w-5 h-5 text-[#3A3532]" />
+        <ChevronRight className="w-8 h-8" strokeWidth={1} />
       </button>
 
       <button
         onClick={onGalleryOpen}
-        className="absolute bottom-6 left-6 bg-white/90 px-4 py-1.5 uppercase text-sm font-medium hover:bg-white hover:scale-105 transition-all duration-200 shadow-md backdrop-blur-sm"
+        className="absolute bottom-6 left-6 text-white/60 uppercase text-[10px] font-['Roboto'] tracking-[0.2em] hover:text-white/80 transition-all duration-200"
         aria-label="Open gallery"
       >
-        Gallery
+        View Gallery
       </button>
 
-      <div className="absolute bottom-6 right-6 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
-        {currentIndex + 1} / {images.length}
+      <div className="absolute bottom-6 right-6 text-white/50 text-[10px] font-['Roboto'] tracking-wider">
+        {currentIndex + 1} — {images.length}
       </div>
     </div>
   );
@@ -167,7 +168,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
   }, [handleKeyDown]);
 
   return (
-    <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-[#3A3532]/95 backdrop-blur-sm z-50 flex items-center justify-center">
       <div
         className="w-full h-full relative"
         onTouchStart={handleTouchStart}
@@ -176,10 +177,10 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 bg-white/20 rounded-full z-10 hover:bg-white/40 transition-colors"
+          className="absolute top-6 right-6 text-[#F4F3EB]/50 z-10 hover:text-[#F4F3EB]/80 transition-colors"
           aria-label="Close gallery"
         >
-          <X className="w-6 h-6 text-white" />
+          <X className="w-5 h-5" strokeWidth={1} />
         </button>
 
         <div className="absolute inset-0 flex items-center justify-center p-4">
@@ -192,22 +193,22 @@ const GalleryModal: React.FC<GalleryModalProps> = ({
 
         <button
           onClick={onPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 rounded-full hover:bg-white/40 transition-colors"
+          className="absolute left-8 top-1/2 -translate-y-1/2 text-[#F4F3EB]/50 hover:text-[#F4F3EB]/80 transition-colors"
           aria-label="Previous image"
         >
-          <ChevronLeft className="w-6 h-6 text-white" />
+          <ChevronLeft className="w-10 h-10" strokeWidth={1} />
         </button>
 
         <button
           onClick={onNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 rounded-full hover:bg-white/40 transition-colors"
+          className="absolute right-8 top-1/2 -translate-y-1/2 text-[#F4F3EB]/50 hover:text-[#F4F3EB]/80 transition-colors"
           aria-label="Next image"
         >
-          <ChevronRight className="w-6 h-6 text-white" />
+          <ChevronRight className="w-10 h-10" strokeWidth={1} />
         </button>
 
-        <div className="absolute bottom-6 left-0 right-0 text-center text-white">
-          {currentIndex + 1} / {images.length}
+        <div className="absolute bottom-6 left-0 right-0 text-center text-[#F4F3EB]/40 text-xs font-['Roboto'] tracking-wider">
+          {currentIndex + 1} — {images.length}
         </div>
       </div>
     </div>
@@ -390,26 +391,12 @@ const Rooms: React.FC = () => {
               <p className="text-[#3A3532] font-['Roboto'] leading-relaxed text-base md:text-lg mb-8">
                 {propertyOverview.description}
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-                <div>
-                  <h4 className="text-xl font-['Roboto'] text-black uppercase font-bold mb-4">Villa Ammos</h4>
-                  <ul className="space-y-2 text-[#59452E] font-['Roboto']">
-                    <li>• 4 Bedrooms (98m² total)</li>
-                    <li>• Private pool & outdoor areas</li>
-                    <li>• Indoor gym facility</li>
-                    <li>• Rooms 3 & 4 can connect</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-xl font-['Roboto'] text-black uppercase font-bold mb-4">Villa Kyma</h4>
-                  <ul className="space-y-2 text-[#59452E] font-['Roboto']">
-                    <li>• 4 Bedrooms (105m² total)</li>
-                    <li>• Infinity pool with sea views</li>
-                    <li>• Room 5 with private balcony</li>
-                    <li>• Rooms 6 & 7 can connect</li>
-                  </ul>
-                </div>
-              </div>
+              <button
+                onClick={() => setActiveTab('villas')}
+                className="mt-8 bg-[#3A3532] text-white px-6 py-3 font-['Roboto'] uppercase text-sm tracking-wide hover:bg-[#2A2522] transition-colors"
+              >
+                See Both Villas
+              </button>
             </div>
           </div>
         </div>
@@ -441,22 +428,29 @@ const Rooms: React.FC = () => {
                 </div>
 
                 <div className="lg:w-1/2 p-8 md:p-12 lg:p-16">
-                  <h3 className="text-2xl md:text-3xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-4">
-                    {villa.name}
-                  </h3>
-                  <p className="text-[#59452E] font-['Roboto'] text-sm font-medium mb-6 uppercase">
-                    {villa.totalSize}
-                  </p>
-                  <p className="text-black font-['Roboto'] leading-relaxed text-base md:text-lg mb-8">
+                  <button
+                    onClick={() => {
+                      setSelectedVilla(villa.id);
+                      setActiveTab('rooms');
+                    }}
+                    className="text-left hover:opacity-70 transition-opacity"
+                  >
+                    <h3 className="text-2xl md:text-3xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-4 underline underline-offset-4 decoration-1">
+                      {villa.name}
+                    </h3>
+                  </button>
+                  <p className="text-black font-['Roboto'] leading-relaxed text-base md:text-lg mb-6">
                     {villa.description}
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                    {villa.facilities.map((facility, index) => (
-                      <div key={index} className="flex items-start space-x-3">
-                        <span className="flex-shrink-0 mt-0.5">{getAmenityIcon(facility)}</span>
-                        <span className="text-sm text-[#59452E] font-['Roboto']">{facility}</span>
-                      </div>
-                    ))}
+                  <div className="text-[#59452E] font-['Roboto'] leading-relaxed text-sm space-y-2">
+                    <p>Each villa features four luxurious bedrooms with direct sea views, a fully equipped common kitchen, comfortable sitting areas, and outdoor dining space overlooking the Aegean.</p>
+                    {villa.id === 'villa-ammos' && (
+                      <p>Villa Ammos includes a private pool, indoor gym facility, and connecting options between Rooms 3 & 4 for families.</p>
+                    )}
+                    {villa.id === 'villa-kyma' && (
+                      <p>Villa Kyma features a stunning infinity pool, Room 5 with private balcony, and connecting options between Rooms 6 & 7 for families.</p>
+                    )}
+                    <p className="pt-2">Daily maid service, private parking, and concierge assistance included.</p>
                   </div>
                   <button
                     onClick={() => {
@@ -477,21 +471,6 @@ const Rooms: React.FC = () => {
       {/* Individual Rooms Section */}
       {activeTab === 'rooms' && (
         <div className="max-w-7xl mx-auto px-4 py-12 pb-32">
-          {/* Villa Filter */}
-          {selectedVilla && (
-            <div className="mb-8 flex items-center justify-between bg-white p-4 shadow-sm rounded-sm animate-fadeIn">
-              <p className="text-[#3A3532] font-['Roboto']">
-                Showing rooms from: <strong className="uppercase">{villaData.find(v => v.id === selectedVilla)?.name}</strong>
-              </p>
-              <button
-                onClick={() => setSelectedVilla(null)}
-                className="text-[#59452E] hover:text-[#3A3532] font-['Roboto'] text-sm uppercase transition-colors"
-              >
-                Show All Rooms
-              </button>
-            </div>
-          )}
-
           {filteredRooms.map((room, index) => (
             <div
               key={room.id}

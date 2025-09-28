@@ -55,9 +55,9 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Logo centered at the top - only visible when not scrolled */}
+        {/* Logo centered at the top with mobile menu - only visible when not scrolled */}
         {!isScrolled && (
-          <div className="flex justify-center py-2">
+          <div className="flex justify-center items-center py-2 relative">
             <Link to="/" className="block">
               <img
                 src="/indigo-antiparos-logo.png"
@@ -67,6 +67,16 @@ const Navbar: React.FC = () => {
                 }`}
               />
             </Link>
+            {/* Mobile Menu Button - positioned absolute right */}
+            <button
+              className={`md:hidden absolute right-0 ${
+                shouldUseWhiteText ? "text-white" : "text-[#3A3532]"
+              }`}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         )}
         
@@ -104,46 +114,36 @@ const Navbar: React.FC = () => {
           </div>
           
           {/* Bottom horizontal line */}
-          <div className={`hidden md:block w-full ${
-            isScrolled 
-              ? "h-px bg-[#3A3532]/20" 
-              : shouldUseBlackText 
-                ? "h-[2px] bg-[#3A3532]/30" 
+          <div className={`w-full ${
+            isScrolled
+              ? "h-px bg-[#3A3532]/20"
+              : shouldUseBlackText
+                ? "h-[2px] bg-[#3A3532]/30"
                 : "h-[2px] bg-white/30"
           }`}></div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex justify-end py-2">
-            <button
-              className={shouldUseWhiteText
-                ? "text-white"
-                : (isScrolled ? "text-[#3A3532]" : "text-[#3A3532]")
-              }
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className={`md:hidden absolute top-full left-0 w-full ${
-          isScrolled ? "bg-[#F4F3EB]" : "bg-white/10 backdrop-blur-sm"
+          location.pathname === "/"
+            ? (isScrolled ? "bg-[#F4F3EB]" : "bg-white/10 backdrop-blur-sm")
+            : "bg-[#F4F3EB]/95 backdrop-blur-md shadow-lg border-b border-[#3A3532]/20"
         }`}>
           <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col space-y-4">
+            <nav className="flex flex-col space-y-2">
               {navItems.filter(item => item.href !== "/").map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
-                  className={`font-['Roboto'] py-2 border-b last:border-0 uppercase relative ${
-                    shouldUseWhiteText
+                  className={`font-['Roboto'] py-3 border-b last:border-0 uppercase relative ${
+                    location.pathname === "/" && shouldUseWhiteText
                       ? "text-white border-white/20"
-                      : "text-[#3A3532] border-[#3A3532]/20"
-                  } ${location.pathname === item.href ? "after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-current" : ""}`}
+                      : "text-[#3A3532] border-[#3A3532]/20 hover:text-[#8E7D67]"
+                  } transition-colors ${
+                    location.pathname === item.href ? "font-semibold" : ""
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
