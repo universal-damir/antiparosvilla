@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { roomData, villaData, propertyOverview } from "../data/roomData";
 import {
   ChevronLeft,
@@ -18,8 +19,31 @@ import {
   Wifi,
   Wind,
   Coffee,
-  Car
+  Car,
+  MapPin
 } from "lucide-react";
+
+// Property hotspots for interactive map
+// Upper level = Villa Kyma, Lower level = Villa Ammos
+const propertyHotspots = [
+  // Villa Kyma (Upper Level) - Rooms from left to right
+  { id: 1, label: "Kyma Room 5", x: 35, y: 25 },
+  { id: 2, label: "Kyma Room 6", x: 45, y: 25 },
+  { id: 3, label: "Kyma Room 7", x: 55, y: 25 },
+  { id: 4, label: "Kyma Room 8", x: 65, y: 25 },
+  { id: 5, label: "Kyma Kitchen", x: 50, y: 30 },
+  { id: 6, label: "Kyma Outdoor Dining", x: 40, y: 32 },
+  { id: 7, label: "Kyma Pool Area", x: 50, y: 35 },
+
+  // Villa Ammos (Lower Level) - Rooms from left to right
+  { id: 8, label: "Ammos Room 1", x: 20, y: 55 },
+  { id: 9, label: "Ammos Room 2", x: 35, y: 55 },
+  { id: 10, label: "Ammos Room 3", x: 50, y: 55 },
+  { id: 11, label: "Ammos Room 4", x: 65, y: 55 },
+  { id: 12, label: "Ammos Kitchen", x: 42, y: 60 },
+  { id: 13, label: "Ammos Outdoor Sitting", x: 55, y: 65 },
+  { id: 14, label: "Ammos Pool Area", x: 35, y: 70 },
+];
 
 const getAmenityIcon = (amenity: string) => {
   const lowerCaseAmenity = amenity.toLowerCase();
@@ -40,6 +64,46 @@ const getAmenityIcon = (amenity: string) => {
   if (lowerCaseAmenity.includes("view")) return <Hotel className="w-4 h-4 text-[#59452E]" />;
 
   return <ChevronRight className="w-4 h-4 text-[#59452E]" />;
+};
+
+// Interactive Property Map Component
+const InteractivePropertyMap: React.FC = () => {
+  const [hoveredHotspot, setHoveredHotspot] = useState<number | null>(null);
+
+  return (
+    <div className="relative w-full h-full">
+      <img
+        src="/DJI_20250725182120_0532_D.jpg"
+        alt="Property Overview"
+        className="w-full h-full object-contain"
+      />
+      {/* Hotspot markers */}
+      {propertyHotspots.map((hotspot) => (
+        <div
+          key={hotspot.id}
+          className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+          style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
+          onMouseEnter={() => setHoveredHotspot(hotspot.id)}
+          onMouseLeave={() => setHoveredHotspot(null)}
+        >
+          {/* Map pin icon */}
+          <div className="relative">
+            <MapPin className="w-6 h-6 text-[#3A3532] drop-shadow-lg filter" style={{ filter: 'drop-shadow(0 0 2px white) drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }} />
+          </div>
+
+          {/* Tooltip */}
+          {hoveredHotspot === hotspot.id && (
+            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-[#3A3532] text-white text-sm font-['Roboto'] whitespace-nowrap rounded shadow-lg z-10">
+              {hotspot.label}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
+                <div className="border-4 border-transparent border-t-[#3A3532]"></div>
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 // Image Carousel Component
@@ -64,7 +128,7 @@ const ImageCarousel: React.FC<{
               alt={`${alt} ${index + 1}`}
               className="absolute inset-0 w-full h-full cursor-pointer"
               style={{
-                objectFit: 'cover',
+                objectFit: 'contain',
                 objectPosition: 'center'
               }}
               onClick={onGalleryOpen}
@@ -219,8 +283,7 @@ const Rooms: React.FC = () => {
   const [currentImageIndexes, setCurrentImageIndexes] = useState<{ [key: string]: number }>({});
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [activeGallery, setActiveGallery] = useState<{ id: string; images: string[] } | null>(null);
-  const [activeTab, setActiveTab] = useState<'overview' | 'villas' | 'rooms'>('overview');
-  const [selectedVilla, setSelectedVilla] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<'overview' | 'villas'>('overview');
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -229,9 +292,6 @@ const Rooms: React.FC = () => {
     initialIndexes['property'] = 0;
     villaData.forEach(villa => {
       initialIndexes[villa.id] = 0;
-    });
-    roomData.forEach(room => {
-      initialIndexes[room.id] = 0;
     });
 
     setCurrentImageIndexes(initialIndexes);
@@ -265,9 +325,6 @@ const Rooms: React.FC = () => {
       } else if (id.startsWith('villa-')) {
         const villa = villaData.find(v => v.id === id);
         images = villa?.images || [];
-      } else {
-        const room = roomData.find(r => r.id === id);
-        images = room?.images || [];
       }
 
       const imagesLength = images.length;
@@ -290,9 +347,6 @@ const Rooms: React.FC = () => {
       } else if (id.startsWith('villa-')) {
         const villa = villaData.find(v => v.id === id);
         images = villa?.images || [];
-      } else {
-        const room = roomData.find(r => r.id === id);
-        images = room?.images || [];
       }
 
       const imagesLength = images.length;
@@ -314,10 +368,6 @@ const Rooms: React.FC = () => {
     setGalleryOpen(false);
     setActiveGallery(null);
   };
-
-  const filteredRooms = selectedVilla
-    ? roomData.filter(room => room.villaId === selectedVilla)
-    : roomData;
 
   return (
     <section className="bg-[#F4F3EB] w-full pt-48 md:pt-64">
@@ -349,16 +399,6 @@ const Rooms: React.FC = () => {
           >
             Villas
           </button>
-          <button
-            onClick={() => setActiveTab('rooms')}
-            className={`px-8 py-3 font-['Roboto'] uppercase text-xs tracking-[0.2em] transition-all duration-300 ${
-              activeTab === 'rooms'
-                ? 'bg-[#3A3532] text-white'
-                : 'bg-transparent text-[#3A3532] border border-[#3A3532]/30 hover:border-[#3A3532]/60'
-            }`}
-          >
-            Individual Rooms
-          </button>
         </div>
       </div>
 
@@ -371,6 +411,31 @@ const Rooms: React.FC = () => {
             className={`bg-white shadow-sm rounded-sm overflow-hidden transition-all duration-700 transform ${
               visibleCards.has('property-overview') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
+            {/* Interactive Property Map with Hover Tooltips */}
+            <div className="h-[500px] relative bg-[#f8f7f5]">
+              <InteractivePropertyMap />
+            </div>
+
+            <div className="p-8 md:p-12 lg:p-16">
+              <h3 className="text-3xl md:text-4xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-8">
+                {propertyOverview.title}
+              </h3>
+              <div className="space-y-6">
+                {(Array.isArray(propertyOverview.description) ? propertyOverview.description : [propertyOverview.description]).map((paragraph, index) => (
+                  <p key={index} className="text-[#3A3532] font-['Roboto'] leading-relaxed text-base md:text-lg">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <button
+                onClick={() => setActiveTab('villas')}
+                className="mt-8 bg-[#3A3532] text-white px-6 py-3 font-['Roboto'] uppercase text-sm tracking-wide hover:bg-[#2A2522] transition-colors"
+              >
+                See Both Villas
+              </button>
+            </div>
+
+            {/* Carousel moved to bottom */}
             <div className="h-[500px]">
               <ImageCarousel
                 images={propertyOverview.images}
@@ -378,23 +443,8 @@ const Rooms: React.FC = () => {
                 onPrev={() => handlePrevImage('property')}
                 onNext={() => handleNextImage('property')}
                 onGalleryOpen={() => openGallery('property', propertyOverview.images)}
-                alt="Property Overview"
+                alt="Property Gallery"
               />
-            </div>
-
-            <div className="p-8 md:p-12 lg:p-16">
-              <h3 className="text-3xl md:text-4xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-8">
-                {propertyOverview.title}
-              </h3>
-              <p className="text-[#3A3532] font-['Roboto'] leading-relaxed text-base md:text-lg mb-8">
-                {propertyOverview.description}
-              </p>
-              <button
-                onClick={() => setActiveTab('villas')}
-                className="mt-8 bg-[#3A3532] text-white px-6 py-3 font-['Roboto'] uppercase text-sm tracking-wide hover:bg-[#2A2522] transition-colors"
-              >
-                See Both Villas
-              </button>
             </div>
           </div>
         </div>
@@ -426,17 +476,14 @@ const Rooms: React.FC = () => {
                 </div>
 
                 <div className="lg:w-1/2 p-8 md:p-12 lg:p-16">
-                  <button
-                    onClick={() => {
-                      setSelectedVilla(villa.id);
-                      setActiveTab('rooms');
-                    }}
+                  <Link
+                    to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
                     className="text-left hover:opacity-70 transition-opacity"
                   >
                     <h3 className="text-2xl md:text-3xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-4 underline underline-offset-4 decoration-1">
                       {villa.name}
                     </h3>
-                  </button>
+                  </Link>
                   <p className="text-black font-['Roboto'] leading-relaxed text-base md:text-lg mb-6">
                     {villa.description}
                   </p>
@@ -450,72 +497,12 @@ const Rooms: React.FC = () => {
                     )}
                     <p className="pt-2">Daily maid service, private parking, and concierge assistance included.</p>
                   </div>
-                  <button
-                    onClick={() => {
-                      setSelectedVilla(villa.id);
-                      setActiveTab('rooms');
-                    }}
-                    className="mt-8 bg-[#3A3532] text-white px-6 py-3 font-['Roboto'] uppercase text-sm tracking-wide hover:bg-[#2A2522] transition-colors"
+                  <Link
+                    to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
+                    className="mt-8 inline-block bg-[#3A3532] text-white px-6 py-3 font-['Roboto'] uppercase text-sm tracking-wide hover:bg-[#2A2522] transition-colors"
                   >
                     View {villa.name} Rooms
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Individual Rooms Section */}
-      {activeTab === 'rooms' && (
-        <div className="max-w-7xl mx-auto px-4 py-12 pb-32">
-          {filteredRooms.map((room, index) => (
-            <div
-              key={room.id}
-              id={room.id}
-              data-animate="true"
-              className={`mb-16 bg-white shadow-md rounded-sm overflow-hidden transition-all duration-700 transform ${
-                visibleCards.has(room.id) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <div className="flex flex-col lg:flex-row">
-                <div className="lg:w-1/2 xl:w-[45%] h-[400px] lg:h-[500px]">
-                  <ImageCarousel
-                    images={room.images}
-                    currentIndex={currentImageIndexes[room.id] ?? 0}
-                    onPrev={() => handlePrevImage(room.id)}
-                    onNext={() => handleNextImage(room.id)}
-                    onGalleryOpen={() => openGallery(room.id, room.images)}
-                    alt={room.name}
-                  />
-                </div>
-
-                <div className="lg:w-1/2 xl:w-[55%] p-8 md:p-12 lg:px-16 lg:py-12">
-                  <h3 className="text-2xl md:text-3xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-2">
-                    {room.name}
-                  </h3>
-                  {room.villaId && (
-                    <p className="text-[#59452E] font-['Roboto'] text-sm mb-6 uppercase">
-                      {villaData.find(v => v.id === room.villaId)?.name}
-                    </p>
-                  )}
-                  <div className="mb-8 space-y-2">
-                    <p className="text-[#59452E] font-['Roboto'] text-sm font-medium">{room.specs.size}</p>
-                    <p className="text-[#59452E] font-['Roboto'] text-sm font-medium uppercase">{room.specs.capacity}</p>
-                    <p className="text-[#59452E] font-['Roboto'] text-sm font-medium uppercase">{room.specs.features}</p>
-                  </div>
-                  <p className="text-black font-['Roboto'] leading-relaxed text-base md:text-lg mb-8">
-                    {room.description}
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                    {room.amenities.map((amenity, index) => (
-                      <div key={index} className="flex items-start space-x-3">
-                        <span className="flex-shrink-0 mt-0.5">{getAmenityIcon(amenity)}</span>
-                        <span className="text-sm text-[#59452E] font-['Roboto']">{amenity}</span>
-                      </div>
-                    ))}
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>

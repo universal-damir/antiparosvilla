@@ -22,7 +22,7 @@ const RoomsPreview: React.FC = () => {
       
       <div className="pt-4">
         <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-          ROOMS
+          ACCOMMODATION
         </p>
         <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
           Your poolside paradise awaits
@@ -36,7 +36,7 @@ const RoomsPreview: React.FC = () => {
           to="/rooms"
           className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase"
         >
-          Explore Rooms
+          Explore Accommodation
         </Link>
       </div>
     </div>

@@ -3,7 +3,12 @@ import { RoomDetails } from "../types";
 // Property Overview Data
 export const propertyOverview = {
   title: "INDIGO CHIC VILLAS",
-  description: "Two luxury villas on the hillside of Antiparos, offering stunning views of the Aegean Sea. Each villa features four bedrooms, a common kitchen and sitting area, outdoor dining, and a private pool. Experience the perfect blend of modern comfort and traditional Greek hospitality.",
+  description: [
+    "Discover two luxury villas perched on the hillside of St. Georgios, Antiparos, offering unobstructed panoramic views of the Aegean Sea and the enchanting Cycladic islands of Skopelos, Sikinos, Sifnos, and Despotoiko in perspective. Each villa boasts four ensuite bedrooms, a fully equipped luxury kitchen, spacious indoor and outdoor living areas, al fresco dining, and private pool. Every space, inside and out, is designed to capture the stunning Aegean vistas, ensuring that no view goes unseen from all our visitors.",
+    "Located just 300 meters from the serene beaches of Agios Georgios, these villas provide the perfect setting for a restful getaway. A short 5-minute walk leads you to crystal-clear waters and golden sands, ideal for relaxation and exploration.",
+    "Whether you choose to stroll or drive, charming local tavernas await nearby, serving authentic Greek cuisine, fresh seafood, and traditional dishes crafted with care. The genuine warmth of local hospitality turns every meal into a memorable experience.",
+    "Perfect for couples, families, or groups of friends, this idyllic location blends tranquility with convenient access to nature, delectable dining, and the authentic spirit of Greece. Experience a seamless fusion of modern luxury and traditional Greek hospitality for an unforgettable stay."
+  ],
   images: [
     "/DJI_20250725181816_0527_D.jpg",
     "/DJI_20250725182120_0532_D.jpg",
@@ -28,6 +33,7 @@ export const villaData = [
       "Outdoor dining area",
       "Indoor gym",
       "Outdoor sitting area",
+      "Maid room",
       "Daily maid service",
       "Private parking"
     ],
@@ -52,6 +58,7 @@ export const villaData = [
       "Outdoor dining area",
       "Panoramic sea views",
       "Outdoor sitting area",
+      "Maid room",
       "Daily maid service",
       "Private parking"
     ],

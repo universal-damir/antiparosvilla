@@ -13,13 +13,13 @@ const About: React.FC = () => {
 
         <div className="prose prose-lg max-w-none text-[#3A3532] font-['Roboto']">
           <p className="mb-6 leading-relaxed">
-            Welcome to Indigo Chic Villas, an oasis nestled within the charming island of Antiparos in Greece's stunning Cyclades. Just a short stroll from the crystal-clear waters of the Aegean Sea, our villa features low white buildings that create a striking visual contrast with the rugged hillside that rises 200 meters behind them.
+            Welcome to Indigo Chic Antiparos Luxury Villas, a serene oasis nestled on the enchanting island of Antiparos in Greece's breathtaking Cyclades. Just a leisurely walk from the crystal-clear waters of the Aegean Sea, our villas showcase the iconic 'sugar-cube' Cycladic architecture, offering a stunning contrast against the rugged Agios Georgios hillside and the expansive blue of the Greek sky and sea.
           </p>
           <p className="mb-6 leading-relaxed">
-            Experience airy, open spaces framed by lush vegetation, multiple pools, and expansive wooden decks and pergolas. Whether you're walking along the broad walkways or unwinding by the pool, Indigo Chic Villas offers an exquisite blend of contemporary design and natural beauty, creating the perfect retreat.
+            Enjoy spacious, airy interiors surrounded by lush greenery, multiple inviting pools, and expansive wooden pergolas. Whether sharing unforgettable moments with loved ones or relaxing poolside in peaceful solitude, Indigo Chic Villas unite contemporary chic design with natural beauty, crafting the perfect sanctuary.
           </p>
           <p className="leading-relaxed">
-            Our philosophy is simple: to provide an authentic Greek island experience with all the comforts and luxuries you deserve. From the moment you arrive, we will ensure your stay exceeds all expectations, allowing you to create memories that will last a lifetime.
+            Our philosophy is simple: to deliver an authentic Greek island experience enriched with every comfort and luxury you deserve. From the moment you arrive, we are dedicated to surpassing your expectations, creating lasting memories that will stay with you forever.
           </p>
         </div>
       </div>

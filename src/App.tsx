@@ -8,6 +8,8 @@ import EatDrinkPage from './components/EatDrink';
 import DestinationPage from './components/Destination';
 import Gallery from './components/Gallery';
 import Rooms from './components/Rooms';
+import VillaAmmos from './pages/VillaAmmos';
+import VillaKyma from './pages/VillaKyma';
 import ScrollToTop from './components/ScrollToTop';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import CookiesPolicy from './components/CookiesPolicy';
@@ -55,6 +57,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/rooms" element={<Rooms />} />
+          <Route path="/rooms/ammos" element={<VillaAmmos />} />
+          <Route path="/rooms/kyma" element={<VillaKyma />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/eat-drink" element={<EatDrinkPage />} />
           <Route path="/destination" element={<DestinationPage />} />
