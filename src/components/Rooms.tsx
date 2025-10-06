@@ -27,22 +27,22 @@ import {
 // Upper level = Villa Kyma, Lower level = Villa Ammos
 const propertyHotspots = [
   // Villa Kyma (Upper Level) - Rooms from left to right
-  { id: 1, label: "Kyma Room 5", x: 35, y: 25 },
-  { id: 2, label: "Kyma Room 6", x: 45, y: 25 },
-  { id: 3, label: "Kyma Room 7", x: 55, y: 25 },
-  { id: 4, label: "Kyma Room 8", x: 65, y: 25 },
-  { id: 5, label: "Kyma Kitchen", x: 50, y: 30 },
-  { id: 6, label: "Kyma Outdoor Dining", x: 40, y: 32 },
-  { id: 7, label: "Kyma Pool Area", x: 50, y: 35 },
+  { id: 1, label: "Kyma Room 5", x: 28, y: 58, villa: "kyma" },
+  { id: 2, label: "Kyma Room 6", x: 57.5, y: 58, villa: "kyma" },
+  { id: 3, label: "Kyma Room 7", x: 66, y: 58, villa: "kyma" },
+  { id: 4, label: "Kyma Room 8", x: 75.5, y: 58, villa: "kyma" },
+  { id: 5, label: "Kyma Kitchen", x: 51, y: 58, villa: "kyma" },
+  { id: 6, label: "Kyma Outdoor Dining", x: 41, y: 58, villa: "kyma" },
+  { id: 7, label: "Kyma Pool Area", x: 54, y: 60, villa: "kyma" },
 
   // Villa Ammos (Lower Level) - Rooms from left to right
-  { id: 8, label: "Ammos Room 1", x: 20, y: 55 },
-  { id: 9, label: "Ammos Room 2", x: 35, y: 55 },
-  { id: 10, label: "Ammos Room 3", x: 50, y: 55 },
-  { id: 11, label: "Ammos Room 4", x: 65, y: 55 },
-  { id: 12, label: "Ammos Kitchen", x: 42, y: 60 },
-  { id: 13, label: "Ammos Outdoor Sitting", x: 55, y: 65 },
-  { id: 14, label: "Ammos Pool Area", x: 35, y: 70 },
+  { id: 8, label: "Ammos Room 1", x: 24, y: 70, villa: "ammos" },
+  { id: 9, label: "Ammos Room 2", x: 59.5, y: 71, villa: "ammos" },
+  { id: 10, label: "Ammos Room 3", x: 70.5, y: 73, villa: "ammos" },
+  { id: 11, label: "Ammos Room 4", x: 80, y: 73, villa: "ammos" },
+  { id: 12, label: "Ammos Kitchen", x: 50, y: 70, villa: "ammos" },
+  { id: 13, label: "Ammos Outdoor Sitting", x: 33, y: 84, villa: "ammos" },
+  { id: 14, label: "Ammos Pool Area", x: 48, y: 79, villa: "ammos" },
 ];
 
 const getAmenityIcon = (amenity: string) => {
@@ -69,39 +69,143 @@ const getAmenityIcon = (amenity: string) => {
 // Interactive Property Map Component
 const InteractivePropertyMap: React.FC = () => {
   const [hoveredHotspot, setHoveredHotspot] = useState<number | null>(null);
+  const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
+  const imageRef = React.useRef<HTMLImageElement>(null);
+  const [imagePosition, setImagePosition] = useState({ width: 0, height: 0, left: 0, top: 0 });
+
+  React.useEffect(() => {
+    const updateImagePosition = () => {
+      if (imageRef.current) {
+        const img = imageRef.current;
+        const naturalAspectRatio = img.naturalWidth / img.naturalHeight;
+        const containerWidth = img.parentElement?.clientWidth || 0;
+        const containerHeight = img.parentElement?.clientHeight || 0;
+        const containerAspectRatio = containerWidth / containerHeight;
+
+        let renderedWidth, renderedHeight, left, top;
+
+        if (containerAspectRatio > naturalAspectRatio) {
+          // Container is wider - image height fills, width is centered
+          renderedHeight = containerHeight;
+          renderedWidth = containerHeight * naturalAspectRatio;
+          left = (containerWidth - renderedWidth) / 2;
+          top = 0;
+        } else {
+          // Container is taller - image width fills, height is centered
+          renderedWidth = containerWidth;
+          renderedHeight = containerWidth / naturalAspectRatio;
+          left = 0;
+          top = (containerHeight - renderedHeight) / 2;
+        }
+
+        setImagePosition({
+          width: renderedWidth,
+          height: renderedHeight,
+          left,
+          top
+        });
+      }
+    };
+
+    const img = imageRef.current;
+    if (img) {
+      if (img.complete) {
+        updateImagePosition();
+      }
+      img.addEventListener('load', updateImagePosition);
+    }
+
+    window.addEventListener('resize', updateImagePosition);
+
+    return () => {
+      window.removeEventListener('resize', updateImagePosition);
+      if (img) {
+        img.removeEventListener('load', updateImagePosition);
+      }
+    };
+  }, []);
+
+  const handleHotspotClick = (e: React.MouseEvent | React.TouchEvent, id: number) => {
+    if (e && e.stopPropagation) {
+      e.stopPropagation();
+    }
+    // Toggle tooltip on click/tap
+    if (activeHotspot === id) {
+      setActiveHotspot(null);
+    } else {
+      setActiveHotspot(id);
+    }
+  };
+
+  const handleContainerClick = () => {
+    setActiveHotspot(null);
+  };
+
+  const handleMouseEnter = (id: number) => {
+    // Only set hover state if no active hotspot (not in tap mode)
+    if (activeHotspot === null) {
+      setHoveredHotspot(id);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredHotspot(null);
+  };
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full" onClick={handleContainerClick}>
       <img
+        ref={imageRef}
         src="/DJI_20250725182120_0532_D.jpg"
         alt="Property Overview"
         className="w-full h-full object-contain"
       />
-      {/* Hotspot markers */}
-      {propertyHotspots.map((hotspot) => (
+      {/* Hotspot markers - positioned on the actual rendered image */}
+      {imagePosition.width > 0 && (
         <div
-          key={hotspot.id}
-          className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
-          style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
-          onMouseEnter={() => setHoveredHotspot(hotspot.id)}
-          onMouseLeave={() => setHoveredHotspot(null)}
+          className="absolute pointer-events-none"
+          style={{
+            width: `${imagePosition.width}px`,
+            height: `${imagePosition.height}px`,
+            left: `${imagePosition.left}px`,
+            top: `${imagePosition.top}px`
+          }}
         >
-          {/* Map pin icon */}
-          <div className="relative">
-            <MapPin className="w-6 h-6 text-[#3A3532] drop-shadow-lg filter" style={{ filter: 'drop-shadow(0 0 2px white) drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }} />
-          </div>
-
-          {/* Tooltip */}
-          {hoveredHotspot === hotspot.id && (
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-[#3A3532] text-white text-sm font-['Roboto'] whitespace-nowrap rounded shadow-lg z-10">
-              {hotspot.label}
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
-                <div className="border-4 border-transparent border-t-[#3A3532]"></div>
+          {propertyHotspots.map((hotspot) => (
+            <div
+              key={hotspot.id}
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer pointer-events-auto"
+              style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
+              onMouseEnter={() => handleMouseEnter(hotspot.id)}
+              onMouseLeave={handleMouseLeave}
+              onClick={(e) => handleHotspotClick(e, hotspot.id)}
+            >
+              {/* Map pin icon */}
+              <div className="relative">
+                <MapPin className="w-4 h-4 md:w-6 md:h-6 text-[#3A3532] drop-shadow-lg filter" style={{ filter: 'drop-shadow(0 0 2px white) drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }} />
               </div>
+
+              {/* Tooltip */}
+              {(hoveredHotspot === hotspot.id || activeHotspot === hotspot.id) && (
+                <div className={`absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 text-xs font-['Roboto'] whitespace-nowrap rounded shadow-lg z-10 ${
+                  hotspot.villa === 'ammos'
+                    ? 'bg-[#8E7D67] text-white'
+                    : 'bg-[#3A3532] text-white'
+                }`}>
+                  {hotspot.label}
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
+                    <div className={`border-[3px] border-transparent ${
+                      hotspot.villa === 'ammos'
+                        ? 'border-t-[#8E7D67]'
+                        : 'border-t-[#3A3532]'
+                    }`}></div>
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 };
@@ -116,13 +220,13 @@ const ImageCarousel: React.FC<{
   alt: string;
 }> = ({ images, currentIndex, onPrev, onNext, onGalleryOpen, alt }) => {
   return (
-    <div className="relative w-full h-full overflow-hidden bg-[#f8f7f5]">
+    <div className="relative w-full h-full overflow-hidden bg-white">
       <div
         className="flex transition-transform duration-500 ease-out h-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((image, index) => (
-          <div key={index} className="w-full h-full flex-shrink-0 relative bg-[#f8f7f5]">
+          <div key={index} className="w-full h-full flex-shrink-0 relative bg-white">
             <img
               src={image}
               alt={`${alt} ${index + 1}`}
@@ -139,18 +243,18 @@ const ImageCarousel: React.FC<{
 
       <button
         onClick={onPrev}
-        className="absolute left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-200"
+        className="absolute left-6 top-1/2 -translate-y-1/2 text-white bg-[#3A3532]/40 hover:bg-[#3A3532]/60 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
         aria-label="Previous image"
       >
-        <ChevronLeft className="w-8 h-8" strokeWidth={1} />
+        <ChevronLeft className="w-6 h-6" strokeWidth={2} />
       </button>
 
       <button
         onClick={onNext}
-        className="absolute right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-200"
+        className="absolute right-6 top-1/2 -translate-y-1/2 text-white bg-[#3A3532]/40 hover:bg-[#3A3532]/60 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
         aria-label="Next image"
       >
-        <ChevronRight className="w-8 h-8" strokeWidth={1} />
+        <ChevronRight className="w-6 h-6" strokeWidth={2} />
       </button>
 
       <button
@@ -404,7 +508,7 @@ const Rooms: React.FC = () => {
 
       {/* Property Overview Section */}
       {activeTab === 'overview' && (
-        <div className="max-w-6xl mx-auto px-4 py-12 pb-32">
+        <div className="max-w-6xl mx-auto px-4 pb-32 -mt-8">
           <div
             id="property-overview"
             data-animate="true"
@@ -412,11 +516,18 @@ const Rooms: React.FC = () => {
               visibleCards.has('property-overview') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
             {/* Interactive Property Map with Hover Tooltips */}
-            <div className="h-[500px] relative bg-[#f8f7f5]">
+            <div className="h-[350px] sm:h-[500px] md:h-[700px] lg:h-[800px] relative bg-[#F4F3EB]">
               <InteractivePropertyMap />
             </div>
 
-            <div className="p-8 md:p-12 lg:p-16">
+            {/* Map instruction text */}
+            <div className="pt-2 pb-4 px-4 hidden md:block bg-[#F4F3EB]">
+              <p className="text-[#3A3532]/50 text-xs font-['Roboto'] text-center italic">
+                Hover over the photo pins to explore room locations and layout
+              </p>
+            </div>
+
+            <div className="p-8 md:p-12 lg:p-16 mt-8">
               <h3 className="text-3xl md:text-4xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-8">
                 {propertyOverview.title}
               </h3>
@@ -435,8 +546,15 @@ const Rooms: React.FC = () => {
               </button>
             </div>
 
+            {/* Gallery Section Header */}
+            <div className="px-8 md:px-12 lg:px-16 py-4 md:py-6 bg-white border-t border-[#3A3532]/10">
+              <h4 className="text-lg md:text-xl font-['Roboto'] text-[#3A3532] uppercase tracking-wide">
+                Outdoor Gallery - See More
+              </h4>
+            </div>
+
             {/* Carousel moved to bottom */}
-            <div className="h-[500px]">
+            <div className="h-[400px] md:h-[500px]">
               <ImageCarousel
                 images={propertyOverview.images}
                 currentIndex={currentImageIndexes['property'] ?? 0}
