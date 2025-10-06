@@ -40,7 +40,7 @@ const propertyHotspots = [
   { id: 10, label: "Ammos Room 3", x: 70.5, y: 73, villa: "ammos" },
   { id: 11, label: "Ammos Room 4", x: 80, y: 73, villa: "ammos" },
   { id: 12, label: "Ammos Kitchen", x: 50, y: 70, villa: "ammos" },
-  { id: 13, label: "Ammos Outdoor Sitting", x: 33, y: 84, villa: "ammos" },
+  { id: 13, label: "Ammos Outdoor Sitting Area", x: 33, y: 84, villa: "ammos" },
   { id: 14, label: "Ammos Pool Area", x: 48, y: 79, villa: "ammos" },
 ];
 
