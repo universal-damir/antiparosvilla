@@ -5,37 +5,46 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  Eye,
   Bed,
-  Wifi,
+  Waves,
   Wind,
-  Coffee,
-  Car,
-  Shield,
-  Hotel,
-  Droplets,
-  UtensilsCrossed,
+  Lock,
+  Flame,
   Dumbbell,
+  Car,
+  Sparkles,
+  Wifi,
+  UserCheck,
+  Droplets,
+  Wine,
+  Snowflake,
   Users,
-  Brush
+  Sofa
 } from "lucide-react";
 
 const getAmenityIcon = (amenity: string) => {
   const lowerCaseAmenity = amenity.toLowerCase();
 
-  if (lowerCaseAmenity.includes("king") || lowerCaseAmenity.includes("queen") || lowerCaseAmenity.includes("bed")) return <Bed className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("pool") || lowerCaseAmenity.includes("infinity")) return <Droplets className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("dining") || lowerCaseAmenity.includes("kitchen")) return <UtensilsCrossed className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("gym")) return <Dumbbell className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("connect") || lowerCaseAmenity.includes("family")) return <Users className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("maid") || lowerCaseAmenity.includes("service")) return <Brush className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("wifi")) return <Wifi className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("air") || lowerCaseAmenity.includes("conditioning")) return <Wind className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("mini") || lowerCaseAmenity.includes("fridge")) return <Coffee className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("parking")) return <Car className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("premium") || lowerCaseAmenity.includes("safe")) return <Shield className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("view")) return <Hotel className="w-4 h-4 text-[#59452E]" />;
+  if (lowerCaseAmenity.includes('sea view')) return <Eye className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('king') || lowerCaseAmenity.includes('queen') || (lowerCaseAmenity.includes('bed') && !lowerCaseAmenity.includes('couch'))) return <Bed className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('couch') || lowerCaseAmenity.includes('single bed')) return <Sofa className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('pool')) return <Waves className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('air conditioning')) return <Snowflake className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('fan')) return <Wind className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('safe')) return <Lock className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('bbq')) return <Flame className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('gym')) return <Dumbbell className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('parking')) return <Car className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('maid')) return <Sparkles className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('wifi')) return <Wifi className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('concierge')) return <UserCheck className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('shower')) return <Droplets className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('bar')) return <Wine className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('family') || lowerCaseAmenity.includes('connect')) return <Users className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
+  if (lowerCaseAmenity.includes('linen') || lowerCaseAmenity.includes('premium')) return <Sparkles className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
 
-  return <ChevronRight className="w-4 h-4 text-[#59452E]" />;
+  return <Bed className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
 };
 
 // Image Carousel Component
@@ -48,13 +57,13 @@ const ImageCarousel: React.FC<{
   alt: string;
 }> = ({ images, currentIndex, onPrev, onNext, onGalleryOpen, alt }) => {
   return (
-    <div className="relative w-full h-full overflow-hidden bg-[#f8f7f5]">
+    <div className="relative w-full h-full overflow-hidden bg-white">
       <div
         className="flex transition-transform duration-500 ease-out h-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((image, index) => (
-          <div key={index} className="w-full h-full flex-shrink-0 relative bg-[#f8f7f5]">
+          <div key={index} className="w-full h-full flex-shrink-0 relative bg-white">
             <img
               src={image}
               alt={`${alt} ${index + 1}`}
@@ -71,26 +80,18 @@ const ImageCarousel: React.FC<{
 
       <button
         onClick={onPrev}
-        className="absolute left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-200"
+        className="absolute left-6 top-1/2 -translate-y-1/2 text-white bg-[#3A3532]/40 hover:bg-[#3A3532]/60 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
         aria-label="Previous image"
       >
-        <ChevronLeft className="w-8 h-8" strokeWidth={1} />
+        <ChevronLeft className="w-6 h-6" strokeWidth={2} />
       </button>
 
       <button
         onClick={onNext}
-        className="absolute right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-200"
+        className="absolute right-6 top-1/2 -translate-y-1/2 text-white bg-[#3A3532]/40 hover:bg-[#3A3532]/60 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
         aria-label="Next image"
       >
-        <ChevronRight className="w-8 h-8" strokeWidth={1} />
-      </button>
-
-      <button
-        onClick={onGalleryOpen}
-        className="absolute bottom-6 left-6 text-white/60 uppercase text-[10px] font-['Roboto'] tracking-[0.2em] hover:text-white/80 transition-all duration-200"
-        aria-label="Open gallery"
-      >
-        View Gallery
+        <ChevronRight className="w-6 h-6" strokeWidth={2} />
       </button>
 
       <div className="absolute bottom-6 right-6 text-white/50 text-[10px] font-['Roboto'] tracking-wider">
@@ -305,7 +306,7 @@ const VillaKyma: React.FC = () => {
     <section className="bg-[#F4F3EB] w-full pt-48 md:pt-64">
       {/* Header Section */}
       <div className="max-w-6xl mx-auto px-4 pb-8">
-        <Link to="/rooms" className="inline-flex items-center text-[#8E7D67] hover:text-[#3A3532] mb-8 font-['Roboto'] uppercase text-sm tracking-wider">
+        <Link to="/rooms#villas" className="inline-flex items-center text-[#8E7D67] hover:text-[#3A3532] mb-8 font-['Roboto'] uppercase text-sm tracking-wider">
           <ChevronLeft className="w-4 h-4 mr-1" />
           Back to Villas
         </Link>
@@ -346,18 +347,18 @@ const VillaKyma: React.FC = () => {
                   {room.name}
                 </h3>
                 <div className="mb-8 space-y-2">
-                  <p className="text-[#59452E] font-['Roboto'] text-sm font-medium">{room.specs.size}</p>
-                  <p className="text-[#59452E] font-['Roboto'] text-sm font-medium uppercase">{room.specs.capacity}</p>
-                  <p className="text-[#59452E] font-['Roboto'] text-sm font-medium uppercase">{room.specs.features}</p>
+                  <p className="text-[#8E7D67] font-['Roboto'] text-sm font-medium">{room.specs.size}</p>
+                  <p className="text-[#8E7D67] font-['Roboto'] text-sm font-medium uppercase">{room.specs.capacity}</p>
+                  <p className="text-[#8E7D67] font-['Roboto'] text-sm font-medium uppercase">{room.specs.features}</p>
                 </div>
-                <p className="text-black font-['Roboto'] leading-relaxed text-base md:text-lg mb-8">
+                <p className="text-[#3A3532] font-['Roboto'] leading-relaxed text-[15px] md:text-base mb-8">
                   {room.description}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                   {room.amenities.map((amenity, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <span className="flex-shrink-0 mt-0.5">{getAmenityIcon(amenity)}</span>
-                      <span className="text-sm text-[#59452E] font-['Roboto']">{amenity}</span>
+                      <span className="text-[13px] md:text-sm text-[#3A3532] font-['Roboto']">{amenity}</span>
                     </div>
                   ))}
                 </div>

@@ -89,17 +89,16 @@ export const roomData: RoomDetails[] = [
     description: "A spacious 30m² room featuring elegant design with natural surfaces and soft tones. The room offers comfortable sleeping arrangements and opens onto the villa's shared pool area, creating a seamless indoor-outdoor living experience.",
     specs: {
       size: "30M²",
-      capacity: "MAX 2 ADULTS",
-      features: "POOL VIEW · GARDEN ACCESS"
+      capacity: "MAX 3 ADULTS",
+      features: "SEA VIEW · GARDEN ACCESS"
     },
     amenities: [
-      "King size bed or twin beds",
-      "Pool access",
+      "King size bed",
+      "Couch / Single bed",
       "Air conditioning",
+      "Ceiling Fan",
       "Premium linens",
       "Daily maid service",
-      "Mini fridge",
-      "Safe deposit box",
       "Complimentary WiFi"
     ],
     images: [
@@ -120,16 +119,14 @@ export const roomData: RoomDetails[] = [
     specs: {
       size: "22M²",
       capacity: "MAX 2 ADULTS",
-      features: "GARDEN VIEW · POOL ACCESS"
+      features: "SEA AND POOL VIEW"
     },
     amenities: [
-      "Queen size bed or twin beds",
-      "Pool access",
+      "Queen size bed",
       "Air conditioning",
+      "Ceiling Fan",
       "Premium linens",
       "Daily maid service",
-      "Mini fridge",
-      "Safe deposit box",
       "Complimentary WiFi"
     ],
     images: [
@@ -147,17 +144,17 @@ export const roomData: RoomDetails[] = [
     description: "A well-appointed 27m² room that can connect with Room 4 to create a family suite. Features elegant furnishings and opens to the villa's outdoor areas. Perfect for families or groups traveling together.",
     specs: {
       size: "27M²",
-      capacity: "MAX 2 ADULTS",
-      features: "CONNECTING ROOM OPTION · POOL ACCESS"
+      capacity: "MAX 3 ADULTS",
+      features: "SEA VIEW · CONNECTING ROOM OPTION"
     },
     amenities: [
-      "King size bed or twin beds",
-      "Connects to Room 4",
+      "King size bed",
+      "Couch / Single bed",
       "Pool access",
       "Air conditioning",
+      "Ceiling Fan",
       "Premium linens",
       "Daily maid service",
-      "Mini fridge",
       "Family-friendly setup"
     ],
     images: [
@@ -177,16 +174,15 @@ export const roomData: RoomDetails[] = [
     specs: {
       size: "19M²",
       capacity: "MAX 2 ADULTS",
-      features: "CONNECTING ROOM OPTION · GARDEN VIEW"
+      features: "SEA VIEW · CONNECTING ROOM OPTION · GARDEN VIEW"
     },
     amenities: [
-      "Double bed or twin beds",
-      "Connects to Room 3",
+      "Double bed",
       "Pool access",
       "Air conditioning",
+      "Ceiling Fan",
       "Premium linens",
       "Daily maid service",
-      "Mini fridge",
       "Family-friendly setup"
     ],
     images: [
@@ -205,21 +201,19 @@ export const roomData: RoomDetails[] = [
     id: "kyma-room-5",
     name: "KYMA ROOM 5",
     villaId: "villa-kyma",
-    description: "The most spacious room at 31m² with an exclusive private balcony offering panoramic sea views. Located in the upper villa, this room provides the ultimate in privacy and luxury with stunning Aegean vistas.",
+    description: "A spacious room at 31m² with an exclusive private balcony offering panoramic sea views. Located in the upper villa, this room provides the ultimate in privacy and luxury with stunning Aegean vistas.",
     specs: {
       size: "31M² + PRIVATE BALCONY",
       capacity: "MAX 2 ADULTS",
-      features: "PRIVATE BALCONY · SEA VIEW · INFINITY POOL ACCESS"
+      features: "SEA VIEW · PRIVATE BALCONY"
     },
     amenities: [
-      "King size bed",
+      "Queen size bed",
       "Private balcony with sea view",
-      "Infinity pool access",
       "Air conditioning",
+      "Ceiling Fan",
       "Premium linens",
-      "Daily maid service",
-      "Mini fridge",
-      "Panoramic views"
+      "Daily maid service"
     ],
     images: [
       "/villa kyma r5 2.jpg",
@@ -238,16 +232,14 @@ export const roomData: RoomDetails[] = [
     specs: {
       size: "21M²",
       capacity: "MAX 2 ADULTS",
-      features: "CONNECTING ROOM OPTION · SEA VIEW"
+      features: "SEA VIEW · POOL VIEW · CONNECTING ROOM OPTION"
     },
     amenities: [
-      "Queen size bed or twin beds",
-      "Connects to Room 7",
-      "Infinity pool access",
+      "Queen size bed",
       "Air conditioning",
+      "Ceiling Fan",
       "Premium linens",
       "Daily maid service",
-      "Mini fridge",
       "Family-friendly setup"
     ],
     images: [
@@ -266,16 +258,14 @@ export const roomData: RoomDetails[] = [
     specs: {
       size: "21M²",
       capacity: "MAX 2 ADULTS",
-      features: "CONNECTING ROOM OPTION · POOL VIEW"
+      features: "SEA VIEW · POOL VIEW · CONNECTING ROOM OPTION"
     },
     amenities: [
-      "Queen size bed or twin beds",
-      "Connects to Room 6",
-      "Infinity pool access",
+      "Queen size bed",
       "Air conditioning",
+      "Ceiling Fan",
       "Premium linens",
       "Daily maid service",
-      "Mini fridge",
       "Family-friendly setup"
     ],
     images: [
@@ -294,16 +284,15 @@ export const roomData: RoomDetails[] = [
     specs: {
       size: "32M²",
       capacity: "MAX 2 ADULTS",
-      features: "SEA VIEW · INFINITY POOL ACCESS"
+      features: "SEA VIEW · POOL VIEW · PRIVATE OUTDOOR SHOWER"
     },
     amenities: [
       "King size bed",
-      "Infinity pool access",
+      "Couch / Single bed",
       "Air conditioning",
+      "Ceiling Fan",
       "Premium linens",
       "Daily maid service",
-      "Mini fridge",
-      "Safe deposit box",
       "Spectacular sea views"
     ],
     images: [

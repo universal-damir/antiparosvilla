@@ -9,7 +9,7 @@ import {
   Eye,
   Bed,
   Waves,
-  Fan,
+  Wind,
   Lock,
   Flame,
   Dumbbell,
@@ -360,6 +360,14 @@ const Rooms: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'villas'>('overview');
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
 
+  // Check URL hash to determine which tab to show
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === '#villas') {
+      setActiveTab('villas');
+    }
+  }, []);
+
   useEffect(() => {
     const initialIndexes: { [key: string]: number } = {};
 
@@ -620,7 +628,7 @@ const Rooms: React.FC = () => {
                           else if (facility.toLowerCase().includes('bed')) IconComponent = Bed;
                           else if (facility.toLowerCase().includes('pool')) IconComponent = Waves;
                           else if (facility.toLowerCase().includes('air conditioning')) IconComponent = Snowflake;
-                          else if (facility.toLowerCase().includes('fan')) IconComponent = Fan;
+                          else if (facility.toLowerCase().includes('fan')) IconComponent = Wind;
                           else if (facility.toLowerCase().includes('safe')) IconComponent = Lock;
                           else if (facility.toLowerCase().includes('bbq')) IconComponent = Flame;
                           else if (facility.toLowerCase().includes('gym')) IconComponent = Dumbbell;
