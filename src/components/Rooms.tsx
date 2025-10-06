@@ -235,14 +235,6 @@ const ImageCarousel: React.FC<{
         <ChevronRight className="w-6 h-6" strokeWidth={2} />
       </button>
 
-      <button
-        onClick={onGalleryOpen}
-        className="absolute bottom-6 left-6 text-white/60 uppercase text-[10px] font-['Roboto'] tracking-[0.2em] hover:text-white/80 transition-all duration-200"
-        aria-label="Open gallery"
-      >
-        View Gallery
-      </button>
-
       <div className="absolute bottom-6 right-6 text-white/50 text-[10px] font-['Roboto'] tracking-wider">
         {currentIndex + 1} — {images.length}
       </div>

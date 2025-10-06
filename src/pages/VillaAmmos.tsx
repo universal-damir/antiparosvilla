@@ -307,49 +307,11 @@ const VillaAmmos: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 pb-8">
         <Link to="/rooms" className="inline-flex items-center text-[#8E7D67] hover:text-[#3A3532] mb-8 font-['Roboto'] uppercase text-sm tracking-wider">
           <ChevronLeft className="w-4 h-4 mr-1" />
-          Back to Accommodation
+          Back to Villas
         </Link>
         <h2 className="text-5xl md:text-6xl font-['Roboto'] text-[#3A3532] uppercase tracking-wide leading-tight mb-8">
           {villa.name}
         </h2>
-      </div>
-
-      {/* Villa Overview */}
-      <div className="max-w-6xl mx-auto px-4 py-12 pb-16">
-        <div
-          id={villa.id}
-          data-animate="true"
-          className={`bg-white shadow-sm rounded-sm overflow-hidden transition-all duration-700 transform ${
-            visibleCards.has(villa.id) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div className="flex flex-col lg:flex-row">
-            <div className="lg:w-1/2 h-[400px] lg:h-[550px]">
-              <ImageCarousel
-                images={villa.images}
-                currentIndex={currentImageIndexes[villa.id] ?? 0}
-                onPrev={() => handlePrevImage(villa.id)}
-                onNext={() => handleNextImage(villa.id)}
-                onGalleryOpen={() => openGallery(villa.id, villa.images)}
-                alt={villa.name}
-              />
-            </div>
-
-            <div className="lg:w-1/2 p-8 md:p-12 lg:p-16">
-              <h3 className="text-2xl md:text-3xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-4">
-                Overview
-              </h3>
-              <p className="text-black font-['Roboto'] leading-relaxed text-base md:text-lg mb-6">
-                {villa.description}
-              </p>
-              <div className="text-[#59452E] font-['Roboto'] leading-relaxed text-sm space-y-2">
-                <p>Each villa features four luxurious bedrooms with direct sea views, a fully equipped common kitchen, comfortable sitting areas, and outdoor dining space overlooking the Aegean.</p>
-                <p>Villa Ammos includes a private pool, indoor gym facility, and connecting options between Rooms 3 & 4 for families.</p>
-                <p className="pt-2">Daily maid service, private parking, and concierge assistance included.</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Rooms Section */}
