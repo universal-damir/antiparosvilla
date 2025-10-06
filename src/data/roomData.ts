@@ -24,18 +24,21 @@ export const villaData = [
   {
     id: "villa-ammos",
     name: "VILLA AMMOS",
-    description: "Located on the lower level, Villa Ammos offers a tranquil retreat with four elegantly appointed bedrooms, a fully equipped common kitchen, comfortable sitting areas, and an outdoor dining space. The villa features a private pool and includes an indoor gym for fitness enthusiasts.",
+    description: "Located on the lower level, Villa Ammos offers panoramic views of the Aegean sea, Agios Georgios Bay and Despotiko island. The villa features four elegantly appointed ensuite bedrooms, a fully equipped common kitchen with kitchen island and luxury appliances, a comfortable sitting area, an outdoor dining space sitting 8 people, and an outdoor sitting area to enjoy the view. The villa offers a private pool and an indoor gym for fitness enthusiasts. There is the option to connect Rooms 3 & 4 for families. Max occupancy of 10 people. Using a bring your own device concept, our guests can take advantage of our complimentary fast satellite internet access on their familiar personal devices. A projector is also available, upon request, to enjoy movie nights or sports events. A boho chic villa ideal for your tranquil retreat.",
     totalSize: "98m² of bedrooms",
     facilities: [
-      "4 Bedrooms",
-      "Common kitchen & sitting area",
-      "Private swimming pool",
-      "Outdoor dining area",
+      "Sea View",
+      "King size beds or Queen size beds",
+      "Pool with shallow end for kids",
+      "Air conditioning",
+      "Ceiling Fans in all rooms",
+      "Safe deposit box",
+      "BBQ",
       "Indoor gym",
-      "Outdoor sitting area",
-      "Maid room",
+      "Private parking",
       "Daily maid service",
-      "Private parking"
+      "Complimentary WiFi",
+      "Concierge Assistance"
     ],
     images: [
       "/villa ammos outdoor 2.jpg",
@@ -49,18 +52,21 @@ export const villaData = [
   {
     id: "villa-kyma",
     name: "VILLA KYMA",
-    description: "Positioned on the upper level with breathtaking views, Villa Kyma features four luxurious bedrooms, a spacious common kitchen, elegant sitting areas, and an outdoor dining space. The highlight is the stunning infinity pool that seems to merge with the horizon.",
+    description: "Positioned on the upper level with breathtaking views, Villa Kyma features four luxurious ensuite bedrooms, a spacious common kitchen with kitchen island and luxurious appliances, elegant sitting area with a seamless indoor-outdoor flow, an outdoor dining space sitting 12 people and an outdoor sitting area. The peaceful meeting of villa geometric lines with the endless Aegean blue, creates a truly striking visual experience, where architecture and nature blend seamlessly for an inspiring sense of harmony and serenity. Villa Kyma features also a stunning infinity temperature controlled pool, outdoor shower and an outdoor bar/BBQ which blends elegantly stone built architecture with the natural rocky terrain of Agios Georgios hillside. Room 8 features a private outdoor shower and Room 5 a private balcony with sea view. There is the option to connect Rooms 6 & 7 for families. Max occupancy of 9 people. Using a bring your own device concept, our guests can take advantage of our complimentary fast satellite internet access on their familiar personal devices. A projector is also available, upon request, to enjoy movie nights or sports events. A chic villa combining comforts, eclectic décor, natural materials and elegance, making it a perfect choice for anyone seeking a peaceful retreat with character and style.",
     totalSize: "105m² of bedrooms",
     facilities: [
-      "4 Bedrooms",
-      "Common kitchen & sitting area",
-      "Infinity swimming pool",
-      "Outdoor dining area",
-      "Panoramic sea views",
-      "Outdoor sitting area",
-      "Maid room",
+      "Sea View",
+      "King size beds or Queen size beds",
+      "Temperature Controlled Swimming Pool",
+      "Air conditioning",
+      "Ceiling Fans in all rooms",
+      "Safe deposit box",
+      "Outdoor Bar/ BBQ",
+      "Outdoor Shower",
+      "Private parking",
       "Daily maid service",
-      "Private parking"
+      "Complimentary WiFi",
+      "Concierge Assistance"
     ],
     images: [
       "/villa kyma outdoor 11.jpg",

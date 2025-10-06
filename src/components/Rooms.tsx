@@ -1,26 +1,25 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { roomData, villaData, propertyOverview } from "../data/roomData";
+import { villaData, propertyOverview } from "../data/roomData";
 import {
   ChevronLeft,
   ChevronRight,
-  Home,
-  Droplets,
-  UtensilsCrossed,
+  X,
+  MapPin,
+  Eye,
+  Bed,
+  Waves,
+  Fan,
+  Lock,
   Flame,
   Dumbbell,
-  Baby,
-  Brush,
-  Hotel,
-  Shield,
-  X,
-  Users,
-  Bed,
-  Wifi,
-  Wind,
-  Coffee,
   Car,
-  MapPin
+  Sparkles,
+  Wifi,
+  UserCheck,
+  Droplets,
+  Wine,
+  Snowflake
 } from "lucide-react";
 
 // Property hotspots for interactive map
@@ -44,27 +43,6 @@ const propertyHotspots = [
   { id: 13, label: "Ammos Outdoor Sitting", x: 33, y: 84, villa: "ammos" },
   { id: 14, label: "Ammos Pool Area", x: 48, y: 79, villa: "ammos" },
 ];
-
-const getAmenityIcon = (amenity: string) => {
-  const lowerCaseAmenity = amenity.toLowerCase();
-
-  if (lowerCaseAmenity.includes("king") || lowerCaseAmenity.includes("queen") || lowerCaseAmenity.includes("bed")) return <Bed className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("balcony") || lowerCaseAmenity.includes("veranda")) return <Home className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("pool") || lowerCaseAmenity.includes("infinity")) return <Droplets className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("dining") || lowerCaseAmenity.includes("kitchen")) return <UtensilsCrossed className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("bbq")) return <Flame className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("gym")) return <Dumbbell className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("connect") || lowerCaseAmenity.includes("family")) return <Users className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("maid") || lowerCaseAmenity.includes("service")) return <Brush className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("wifi")) return <Wifi className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("air") || lowerCaseAmenity.includes("conditioning")) return <Wind className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("mini") || lowerCaseAmenity.includes("fridge")) return <Coffee className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("parking")) return <Car className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("premium") || lowerCaseAmenity.includes("safe")) return <Shield className="w-4 h-4 text-[#59452E]" />;
-  if (lowerCaseAmenity.includes("view")) return <Hotel className="w-4 h-4 text-[#59452E]" />;
-
-  return <ChevronRight className="w-4 h-4 text-[#59452E]" />;
-};
 
 // Interactive Property Map Component
 const InteractivePropertyMap: React.FC = () => {
@@ -581,8 +559,10 @@ const Rooms: React.FC = () => {
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
+              {/* Top Section: Image + Description */}
               <div className="flex flex-col lg:flex-row">
-                <div className="lg:w-1/2 h-[400px] lg:h-[550px]">
+                {/* Image Carousel */}
+                <div className="lg:w-1/2 h-[450px] lg:h-[550px]">
                   <ImageCarousel
                     images={villa.images}
                     currentIndex={currentImageIndexes[villa.id] ?? 0}
@@ -593,34 +573,92 @@ const Rooms: React.FC = () => {
                   />
                 </div>
 
-                <div className="lg:w-1/2 p-8 md:p-12 lg:p-16">
+                {/* Description */}
+                <div className="lg:w-1/2 p-10 md:p-12 lg:p-16 flex flex-col">
+                  {/* Villa Name */}
                   <Link
                     to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
-                    className="text-left hover:opacity-70 transition-opacity"
+                    className="text-left hover:opacity-70 transition-opacity mb-2"
                   >
-                    <h3 className="text-2xl md:text-3xl font-['Roboto'] text-black uppercase font-bold tracking-wide mb-4 underline underline-offset-4 decoration-1">
+                    <h3 className="text-3xl md:text-4xl font-['Roboto'] text-[#3A3532] uppercase font-bold tracking-wide">
                       {villa.name}
                     </h3>
                   </Link>
-                  <p className="text-black font-['Roboto'] leading-relaxed text-base md:text-lg mb-6">
-                    {villa.description}
+
+                  {/* Subtitle tagline */}
+                  <p className="text-[#8E7D67] font-['Roboto'] text-sm md:text-base mb-8 italic">
+                    {villa.id === 'villa-ammos'
+                      ? 'A boho chic villa ideal for your tranquil retreat'
+                      : 'Combining comforts, eclectic décor, and natural materials'}
                   </p>
-                  <div className="text-[#59452E] font-['Roboto'] leading-relaxed text-sm space-y-2">
-                    <p>Each villa features four luxurious bedrooms with direct sea views, a fully equipped common kitchen, comfortable sitting areas, and outdoor dining space overlooking the Aegean.</p>
-                    {villa.id === 'villa-ammos' && (
-                      <p>Villa Ammos includes a private pool, indoor gym facility, and connecting options between Rooms 3 & 4 for families.</p>
+
+                  {/* Main Description - structured into paragraphs */}
+                  <div className="space-y-4 text-[#3A3532] font-['Roboto'] leading-relaxed text-[15px] md:text-base">
+                    {villa.id === 'villa-ammos' ? (
+                      <>
+                        <p>Located on the lower level, Villa Ammos offers panoramic views of the Aegean sea, Agios Georgios Bay and Despotiko island.</p>
+                        <p>The villa features four elegantly appointed ensuite bedrooms, a fully equipped common kitchen with kitchen island and luxury appliances, a comfortable sitting area, an outdoor dining space sitting 8 people, and an outdoor sitting area to enjoy the view.</p>
+                        <p className="text-sm text-[#8E7D67]">The villa offers a private pool and an indoor gym equipped with treadmill, punching bag, free weights, and adjustable bench. Option to connect Rooms 3 & 4 for families. Max occupancy of 10 people.</p>
+                        <p className="text-sm">Using a bring your own device concept, our guests can take advantage of our complimentary fast satellite internet access. A projector is also available, upon request, to enjoy movie nights or sports events.</p>
+                      </>
+                    ) : (
+                      <>
+                        <p>Positioned on the upper level with breathtaking views, Villa Kyma features four luxurious ensuite bedrooms, a spacious common kitchen with kitchen island and luxurious appliances, and an elegant sitting area with seamless indoor-outdoor flow.</p>
+                        <p>The peaceful meeting of villa geometric lines with the endless Aegean blue creates a truly striking visual experience, where architecture and nature blend seamlessly for an inspiring sense of harmony and serenity.</p>
+                        <p className="text-sm text-[#8E7D67]">Features a stunning infinity temperature controlled pool, outdoor shower, and an outdoor bar/BBQ. Room 8 has a private outdoor shower and Room 5 a private balcony with sea view. Option to connect Rooms 6 & 7 for families. Max occupancy of 9 people.</p>
+                        <p className="text-sm">Using a bring your own device concept, our guests can take advantage of our complimentary fast satellite internet access. A projector is also available, upon request, to enjoy movie nights or sports events.</p>
+                      </>
                     )}
-                    {villa.id === 'villa-kyma' && (
-                      <p>Villa Kyma features a stunning infinity pool, Room 5 with private balcony, and connecting options between Rooms 6 & 7 for families.</p>
-                    )}
-                    <p className="pt-2">Daily maid service, private parking, and concierge assistance included.</p>
                   </div>
-                  <Link
-                    to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
-                    className="mt-8 inline-block bg-[#3A3532] text-white px-6 py-3 font-['Roboto'] uppercase text-sm tracking-wide hover:bg-[#2A2522] transition-colors"
-                  >
-                    View {villa.name} Rooms
-                  </Link>
+                </div>
+              </div>
+
+              {/* Bottom Section: Amenities & CTA */}
+              <div className="border-t border-[#3A3532]/10">
+                <div className="p-10 md:p-12 lg:p-16">
+                  <div className="max-w-5xl mx-auto">
+                    {/* Amenities Section */}
+                    <div className="mb-10">
+                      <h4 className="text-xs font-['Roboto'] uppercase tracking-[0.15em] text-[#3A3532] mb-8 font-semibold">Amenities & Features</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-[#3A3532] text-[13px] md:text-sm font-['Roboto']">
+                        {villa.facilities.map((facility, idx) => {
+                          // Icon mapping based on facility text
+                          let IconComponent = Eye; // default
+                          if (facility.toLowerCase().includes('sea view')) IconComponent = Eye;
+                          else if (facility.toLowerCase().includes('bed')) IconComponent = Bed;
+                          else if (facility.toLowerCase().includes('pool')) IconComponent = Waves;
+                          else if (facility.toLowerCase().includes('air conditioning')) IconComponent = Snowflake;
+                          else if (facility.toLowerCase().includes('fan')) IconComponent = Fan;
+                          else if (facility.toLowerCase().includes('safe')) IconComponent = Lock;
+                          else if (facility.toLowerCase().includes('bbq')) IconComponent = Flame;
+                          else if (facility.toLowerCase().includes('gym')) IconComponent = Dumbbell;
+                          else if (facility.toLowerCase().includes('parking')) IconComponent = Car;
+                          else if (facility.toLowerCase().includes('maid')) IconComponent = Sparkles;
+                          else if (facility.toLowerCase().includes('wifi')) IconComponent = Wifi;
+                          else if (facility.toLowerCase().includes('concierge')) IconComponent = UserCheck;
+                          else if (facility.toLowerCase().includes('shower')) IconComponent = Droplets;
+                          else if (facility.toLowerCase().includes('bar')) IconComponent = Wine;
+
+                          return (
+                            <div key={idx} className="flex items-start group">
+                              <IconComponent className="w-4 h-4 text-[#8E7D67] mr-3 mt-0.5 group-hover:text-[#3A3532] transition-colors flex-shrink-0" strokeWidth={1.5} />
+                              <span className="leading-snug">{facility}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="flex justify-center lg:justify-start">
+                      <Link
+                        to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
+                        className="inline-block bg-[#3A3532] text-white px-8 py-4 font-['Roboto'] uppercase text-xs tracking-[0.15em] hover:bg-[#8E7D67] transition-all duration-300 shadow-sm hover:shadow-md"
+                      >
+                        Explore {villa.id === 'villa-ammos' ? 'Ammos' : 'Kyma'} Rooms
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
