@@ -31,7 +31,7 @@ const propertyHotspots = [
   { id: 3, label: "Kyma Room 7", x: 66, y: 58, villa: "kyma" },
   { id: 4, label: "Kyma Room 8", x: 75.5, y: 58, villa: "kyma" },
   { id: 5, label: "Kyma Kitchen", x: 51, y: 58, villa: "kyma" },
-  { id: 6, label: "Kyma Outdoor Dining", x: 41, y: 58, villa: "kyma" },
+  { id: 6, label: "Kyma Outdoor Dining Area", x: 41, y: 58, villa: "kyma" },
   { id: 7, label: "Kyma Pool Area", x: 54, y: 60, villa: "kyma" },
 
   // Villa Ammos (Lower Level) - Rooms from left to right
