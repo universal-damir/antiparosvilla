@@ -196,7 +196,8 @@ const ImageCarousel: React.FC<{
   onNext: () => void;
   onGalleryOpen: () => void;
   alt: string;
-}> = ({ images, currentIndex, onPrev, onNext, onGalleryOpen, alt }) => {
+  onDotClick: (index: number) => void;
+}> = ({ images, currentIndex, onGalleryOpen, alt, onDotClick }) => {
   return (
     <div className="relative w-full h-full overflow-hidden bg-white">
       <div
@@ -219,24 +220,20 @@ const ImageCarousel: React.FC<{
         ))}
       </div>
 
-      <button
-        onClick={onPrev}
-        className="absolute left-6 top-1/2 -translate-y-1/2 text-white bg-[#3A3532]/40 hover:bg-[#3A3532]/60 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
-        aria-label="Previous image"
-      >
-        <ChevronLeft className="w-6 h-6" strokeWidth={2} />
-      </button>
-
-      <button
-        onClick={onNext}
-        className="absolute right-6 top-1/2 -translate-y-1/2 text-white bg-[#3A3532]/40 hover:bg-[#3A3532]/60 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
-        aria-label="Next image"
-      >
-        <ChevronRight className="w-6 h-6" strokeWidth={2} />
-      </button>
-
-      <div className="absolute bottom-6 right-6 text-white/50 text-[10px] font-['Roboto'] tracking-wider">
-        {currentIndex + 1} — {images.length}
+      {/* Dot Navigation */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => onDotClick(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              index === currentIndex
+                ? 'bg-[#3A3532] w-8'
+                : 'bg-[#3A3532]/30 hover:bg-[#3A3532]/50'
+            }`}
+            aria-label={`Go to image ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
@@ -397,6 +394,22 @@ const Rooms: React.FC = () => {
     return () => observer.disconnect();
   }, [activeTab]);
 
+  // Keyboard navigation for property overview carousel
+  useEffect(() => {
+    if (activeTab !== 'overview') return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        handlePrevImage('property');
+      } else if (e.key === 'ArrowRight') {
+        handleNextImage('property');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeTab]);
+
   const handlePrevImage = (id: string) => {
     setCurrentImageIndexes((prev) => {
       const currentIndex = prev[id] ?? 0;
@@ -439,6 +452,13 @@ const Rooms: React.FC = () => {
         [id]: newIndex
       };
     });
+  };
+
+  const handleDotClick = (id: string, index: number) => {
+    setCurrentImageIndexes((prev) => ({
+      ...prev,
+      [id]: index
+    }));
   };
 
   const openGallery = (id: string, images: string[]) => {
@@ -524,21 +544,15 @@ const Rooms: React.FC = () => {
               </button>
             </div>
 
-            {/* Gallery Section Header */}
-            <div className="px-8 md:px-12 lg:px-16 py-4 md:py-6 bg-white border-t border-[#3A3532]/10">
-              <h4 className="text-lg md:text-xl font-['Roboto'] text-[#3A3532] uppercase tracking-wide">
-                Outdoor Gallery - See More
-              </h4>
-            </div>
-
             {/* Carousel moved to bottom */}
-            <div className="h-[400px] md:h-[500px]">
+            <div className="h-[550px] md:h-[680px] lg:h-[800px] p-8 md:p-12">
               <ImageCarousel
                 images={propertyOverview.images}
                 currentIndex={currentImageIndexes['property'] ?? 0}
                 onPrev={() => handlePrevImage('property')}
                 onNext={() => handleNextImage('property')}
                 onGalleryOpen={() => openGallery('property', propertyOverview.images)}
+                onDotClick={(index) => handleDotClick('property', index)}
                 alt="Property Gallery"
               />
             </div>
@@ -569,6 +583,7 @@ const Rooms: React.FC = () => {
                     onPrev={() => handlePrevImage(villa.id)}
                     onNext={() => handleNextImage(villa.id)}
                     onGalleryOpen={() => openGallery(villa.id, villa.images)}
+                    onDotClick={(index) => handleDotClick(villa.id, index)}
                     alt={villa.name}
                   />
                 </div>
@@ -655,7 +670,7 @@ const Rooms: React.FC = () => {
                         to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
                         className="inline-block bg-[#3A3532] text-white px-8 py-4 font-['Roboto'] uppercase text-xs tracking-[0.15em] hover:bg-[#8E7D67] transition-all duration-300 shadow-sm hover:shadow-md"
                       >
-                        Explore {villa.id === 'villa-ammos' ? 'Ammos' : 'Kyma'} Rooms
+                        Find Out More
                       </Link>
                     </div>
                   </div>
