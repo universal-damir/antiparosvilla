@@ -197,14 +197,10 @@ const InteractivePropertyMap: React.FC = () => {
               onMouseLeave={handleMouseLeave}
               onClick={(e) => handleHotspotClick(e, hotspot.id)}
             >
-              {/* Circle marker with border only */}
+              {/* Invisible hover area - no visible marker */}
               <div className="relative flex items-center justify-center">
-                {/* Invisible larger hover area */}
-                <div className="absolute w-8 h-8 md:w-10 md:h-10 rounded-full"></div>
-                {/* Circle with border stroke only - grows on hover */}
-                <div className={`w-4 h-4 md:w-5 md:h-5 rounded-full border-2 transition-all duration-300 group-hover:scale-125 ${
-                  hotspot.villa === 'ammos' ? 'border-[#D4C5B0]' : 'border-white'
-                }`}></div>
+                {/* Larger invisible hover zone for better discoverability */}
+                <div className="absolute w-16 h-16 md:w-20 md:h-20"></div>
               </div>
 
               {/* Tooltip */}
