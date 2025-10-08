@@ -16,7 +16,7 @@ export const propertyOverview = {
     "/DJI_20250725182528_0544_D.jpg",
     "/DJI_20250725193457_0557_D 2.jpg",
     "/DJI_20250725193545_0562_D 2.jpg",
-    "/entrance.jpg",
+    "/entrance-new.jpg",
     "/staircase.jpg"
   ]
 };
