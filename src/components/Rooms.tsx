@@ -5,7 +5,6 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
-  MapPin,
   Bed,
   Waves,
   Wind,
@@ -27,13 +26,14 @@ import {
 // Upper level = Villa Kyma, Lower level = Villa Ammos
 const propertyHotspots = [
   // Villa Kyma (Upper Level) - Rooms from left to right
-  { id: 1, label: "Kyma Room 5", x: 28, y: 58, villa: "kyma" },
+  { id: 1, label: "Kyma Room 5", x: 31, y: 57, villa: "kyma" },
   { id: 2, label: "Kyma Room 6", x: 57.5, y: 58, villa: "kyma" },
   { id: 3, label: "Kyma Room 7", x: 66, y: 58, villa: "kyma" },
   { id: 4, label: "Kyma Room 8", x: 75.5, y: 58, villa: "kyma" },
-  { id: 5, label: "Kyma Kitchen", x: 51, y: 58, villa: "kyma" },
-  { id: 6, label: "Kyma Outdoor Dining Area", x: 41, y: 58, villa: "kyma" },
+  { id: 5, label: "Kyma Outdoor Dining Area", x: 51, y: 58, villa: "kyma" },
+  { id: 6, label: "Kyma Kitchen & Living Area", x: 41, y: 58, villa: "kyma" },
   { id: 7, label: "Kyma Pool Area", x: 54, y: 60, villa: "kyma" },
+  {id: 15, label: "Kyma Outdoor Sitting Area", x: 26, y: 60.5, villa: "kyma" },
 
   // Villa Ammos (Lower Level) - Rooms from left to right
   { id: 8, label: "Ammos Room 1", x: 24, y: 70, villa: "ammos" },
@@ -49,8 +49,10 @@ const propertyHotspots = [
 const InteractivePropertyMap: React.FC = () => {
   const [hoveredHotspot, setHoveredHotspot] = useState<number | null>(null);
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
+  const [displayedHotspot, setDisplayedHotspot] = useState<number | null>(null);
   const imageRef = React.useRef<HTMLImageElement>(null);
   const [imagePosition, setImagePosition] = useState({ width: 0, height: 0, left: 0, top: 0 });
+  const zoomTimeoutRef = React.useRef<number | null>(null);
 
   React.useEffect(() => {
     const updateImagePosition = () => {
@@ -124,44 +126,85 @@ const InteractivePropertyMap: React.FC = () => {
     // Only set hover state if no active hotspot (not in tap mode)
     if (activeHotspot === null) {
       setHoveredHotspot(id);
+      setDisplayedHotspot(id);
+
+      // Clear any existing timeout
+      if (zoomTimeoutRef.current) {
+        clearTimeout(zoomTimeoutRef.current);
+      }
     }
   };
 
   const handleMouseLeave = () => {
     setHoveredHotspot(null);
+
+    // Keep zoom for 3 seconds before zooming out
+    zoomTimeoutRef.current = setTimeout(() => {
+      setDisplayedHotspot(null);
+    }, 3000);
+  };
+
+  // Cleanup timeout on unmount
+  React.useEffect(() => {
+    return () => {
+      if (zoomTimeoutRef.current) {
+        clearTimeout(zoomTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const getTransformOrigin = () => {
+    if (displayedHotspot !== null || activeHotspot !== null) {
+      const hotspot = propertyHotspots.find(h => h.id === (displayedHotspot || activeHotspot));
+      if (hotspot) {
+        return `${hotspot.x}% ${hotspot.y}%`;
+      }
+    }
+    return 'center center';
   };
 
   return (
-    <div className="relative w-full h-full" onClick={handleContainerClick}>
+    <div className="relative w-full h-full overflow-hidden" onClick={handleContainerClick}>
       <img
         ref={imageRef}
         src="/DJI_20250725182120_0532_D.jpg"
         alt="Property Overview"
-        className="w-full h-full object-contain"
+        className="w-full h-full object-contain transition-all duration-500 ease-out"
+        style={{
+          transform: displayedHotspot !== null || activeHotspot !== null ? 'scale(1.15)' : 'scale(1)',
+          transformOrigin: getTransformOrigin()
+        }}
       />
       {/* Hotspot markers - positioned on the actual rendered image */}
       {imagePosition.width > 0 && (
         <div
-          className="absolute pointer-events-none"
+          className="absolute pointer-events-none transition-all duration-500 ease-out"
           style={{
             width: `${imagePosition.width}px`,
             height: `${imagePosition.height}px`,
             left: `${imagePosition.left}px`,
-            top: `${imagePosition.top}px`
+            top: `${imagePosition.top}px`,
+            transform: displayedHotspot !== null || activeHotspot !== null ? 'scale(1.15)' : 'scale(1)',
+            transformOrigin: getTransformOrigin()
           }}
         >
           {propertyHotspots.map((hotspot) => (
             <div
               key={hotspot.id}
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer pointer-events-auto"
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer pointer-events-auto group"
               style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
               onMouseEnter={() => handleMouseEnter(hotspot.id)}
               onMouseLeave={handleMouseLeave}
               onClick={(e) => handleHotspotClick(e, hotspot.id)}
             >
-              {/* Map pin icon */}
-              <div className="relative">
-                <MapPin className="w-4 h-4 md:w-6 md:h-6 text-[#3A3532] drop-shadow-lg filter" style={{ filter: 'drop-shadow(0 0 2px white) drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }} />
+              {/* Circle marker with border only */}
+              <div className="relative flex items-center justify-center">
+                {/* Invisible larger hover area */}
+                <div className="absolute w-8 h-8 md:w-10 md:h-10 rounded-full"></div>
+                {/* Circle with border stroke only - grows on hover */}
+                <div className={`w-4 h-4 md:w-5 md:h-5 rounded-full border-2 transition-all duration-300 group-hover:scale-125 ${
+                  hotspot.villa === 'ammos' ? 'border-[#D4C5B0]' : 'border-white'
+                }`}></div>
               </div>
 
               {/* Tooltip */}
@@ -571,7 +614,7 @@ const Rooms: React.FC = () => {
             {/* Map instruction text */}
             <div className="pt-2 pb-4 px-4 hidden md:block bg-[#F4F3EB]">
               <p className="text-[#3A3532]/50 text-xs font-['Roboto'] text-center italic">
-                Hover over the photo pins to explore room locations and layout
+                Hover over the photo to explore room locations and zoom into the layout
               </p>
             </div>
 
