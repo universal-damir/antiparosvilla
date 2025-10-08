@@ -6,7 +6,6 @@ import {
   ChevronRight,
   X,
   MapPin,
-  Eye,
   Bed,
   Waves,
   Wind,
@@ -19,7 +18,8 @@ import {
   UserCheck,
   Droplets,
   Wine,
-  Snowflake
+  Snowflake,
+  Home
 } from "lucide-react";
 
 // Property hotspots for interactive map
@@ -226,10 +226,10 @@ const ImageCarousel: React.FC<{
           <button
             key={index}
             onClick={() => onDotClick(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+            className={`w-2 h-2 rounded-full transition-all duration-300 shadow-md ${
               index === currentIndex
-                ? 'bg-[#3A3532] w-8'
-                : 'bg-[#3A3532]/30 hover:bg-[#3A3532]/50'
+                ? 'bg-white w-8'
+                : 'bg-white/50 hover:bg-white/70'
             }`}
             aria-label={`Go to image ${index + 1}`}
           />
@@ -394,15 +394,29 @@ const Rooms: React.FC = () => {
     return () => observer.disconnect();
   }, [activeTab]);
 
-  // Keyboard navigation for property overview carousel
+  // Keyboard navigation for all carousels
   useEffect(() => {
-    if (activeTab !== 'overview') return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        handlePrevImage('property');
-      } else if (e.key === 'ArrowRight') {
-        handleNextImage('property');
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        if (activeTab === 'overview') {
+          if (e.key === 'ArrowLeft') {
+            handlePrevImage('property');
+          } else {
+            handleNextImage('property');
+          }
+        } else if (activeTab === 'villas') {
+          // Find which villa carousel is being hovered
+          villaData.forEach(villa => {
+            const carouselElement = document.querySelector(`[data-carousel="${villa.id}"]`);
+            if (carouselElement && carouselElement.matches(':hover')) {
+              if (e.key === 'ArrowLeft') {
+                handlePrevImage(villa.id);
+              } else {
+                handleNextImage(villa.id);
+              }
+            }
+          });
+        }
       }
     };
 
@@ -556,6 +570,13 @@ const Rooms: React.FC = () => {
                 alt="Property Gallery"
               />
             </div>
+
+            {/* Device and Entertainment Note */}
+            <div className="p-8 md:p-12 lg:p-16 bg-white">
+              <p className="text-[#3A3532] font-['Roboto'] leading-relaxed text-base md:text-lg">
+                Both villas are embracing a bring-your-own-device concept. Guests can enjoy complimentary high-speed satellite internet access throughout their stay, allowing them to connect effortlessly on their personal devices. A projector is available upon request, perfect for movie nights or watching your favorite sports events in style.
+              </p>
+            </div>
           </div>
         </div>
       )}
@@ -573,94 +594,131 @@ const Rooms: React.FC = () => {
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              {/* Top Section: Image + Description */}
-              <div className="flex flex-col lg:flex-row">
-                {/* Image Carousel */}
-                <div className="lg:w-1/2 h-[450px] lg:h-[550px]">
-                  <ImageCarousel
-                    images={villa.images}
-                    currentIndex={currentImageIndexes[villa.id] ?? 0}
-                    onPrev={() => handlePrevImage(villa.id)}
-                    onNext={() => handleNextImage(villa.id)}
-                    onGalleryOpen={() => openGallery(villa.id, villa.images)}
-                    onDotClick={(index) => handleDotClick(villa.id, index)}
-                    alt={villa.name}
-                  />
-                </div>
+              {/* Villa Name and Subtitle */}
+              <div className="p-10 md:p-12 lg:p-16 pb-8">
+                <Link
+                  to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
+                  className="text-left hover:opacity-70 transition-opacity block mb-2"
+                >
+                  <h3 className="text-3xl md:text-4xl font-['Roboto'] text-[#3A3532] uppercase font-bold tracking-wide">
+                    {villa.name}
+                  </h3>
+                </Link>
+                <p className="text-[#8E7D67] font-['Roboto'] text-sm md:text-base italic">
+                  {villa.id === 'villa-ammos'
+                    ? 'A boho chic villa ideal for your tranquil retreat'
+                    : 'Combining comforts, eclectic décor, and natural materials'}
+                </p>
+              </div>
 
-                {/* Description */}
-                <div className="lg:w-1/2 p-10 md:p-12 lg:p-16 flex flex-col">
-                  {/* Villa Name */}
-                  <Link
-                    to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
-                    className="text-left hover:opacity-70 transition-opacity mb-2"
-                  >
-                    <h3 className="text-3xl md:text-4xl font-['Roboto'] text-[#3A3532] uppercase font-bold tracking-wide">
-                      {villa.name}
-                    </h3>
-                  </Link>
+              {/* Image Carousel - Full Width */}
+              <div className="h-[450px] md:h-[550px]" data-carousel={villa.id}>
+                <ImageCarousel
+                  images={villa.images}
+                  currentIndex={currentImageIndexes[villa.id] ?? 0}
+                  onPrev={() => handlePrevImage(villa.id)}
+                  onNext={() => handleNextImage(villa.id)}
+                  onGalleryOpen={() => openGallery(villa.id, villa.images)}
+                  onDotClick={(index) => handleDotClick(villa.id, index)}
+                  alt={villa.name}
+                />
+              </div>
 
-                  {/* Subtitle tagline */}
-                  <p className="text-[#8E7D67] font-['Roboto'] text-sm md:text-base mb-8 italic">
-                    {villa.id === 'villa-ammos'
-                      ? 'A boho chic villa ideal for your tranquil retreat'
-                      : 'Combining comforts, eclectic décor, and natural materials'}
-                  </p>
-
-                  {/* Main Description - structured into paragraphs */}
-                  <div className="space-y-4 text-[#3A3532] font-['Roboto'] leading-relaxed text-[15px] md:text-base">
-                    {villa.id === 'villa-ammos' ? (
-                      <>
-                        <p>Located on the lower level, Villa Ammos offers panoramic views of the Aegean sea, Agios Georgios Bay and Despotiko island.</p>
-                        <p>The villa features four elegantly appointed ensuite bedrooms, a fully equipped common kitchen with kitchen island and luxury appliances, a comfortable sitting area, an outdoor dining space sitting 8 people, and an outdoor sitting area to enjoy the view.</p>
-                        <p className="text-sm text-[#8E7D67]">The villa offers a private pool and an indoor gym equipped with treadmill, punching bag, free weights, and adjustable bench. Option to connect Rooms 3 & 4 for families. Max occupancy of 10 people.</p>
-                        <p className="text-sm">Using a bring your own device concept, our guests can take advantage of our complimentary fast satellite internet access. A projector is also available, upon request, to enjoy movie nights or sports events.</p>
-                      </>
-                    ) : (
-                      <>
-                        <p>Positioned on the upper level with breathtaking views, Villa Kyma features four luxurious ensuite bedrooms, a spacious common kitchen with kitchen island and luxurious appliances, and an elegant sitting area with seamless indoor-outdoor flow.</p>
-                        <p>The peaceful meeting of villa geometric lines with the endless Aegean blue creates a truly striking visual experience, where architecture and nature blend seamlessly for an inspiring sense of harmony and serenity.</p>
-                        <p className="text-sm text-[#8E7D67]">Features a stunning infinity temperature controlled pool, outdoor shower, and an outdoor bar/BBQ. Room 8 has a private outdoor shower and Room 5 a private balcony with sea view. Option to connect Rooms 6 & 7 for families. Max occupancy of 9 people.</p>
-                        <p className="text-sm">Using a bring your own device concept, our guests can take advantage of our complimentary fast satellite internet access. A projector is also available, upon request, to enjoy movie nights or sports events.</p>
-                      </>
-                    )}
-                  </div>
+              {/* Description */}
+              <div className="p-10 md:p-12 lg:p-16">
+                <div className="space-y-4 text-[#3A3532] font-['Roboto'] leading-relaxed text-base max-w-5xl mx-auto">
+                  {villa.id === 'villa-ammos' ? (
+                    <>
+                      <p>Villa Ammos, located on the lower level, offers stunning panoramic views of the Aegean Sea, Agios Georgios Bay, and Despotiko Island from every corner inside and outside the villa, allowing guests to enjoy breathtaking scenery throughout their stay.</p>
+                      <p>The villa boasts four elegantly appointed ensuite bedrooms, a fully equipped kitchen with a stylish island and premium appliances, a cozy indoor lounge, a shaded outdoor dining area for up to ten guests, and a comfortable outdoor seating space perfect for taking in the serene views.</p>
+                      <p>Experience ultimate comfort and privacy in this elegant villa, featuring its own private pool and a fully equipped indoor gym complete with a treadmill, punching bag, free weights, and a workout bench. The villa accommodates up to 10 guests, ensuring a luxurious stay for everyone. Perfect for families, Rooms 3 and 4 can be connected for added convenience.</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>Villa Kyma, positioned on the upper level, offers breathtaking views. The harmonious geometrical proportions of the Cycladic architecture meet the endless blue of the Aegean Sea creating a striking visual experience in which architecture and nature blend seamlessly, inspiring a profound sense of harmony and serenity. The villa's design highlights open, airy spaces that invite the stunning seascape indoors, with expansive terraces and large windows framing panoramic views of the bay and surrounding islands, making it an ideal retreat for those seeking both luxury and tranquility.</p>
+                      <p>Villa Kyma features four luxurious ensuite bedrooms, a spacious open-plan kitchen with a kitchen island and high-end appliances, and an elegant sitting area that seamlessly connects indoor and outdoor living spaces.</p>
+                      <p>The villa offers a stunning temperature-controlled infinity pool perfect for relaxing swims with breathtaking sea views. It also features an outdoor shower, a shaded dining area that comfortably seats 12 guests, a outdoor sitting area, and a fully equipped outdoor gym complete with a training bike, free weights, and a workout bench. This combination of luxurious amenities provides a perfect balance of leisure, and fitness in a spectacular natural setting.</p>
+                      <p>The outdoor bar and BBQ area elegantly blends stone-built architecture with the natural rocky terrain of the Agios Georgios hillside, creating a harmonious setting perfect for alfresco dining and entertaining against the stunning backdrop of the Aegean landscape.</p>
+                      <p>The villa accommodates a maximum of 9 guests, ensuring both comfort and privacy for all. For families, there is an option to connect Rooms 6 and 7.</p>
+                    </>
+                  )}
                 </div>
               </div>
 
-              {/* Bottom Section: Amenities & CTA */}
+              {/* Amenities & CTA */}
               <div className="border-t border-[#3A3532]/10">
                 <div className="p-10 md:p-12 lg:p-16">
                   <div className="max-w-5xl mx-auto">
-                    {/* Amenities Section */}
+                    {/* Amenities Section - Grouped */}
                     <div className="mb-10">
-                      <h4 className="text-xs font-['Roboto'] uppercase tracking-[0.15em] text-[#3A3532] mb-8 font-semibold">Amenities & Features</h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-[#3A3532] text-[13px] md:text-sm font-['Roboto']">
-                        {villa.facilities.map((facility, idx) => {
-                          // Icon mapping based on facility text
-                          let IconComponent = Eye; // default
-                          if (facility.toLowerCase().includes('sea view')) IconComponent = Eye;
-                          else if (facility.toLowerCase().includes('bed')) IconComponent = Bed;
-                          else if (facility.toLowerCase().includes('pool')) IconComponent = Waves;
-                          else if (facility.toLowerCase().includes('air conditioning')) IconComponent = Snowflake;
-                          else if (facility.toLowerCase().includes('fan')) IconComponent = Wind;
-                          else if (facility.toLowerCase().includes('safe')) IconComponent = Lock;
-                          else if (facility.toLowerCase().includes('bbq')) IconComponent = Flame;
-                          else if (facility.toLowerCase().includes('gym')) IconComponent = Dumbbell;
-                          else if (facility.toLowerCase().includes('parking')) IconComponent = Car;
-                          else if (facility.toLowerCase().includes('maid')) IconComponent = Sparkles;
-                          else if (facility.toLowerCase().includes('wifi')) IconComponent = Wifi;
-                          else if (facility.toLowerCase().includes('concierge')) IconComponent = UserCheck;
-                          else if (facility.toLowerCase().includes('shower')) IconComponent = Droplets;
-                          else if (facility.toLowerCase().includes('bar')) IconComponent = Wine;
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* Room Features */}
+                        <div>
+                          <h4 className="text-xs font-['Roboto'] uppercase tracking-[0.15em] text-[#3A3532] mb-6 font-semibold">Room Features</h4>
+                          <div className="space-y-3 text-[#3A3532] text-sm font-['Roboto']">
+                            {villa.id === 'villa-ammos' ? (
+                              <>
+                                <div className="flex items-start"><Bed className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>King size beds or Queen size beds</span></div>
+                                <div className="flex items-start"><Snowflake className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Air conditioning</span></div>
+                                <div className="flex items-start"><Wind className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Ceiling Fans in all rooms</span></div>
+                                <div className="flex items-start"><Lock className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Safe deposit box</span></div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="flex items-start"><Bed className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>King size beds or Queen size beds</span></div>
+                                <div className="flex items-start"><Snowflake className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Air conditioning</span></div>
+                                <div className="flex items-start"><Wind className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Ceiling Fans in all rooms</span></div>
+                                <div className="flex items-start"><Lock className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Safe deposit box</span></div>
+                              </>
+                            )}
+                          </div>
+                        </div>
 
-                          return (
-                            <div key={idx} className="flex items-start group">
-                              <IconComponent className="w-4 h-4 text-[#8E7D67] mr-3 mt-0.5 group-hover:text-[#3A3532] transition-colors flex-shrink-0" strokeWidth={1.5} />
-                              <span className="leading-snug">{facility}</span>
-                            </div>
-                          );
-                        })}
+                        {/* Outdoor Amenities */}
+                        <div>
+                          <h4 className="text-xs font-['Roboto'] uppercase tracking-[0.15em] text-[#3A3532] mb-6 font-semibold">Outdoor Amenities</h4>
+                          <div className="space-y-3 text-[#3A3532] text-sm font-['Roboto']">
+                            {villa.id === 'villa-ammos' ? (
+                              <>
+                                <div className="flex items-start"><Waves className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Pool with shallow end for kids</span></div>
+                                <div className="flex items-start"><Droplets className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Outdoor shower</span></div>
+                                <div className="flex items-start"><Flame className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>BBQ</span></div>
+                                <div className="flex items-start"><Dumbbell className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Indoor gym</span></div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="flex items-start"><Waves className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Temperature Controlled Swimming Pool</span></div>
+                                <div className="flex items-start"><Droplets className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Outdoor shower</span></div>
+                                <div className="flex items-start"><Wine className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Outdoor Bar/BBQ</span></div>
+                                <div className="flex items-start"><Dumbbell className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Outdoor gym</span></div>
+                              </>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Services */}
+                        <div>
+                          <h4 className="text-xs font-['Roboto'] uppercase tracking-[0.15em] text-[#3A3532] mb-6 font-semibold">Services</h4>
+                          <div className="space-y-3 text-[#3A3532] text-sm font-['Roboto']">
+                            {villa.id === 'villa-ammos' ? (
+                              <>
+                                <div className="flex items-start"><Sparkles className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Daily maid service</span></div>
+                                <div className="flex items-start"><Home className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Maid's room (upon request, subject to availability)</span></div>
+                                <div className="flex items-start"><Wifi className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Complimentary WiFi</span></div>
+                                <div className="flex items-start"><UserCheck className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Concierge Assistance</span></div>
+                                <div className="flex items-start"><Car className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Private parking</span></div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="flex items-start"><Sparkles className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Daily maid service</span></div>
+                                <div className="flex items-start"><Home className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Maid's room (upon request, subject to availability)</span></div>
+                                <div className="flex items-start"><Wifi className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Complimentary WiFi</span></div>
+                                <div className="flex items-start"><UserCheck className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Concierge Assistance</span></div>
+                                <div className="flex items-start"><Car className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Private parking</span></div>
+                              </>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
 
