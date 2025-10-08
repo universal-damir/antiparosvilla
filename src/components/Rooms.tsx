@@ -19,7 +19,8 @@ import {
   Droplets,
   Wine,
   Snowflake,
-  Home
+  Home,
+  ChefHat
 } from "lucide-react";
 
 // Property hotspots for interactive map
@@ -220,20 +221,55 @@ const ImageCarousel: React.FC<{
         ))}
       </div>
 
-      {/* Dot Navigation */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => onDotClick(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 shadow-md ${
-              index === currentIndex
-                ? 'bg-white w-8'
-                : 'bg-white/50 hover:bg-white/70'
-            }`}
-            aria-label={`Go to image ${index + 1}`}
-          />
-        ))}
+      {/* Dot Navigation - Show max 5 dots */}
+      <div className="absolute bottom-16 md:bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        {images.length <= 5 ? (
+          // Show all dots if 5 or fewer images
+          images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => onDotClick(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? 'bg-white w-8 shadow-lg'
+                  : 'bg-white/70 hover:bg-white shadow-md'
+              }`}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))
+        ) : (
+          // Show sliding window of 5 dots
+          (() => {
+            // Calculate which dots to show (sliding window around current index)
+            const maxDots = 5;
+            const halfWindow = Math.floor(maxDots / 2);
+            let startIndex = Math.max(0, currentIndex - halfWindow);
+            let endIndex = Math.min(images.length, startIndex + maxDots);
+
+            // Adjust if we're near the end
+            if (endIndex - startIndex < maxDots) {
+              startIndex = Math.max(0, endIndex - maxDots);
+            }
+
+            const dotsToShow = [];
+            for (let i = startIndex; i < endIndex; i++) {
+              dotsToShow.push(i);
+            }
+
+            return dotsToShow.map((imageIndex) => (
+              <button
+                key={imageIndex}
+                onClick={() => onDotClick(imageIndex)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  imageIndex === currentIndex
+                    ? 'bg-white w-8 shadow-lg'
+                    : 'bg-white/70 hover:bg-white shadow-md'
+                }`}
+                aria-label={`Go to image ${imageIndex + 1}`}
+              />
+            ));
+          })()
+        )}
       </div>
     </div>
   );
@@ -583,19 +619,19 @@ const Rooms: React.FC = () => {
 
       {/* Villas Section */}
       {activeTab === 'villas' && (
-        <div className="max-w-6xl mx-auto px-4 py-12 pb-32">
+        <div className="max-w-6xl mx-auto px-4 pt-6 md:pt-12 pb-32">
           {villaData.map((villa, index) => (
             <div
               key={villa.id}
               id={villa.id}
               data-animate="true"
-              className={`mb-24 bg-white shadow-sm rounded-sm overflow-hidden transition-all duration-700 transform ${
+              className={`mb-12 md:mb-24 bg-white shadow-sm rounded-sm overflow-hidden transition-all duration-700 transform ${
                 visibleCards.has(villa.id) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Villa Name and Subtitle */}
-              <div className="p-10 md:p-12 lg:p-16 pb-8">
+              <div className="px-6 md:px-12 lg:px-16 pt-6 md:pt-12 lg:pt-16 pb-2 md:pb-6">
                 <Link
                   to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
                   className="text-left hover:opacity-70 transition-opacity block mb-2"
@@ -604,7 +640,7 @@ const Rooms: React.FC = () => {
                     {villa.name}
                   </h3>
                 </Link>
-                <p className="text-[#8E7D67] font-['Roboto'] text-sm md:text-base italic">
+                <p className="text-[#8E7D67] font-['Roboto'] text-sm md:text-base italic mb-0">
                   {villa.id === 'villa-ammos'
                     ? 'A boho chic villa ideal for your tranquil retreat'
                     : 'Combining comforts, eclectic décor, and natural materials'}
@@ -612,7 +648,7 @@ const Rooms: React.FC = () => {
               </div>
 
               {/* Image Carousel - Full Width */}
-              <div className="h-[450px] md:h-[550px]" data-carousel={villa.id}>
+              <div className="h-[400px] md:h-[550px]" data-carousel={villa.id}>
                 <ImageCarousel
                   images={villa.images}
                   currentIndex={currentImageIndexes[villa.id] ?? 0}
@@ -625,7 +661,7 @@ const Rooms: React.FC = () => {
               </div>
 
               {/* Description */}
-              <div className="p-10 md:p-12 lg:p-16">
+              <div className="px-6 pt-0 pb-6 md:p-12 lg:p-16">
                 <div className="space-y-4 text-[#3A3532] font-['Roboto'] leading-relaxed text-base max-w-5xl mx-auto">
                   {villa.id === 'villa-ammos' ? (
                     <>
@@ -704,6 +740,7 @@ const Rooms: React.FC = () => {
                               <>
                                 <div className="flex items-start"><Sparkles className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Daily maid service</span></div>
                                 <div className="flex items-start"><Home className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Maid's room (upon request, subject to availability)</span></div>
+                                <div className="flex items-start"><ChefHat className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Chef on demand</span></div>
                                 <div className="flex items-start"><Wifi className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Complimentary WiFi</span></div>
                                 <div className="flex items-start"><UserCheck className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Concierge Assistance</span></div>
                                 <div className="flex items-start"><Car className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Private parking</span></div>
@@ -712,6 +749,7 @@ const Rooms: React.FC = () => {
                               <>
                                 <div className="flex items-start"><Sparkles className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Daily maid service</span></div>
                                 <div className="flex items-start"><Home className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Maid's room (upon request, subject to availability)</span></div>
+                                <div className="flex items-start"><ChefHat className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Chef on demand</span></div>
                                 <div className="flex items-start"><Wifi className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Complimentary WiFi</span></div>
                                 <div className="flex items-start"><UserCheck className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Concierge Assistance</span></div>
                                 <div className="flex items-start"><Car className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Private parking</span></div>
