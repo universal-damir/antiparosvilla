@@ -10,7 +10,6 @@ export const propertyOverview = {
     "Perfect for couples, families, or groups of friends, this idyllic location blends tranquility with convenient access to nature, delectable dining, and the authentic spirit of Greece. Experience a seamless fusion of modern luxury and traditional Greek hospitality for an unforgettable stay."
   ],
   images: [
-    "/00 MAIN BACKGROUND.jpg",
     "/DJI_20250725181816_0527_D.jpg",
     "/DJI_20250725182120_0532_D.jpg",
     "/DJI_20250725182210_0534_D2.jpeg",
@@ -83,6 +82,7 @@ export const villaData = [
       "Concierge Assistance"
     ],
     images: [
+      "/villa kyma pool 4.jpg",
       "/villa kyma outdoor 2.jpg",
       "/villa kyma outdoor 3.jpg",
       "/villa kyma bar area 2.jpg",
@@ -128,11 +128,11 @@ export const roomData: RoomDetails[] = [
     id: "ammos-room-1",
     name: "AMMOS ROOM 1",
     villaId: "villa-ammos",
-    description: "A spacious 30m² room featuring elegant design with natural surfaces and soft tones. The room offers comfortable sleeping arrangements and opens onto the villa's shared pool area, creating a seamless indoor-outdoor living experience.",
+    description: "A spacious 30m² room featuring elegant design with natural surfaces and soft tones. The room offers comfortable sleeping arrangements and opens onto the villa's shared cozy kitchen and lounge area for extreme comfort.",
     specs: {
       size: "30M²",
       capacity: "MAX 3 ADULTS",
-      features: "SEA VIEW · GARDEN ACCESS"
+      features: "SEA VIEW"
     },
     amenities: [
       "King size bed",
@@ -161,7 +161,7 @@ export const roomData: RoomDetails[] = [
     specs: {
       size: "22M²",
       capacity: "MAX 2 ADULTS",
-      features: "SEA AND POOL VIEW"
+      features: "SEA VIEW · POOL VIEW"
     },
     amenities: [
       "Queen size bed",
@@ -212,11 +212,11 @@ export const roomData: RoomDetails[] = [
     id: "ammos-room-4",
     name: "AMMOS ROOM 4",
     villaId: "villa-ammos",
-    description: "A cozy 19m² room that can connect with Room 3 for family accommodation. Despite being the most intimate room, it maintains all the luxury amenities and thoughtful design of the villa.",
+    description: "A cozy 19m² room that can connect with Room 3 for family accommodation. The room maintains the luxury amenities and boho chic design of the villa.",
     specs: {
       size: "19M²",
       capacity: "MAX 2 ADULTS",
-      features: "SEA VIEW · CONNECTING ROOM OPTION · GARDEN VIEW"
+      features: "SEA VIEW · CONNECTING ROOM OPTION"
     },
     amenities: [
       "Double bed",
@@ -245,9 +245,9 @@ export const roomData: RoomDetails[] = [
     villaId: "villa-kyma",
     description: "A spacious room at 31m² with an exclusive private balcony offering panoramic sea views. Located in the upper villa, this room provides the ultimate in privacy and luxury with stunning Aegean vistas.",
     specs: {
-      size: "31M² + PRIVATE BALCONY",
+      size: "31M²",
       capacity: "MAX 2 ADULTS",
-      features: "SEA VIEW · PRIVATE BALCONY"
+      features: "SEA VIEW · PRIVATE BALCONY WITH SEA VIEW"
     },
     amenities: [
       "Queen size bed",
@@ -322,10 +322,10 @@ export const roomData: RoomDetails[] = [
     id: "kyma-room-8",
     name: "KYMA ROOM 8",
     villaId: "villa-kyma",
-    description: "A spacious 32m² room offering luxury and comfort with stunning views. This generously sized room features elegant furnishings and provides direct access to the villa's infinity pool and outdoor areas.",
+    description: "A spacious 32m² room offering luxury and comfort with stunning sea and pool views from the luxury of your own bed. This generously sized room features elegant furnishings and provides direct access to the villa's infinity pool and outdoor areas.",
     specs: {
       size: "32M²",
-      capacity: "MAX 2 ADULTS",
+      capacity: "MAX 3 ADULTS",
       features: "SEA VIEW · POOL VIEW · PRIVATE OUTDOOR SHOWER"
     },
     amenities: [

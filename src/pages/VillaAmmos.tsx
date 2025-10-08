@@ -55,7 +55,8 @@ const ImageCarousel: React.FC<{
   onNext: () => void;
   onGalleryOpen: () => void;
   alt: string;
-}> = ({ images, currentIndex, onPrev, onNext, onGalleryOpen, alt }) => {
+  onDotClick: (index: number) => void;
+}> = ({ images, currentIndex, onPrev, onNext, onGalleryOpen, alt, onDotClick }) => {
   return (
     <div className="relative w-full h-full overflow-hidden bg-white">
       <div
@@ -78,21 +79,54 @@ const ImageCarousel: React.FC<{
         ))}
       </div>
 
-      <button
-        onClick={onPrev}
-        className="absolute left-6 top-1/2 -translate-y-1/2 text-white bg-[#3A3532]/40 hover:bg-[#3A3532]/60 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
-        aria-label="Previous image"
-      >
-        <ChevronLeft className="w-6 h-6" strokeWidth={2} />
-      </button>
+      {/* Dot Navigation - Show max 5 dots */}
+      <div className="absolute bottom-16 md:bottom-12 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {images.length <= 5 ? (
+          // Show all dots if 5 or fewer images
+          images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => onDotClick(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? 'bg-white w-8 shadow-lg'
+                  : 'bg-white/70 hover:bg-white shadow-md'
+              }`}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))
+        ) : (
+          // Show sliding window of 5 dots
+          (() => {
+            const maxDots = 5;
+            const halfWindow = Math.floor(maxDots / 2);
+            let startIndex = Math.max(0, currentIndex - halfWindow);
+            let endIndex = Math.min(images.length, startIndex + maxDots);
 
-      <button
-        onClick={onNext}
-        className="absolute right-6 top-1/2 -translate-y-1/2 text-white bg-[#3A3532]/40 hover:bg-[#3A3532]/60 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
-        aria-label="Next image"
-      >
-        <ChevronRight className="w-6 h-6" strokeWidth={2} />
-      </button>
+            if (endIndex - startIndex < maxDots) {
+              startIndex = Math.max(0, endIndex - maxDots);
+            }
+
+            const dotsToShow = [];
+            for (let i = startIndex; i < endIndex; i++) {
+              dotsToShow.push(i);
+            }
+
+            return dotsToShow.map((imageIndex) => (
+              <button
+                key={imageIndex}
+                onClick={() => onDotClick(imageIndex)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  imageIndex === currentIndex
+                    ? 'bg-white w-8 shadow-lg'
+                    : 'bg-white/70 hover:bg-white shadow-md'
+                }`}
+                aria-label={`Go to image ${imageIndex + 1}`}
+              />
+            ));
+          })()
+        )}
+      </div>
 
       <div className="absolute bottom-6 right-6 text-white/50 text-[10px] font-['Roboto'] tracking-wider">
         {currentIndex + 1} — {images.length}
@@ -292,6 +326,35 @@ const VillaAmmos: React.FC = () => {
     });
   };
 
+  const handleDotClick = (id: string, index: number) => {
+    setCurrentImageIndexes((prev) => ({
+      ...prev,
+      [id]: index
+    }));
+  };
+
+  // Keyboard navigation for room carousels
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        // Find which room carousel is being hovered
+        rooms.forEach(room => {
+          const carouselElement = document.querySelector(`[data-carousel="${room.id}"]`);
+          if (carouselElement && carouselElement.matches(':hover')) {
+            if (e.key === 'ArrowLeft') {
+              handlePrevImage(room.id);
+            } else {
+              handleNextImage(room.id);
+            }
+          }
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [rooms]);
+
   const openGallery = (id: string, images: string[]) => {
     setActiveGallery({ id, images });
     setGalleryOpen(true);
@@ -332,14 +395,17 @@ const VillaAmmos: React.FC = () => {
           >
             <div className="flex flex-col lg:flex-row">
               <div className="lg:w-1/2 xl:w-[45%] h-[400px] lg:h-[500px]">
-                <ImageCarousel
-                  images={room.images}
-                  currentIndex={currentImageIndexes[room.id] ?? 0}
-                  onPrev={() => handlePrevImage(room.id)}
-                  onNext={() => handleNextImage(room.id)}
-                  onGalleryOpen={() => openGallery(room.id, room.images)}
-                  alt={room.name}
-                />
+                <div data-carousel={room.id} className="w-full h-full">
+                  <ImageCarousel
+                    images={room.images}
+                    currentIndex={currentImageIndexes[room.id] ?? 0}
+                    onPrev={() => handlePrevImage(room.id)}
+                    onNext={() => handleNextImage(room.id)}
+                    onGalleryOpen={() => openGallery(room.id, room.images)}
+                    onDotClick={(index) => handleDotClick(room.id, index)}
+                    alt={room.name}
+                  />
+                </div>
               </div>
 
               <div className="lg:w-1/2 xl:w-[55%] p-8 md:p-12 lg:px-16 lg:py-12">
