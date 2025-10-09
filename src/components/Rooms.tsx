@@ -216,7 +216,7 @@ const InteractivePropertyMap: React.FC = () => {
                     ? 'bg-[#8E7D67]/80 text-white'
                     : 'bg-[#3A3532]/80 text-white'
                 }`}>
-                  <span className="text-[10px] font-['Roboto'] font-semibold text-center px-1">
+                  <span className="text-[5px] md:text-[10px] font-['Roboto'] font-semibold text-center px-1">
                     {hotspot.label}
                   </span>
                 </div>
