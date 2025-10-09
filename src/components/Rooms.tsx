@@ -24,25 +24,28 @@ import {
 
 // Property hotspots for interactive map
 // Upper level = Villa Kyma, Lower level = Villa Ammos
+// x, y = center position, width/height = size of interactive area (in percentage)
 const propertyHotspots = [
   // Villa Kyma (Upper Level) - Rooms from left to right
-  { id: 1, label: "Kyma Room 5", x: 31, y: 57, villa: "kyma" },
-  { id: 2, label: "Kyma Room 6", x: 57.5, y: 58, villa: "kyma" },
-  { id: 3, label: "Kyma Room 7", x: 66, y: 58, villa: "kyma" },
-  { id: 4, label: "Kyma Room 8", x: 75.5, y: 58, villa: "kyma" },
-  { id: 5, label: "Kyma Outdoor Dining Area", x: 51, y: 58, villa: "kyma" },
-  { id: 6, label: "Kyma Kitchen & Living Area", x: 41, y: 58, villa: "kyma" },
-  { id: 7, label: "Kyma Pool Area", x: 54, y: 60, villa: "kyma" },
-  {id: 15, label: "Kyma Outdoor Sitting Area", x: 26, y: 60.5, villa: "kyma" },
+  { id: 1, label: "Kyma Room 5", x: 27, y: 55.5, width: 12, height: 5, villa: "kyma" },
+  { id: 2, label: "Kyma Room 6", x: 57.5, y: 56, width: 5, height: 6.5, villa: "kyma" },
+  { id: 3, label: "Kyma Room 7", x: 66, y: 56, width: 5, height: 6.5, villa: "kyma" },
+  { id: 4, label: "Kyma Room 8", x: 75.5, y: 56, width: 5, height: 6.5, villa: "kyma" },
+  { id: 5, label: "Kyma Outdoor Dining Area", x: 50, y: 55.5, width: 7.5, height: 8, villa: "kyma" },
+  { id: 6, label: "Kyma Kitchen & Living Area", x: 40, y: 58, width: 11, height: 7.5, villa: "kyma" },
+  { id: 7, label: "Kyma Pool Area", x: 59, y: 61.5, width: 20, height: 3, villa: "kyma" },
+  {id: 16, label: "Kyma Outdoor Sitting Area", x: 26, y: 61, width: 9, height: 5, villa: "kyma" },
 
   // Villa Ammos (Lower Level) - Rooms from left to right
-  { id: 8, label: "Ammos Room 1", x: 24, y: 70, villa: "ammos" },
-  { id: 9, label: "Ammos Room 2", x: 59.5, y: 71, villa: "ammos" },
-  { id: 10, label: "Ammos Room 3", x: 70.5, y: 73, villa: "ammos" },
-  { id: 11, label: "Ammos Room 4", x: 80, y: 73, villa: "ammos" },
-  { id: 12, label: "Ammos Kitchen", x: 50, y: 70, villa: "ammos" },
-  { id: 13, label: "Ammos Outdoor Sitting Area", x: 33, y: 84, villa: "ammos" },
-  { id: 14, label: "Ammos Pool Area", x: 48, y: 79, villa: "ammos" },
+  { id: 8, label: "Ammos Room 1", x: 24, y: 71, width: 5, height: 6.5, villa: "ammos" },
+  { id: 9, label: "Ammos Room 2", x: 59.5, y: 71.5, width: 5, height: 6.5, villa: "ammos" },
+  { id: 10, label: "Ammos Room 3", x: 70.5, y: 73, width: 5, height: 6.5, villa: "ammos" },
+  { id: 11, label: "Ammos Room 4", x: 80.8, y: 73, width: 5, height: 6.5, villa: "ammos" },
+  { id: 12, label: "Ammos Outdoor Dining Area", x: 51.2, y: 70, width: 5, height: 7.5, villa: "ammos" },
+  { id: 17, label: "Gym", x: 46.5, y: 70, width: 2.2, height: 7.5, villa: "ammos" },
+  { id: 13, label: "Ammos Outdoor Sitting Area", x: 33, y: 84, width: 16, height: 7, villa: "ammos" },
+  { id: 14, label: "Ammos Pool & Bar Area", x: 55, y: 79, width: 19.5, height: 6, villa: "ammos" },
+  { id: 15, label: "Ammos Kitchen & Living Area", x: 36, y: 71, width: 16.5, height: 11, villa: "ammos" },
 ];
 
 // Interactive Property Map Component
@@ -191,33 +194,31 @@ const InteractivePropertyMap: React.FC = () => {
           {propertyHotspots.map((hotspot) => (
             <div
               key={hotspot.id}
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer pointer-events-auto group"
-              style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
+              className="absolute cursor-pointer pointer-events-auto group"
+              style={{
+                left: `${hotspot.x}%`,
+                top: `${hotspot.y}%`,
+                width: `${hotspot.width}%`,
+                height: `${hotspot.height}%`,
+                transform: 'translate(-50%, -50%)'
+              }}
               onMouseEnter={() => handleMouseEnter(hotspot.id)}
               onMouseLeave={handleMouseLeave}
               onClick={(e) => handleHotspotClick(e, hotspot.id)}
             >
-              {/* Invisible hover area - no visible marker */}
-              <div className="relative flex items-center justify-center">
-                {/* Larger invisible hover zone for better discoverability */}
-                <div className="absolute w-16 h-16 md:w-20 md:h-20"></div>
-              </div>
+              {/* Invisible rectangular hover area */}
+              <div className="w-full h-full"></div>
 
-              {/* Tooltip */}
+              {/* Tooltip - shown inside the rectangle */}
               {(hoveredHotspot === hotspot.id || activeHotspot === hotspot.id) && (
-                <div className={`absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 text-xs font-['Roboto'] whitespace-nowrap rounded shadow-lg z-10 ${
+                <div className={`absolute inset-0 flex items-center justify-center rounded-md ${
                   hotspot.villa === 'ammos'
-                    ? 'bg-[#8E7D67] text-white'
-                    : 'bg-[#3A3532] text-white'
+                    ? 'bg-[#8E7D67]/80 text-white'
+                    : 'bg-[#3A3532]/80 text-white'
                 }`}>
-                  {hotspot.label}
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
-                    <div className={`border-[3px] border-transparent ${
-                      hotspot.villa === 'ammos'
-                        ? 'border-t-[#8E7D67]'
-                        : 'border-t-[#3A3532]'
-                    }`}></div>
-                  </div>
+                  <span className="text-[10px] font-['Roboto'] font-semibold text-center px-1">
+                    {hotspot.label}
+                  </span>
                 </div>
               )}
             </div>
