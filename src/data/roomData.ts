@@ -82,7 +82,7 @@ export const villaData = [
       "Concierge Assistance"
     ],
     images: [
-      "/villa kyma pool 4.jpg",
+      "/villa kyma outdoor 24.jpg",
       "/villa kyma outdoor 2.jpg",
       "/villa kyma outdoor 3.jpg",
       "/villa kyma bar area 2.jpg",
@@ -197,9 +197,9 @@ export const roomData: RoomDetails[] = [
       "Family-friendly setup"
     ],
     images: [
+      "/villa ammos r3 3.jpg",
       "/villa ammos r3 1.jpg",
       "/villa ammos r3 2.jpg",
-      "/villa ammos r3 3.jpg",
       "/villa ammos r3 4.jpg",
       "/villa ammos r3 5.jpg",
       "/villa ammos r3 6.jpg"
@@ -255,8 +255,8 @@ export const roomData: RoomDetails[] = [
       "Daily maid service"
     ],
     images: [
-      "/villa kyma r5 2.jpg",
       "/villa kyma r5 3.jpg",
+      "/villa kyma r5 2.jpg",
       "/villa kyma r5 7.jpg",
       "/villa kyma r5 8.jpg",
       "/villa kyma r5 9.jpg",

@@ -11,18 +11,18 @@ import Amenities from '../components/Amenities';
 const RoomsPreview: React.FC = () => {
   return (
     <div>
-      <div className="overflow-hidden mb-8" style={{ height: "400px" }}>
+      <div className="overflow-hidden" style={{ height: "580px" }}>
         <img
-          src="/villa kyma outdoor 9.jpg"
+          src="/villa kyma pool 4.jpg"
           alt="Luxury villa room"
           className="w-full h-full object-cover"
-          style={{ objectPosition: "center 40%" }}
+          style={{ objectPosition: "center center" }}
         />
       </div>
       
       <div className="pt-4">
         <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-          ACCOMMODATION
+          STAY
         </p>
         <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
           Your poolside paradise awaits
@@ -36,7 +36,7 @@ const RoomsPreview: React.FC = () => {
           to="/rooms"
           className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase"
         >
-          Explore Accommodation
+          Find out more
         </Link>
       </div>
     </div>
@@ -58,10 +58,10 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl">
           {/* First Row - Rooms and Events */}
           <div className="grid md:grid-cols-12 gap-6 md:gap-12 mb-24">
-            <div className="md:col-span-7 md:translate-y-24">
+            <div className="md:col-span-5 md:translate-y-24">
               <RoomsPreview />
             </div>
-            <div className="md:col-span-5">
+            <div className="md:col-span-5 md:col-start-8">
               <Events />
             </div>
           </div>
