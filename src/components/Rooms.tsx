@@ -677,7 +677,7 @@ const Rooms: React.FC = () => {
                 <p className="text-[#8E7D67] font-['Roboto'] text-sm md:text-base italic mb-0">
                   {villa.id === 'villa-ammos'
                     ? 'A boho chic villa ideal for your tranquil retreat'
-                    : 'Combining comforts, eclectic décor, and natural materials'}
+                    : 'Harmony Above the Aegean: Where Cycladic Architecture Meets Endless Blue'}
                 </p>
               </div>
 
@@ -702,7 +702,7 @@ const Rooms: React.FC = () => {
                       <p>Villa Ammos, located on the lower level, offers stunning panoramic views of the Aegean Sea, Agios Georgios Bay, and Despotiko Island from every corner inside and outside the villa, allowing guests to enjoy breathtaking scenery throughout their stay.</p>
                       <p>The villa boasts four elegantly appointed ensuite bedrooms, a fully equipped kitchen with a stylish island and premium appliances, a cozy indoor lounge, a shaded outdoor dining area for up to ten guests, and a comfortable outdoor seating space perfect for taking in the serene views.</p>
                       <p>Experience ultimate comfort and privacy in this elegant villa, featuring its own private pool and a fully equipped indoor gym complete with a treadmill, punching bag, free weights, and a workout bench. The villa accommodates up to 10 guests, ensuring a luxurious stay for everyone. Perfect for families, Rooms 3 and 4 can be connected for added convenience.</p>
-                      <p>Both villas are embracing a bring-your-own-device concept. Guests can enjoy complimentary high-speed satellite internet access throughout their stay, allowing them to connect effortlessly on their personal devices. A projector is available upon request, perfect for movie nights or watching your favorite sports events in style.</p>
+                      <p>Guests can enjoy complimentary high-speed satellite internet access throughout their stay, allowing them to connect effortlessly on their personal devices. A projector is available upon request, perfect for movie nights or watching your favorite sports events in style.</p>
                     </>
                   ) : (
                     <>
@@ -711,7 +711,7 @@ const Rooms: React.FC = () => {
                       <p>The villa offers a stunning temperature-controlled infinity pool perfect for relaxing swims with breathtaking sea views. It also features an outdoor shower, a shaded dining area that comfortably seats 12 guests, a outdoor sitting area, and a fully equipped outdoor gym complete with a training bike, free weights, and a workout bench. This combination of luxurious amenities provides a perfect balance of leisure, and fitness in a spectacular natural setting.</p>
                       <p>The outdoor bar and BBQ area elegantly blends stone-built architecture with the natural rocky terrain of the Agios Georgios hillside, creating a harmonious setting perfect for alfresco dining and entertaining against the stunning backdrop of the Aegean landscape.</p>
                       <p>The villa accommodates a maximum of 9 guests, ensuring both comfort and privacy for all. For families, there is an option to connect Rooms 6 and 7.</p>
-                      <p>Both villas are embracing a bring-your-own-device concept. Guests can enjoy complimentary high-speed satellite internet access throughout their stay, allowing them to connect effortlessly on their personal devices. A projector is available upon request, perfect for movie nights or watching your favorite sports events in style.</p>
+                      <p>Guests can enjoy complimentary high-speed satellite internet access throughout their stay, allowing them to connect effortlessly on their personal devices. A projector is available upon request, perfect for movie nights or watching your favorite sports events in style.</p>
                     </>
                   )}
                 </div>
@@ -734,7 +734,6 @@ const Rooms: React.FC = () => {
                                 <div className="flex items-start"><Snowflake className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Air conditioning</span></div>
                                 <div className="flex items-start"><Wind className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Ceiling Fans in all rooms</span></div>
                                 <div className="flex items-start"><Lock className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Safe deposit box</span></div>
-                                <div className="flex items-start"><Home className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Maid's room (upon request & subject to availability)</span></div>
                               </>
                             ) : (
                               <>
@@ -742,7 +741,7 @@ const Rooms: React.FC = () => {
                                 <div className="flex items-start"><Snowflake className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Air conditioning</span></div>
                                 <div className="flex items-start"><Wind className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Ceiling Fans in all rooms</span></div>
                                 <div className="flex items-start"><Lock className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Safe deposit box</span></div>
-                                <div className="flex items-start"><Home className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Maid's room (upon request & subject to availability)</span></div>
+                                
                               </>
                             )}
                           </div>
@@ -758,6 +757,8 @@ const Rooms: React.FC = () => {
                                 <div className="flex items-start"><Droplets className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Outdoor shower</span></div>
                                 <div className="flex items-start"><Flame className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>BBQ</span></div>
                                 <div className="flex items-start"><Dumbbell className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Indoor gym</span></div>
+                                <div className="flex items-start"><Home className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Maid's room (upon request & subject to availability)</span></div>
+                                <div className="flex items-start"><Sparkles className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Projector (upon request & subject to availability)</span></div>
                               </>
                             ) : (
                               <>
@@ -765,6 +766,8 @@ const Rooms: React.FC = () => {
                                 <div className="flex items-start"><Droplets className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Outdoor shower</span></div>
                                 <div className="flex items-start"><Wine className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Outdoor Bar/BBQ</span></div>
                                 <div className="flex items-start"><Dumbbell className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Outdoor gym</span></div>
+                                <div className="flex items-start"><Home className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Maid's room (upon request & subject to availability)</span></div>
+                                <div className="flex items-start"><Sparkles className="w-4 h-4 text-[#8E7D67] mr-2 mt-0.5 flex-shrink-0" strokeWidth={1.5} /><span>Projector (upon request & subject to availability)</span></div>
                               </>
                             )}
                           </div>
