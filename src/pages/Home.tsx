@@ -57,11 +57,11 @@ const Home: React.FC = () => {
       <div className="bg-[#F4F3EB] py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl">
           {/* First Row - Rooms and Events */}
-          <div className="grid md:grid-cols-12 gap-6 md:gap-12 mb-24">
-            <div className="md:col-span-5 md:translate-y-24">
+          <div className="grid md:grid-cols-12 gap-6 md:gap-4 mb-24">
+            <div className="md:col-span-5">
               <RoomsPreview />
             </div>
-            <div className="md:col-span-5 md:col-start-8">
+            <div className="md:col-span-5 md:col-start-8 md:translate-y-24">
               <Events />
             </div>
           </div>
