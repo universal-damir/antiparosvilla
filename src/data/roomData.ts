@@ -252,7 +252,8 @@ export const roomData: RoomDetails[] = [
       "Air conditioning",
       "Ceiling Fan",
       "Premium linens",
-      "Daily maid service"
+      "Daily maid service",
+      "Kitchenette with mini fridge"
     ],
     images: [
       "/villa kyma r5 3.jpg",

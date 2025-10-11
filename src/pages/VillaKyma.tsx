@@ -20,12 +20,14 @@ import {
   Wine,
   Snowflake,
   Users,
-  Sofa
+  Sofa,
+  Refrigerator
 } from "lucide-react";
 
 const getAmenityIcon = (amenity: string) => {
   const lowerCaseAmenity = amenity.toLowerCase();
 
+  if (lowerCaseAmenity.includes('kitchenette') || lowerCaseAmenity.includes('mini fridge')) return <Refrigerator className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
   if (lowerCaseAmenity.includes('sea view')) return <Eye className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
   if (lowerCaseAmenity.includes('king') || lowerCaseAmenity.includes('queen') || (lowerCaseAmenity.includes('bed') && !lowerCaseAmenity.includes('couch'))) return <Bed className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;
   if (lowerCaseAmenity.includes('couch') || lowerCaseAmenity.includes('single bed')) return <Sofa className="w-4 h-4 text-[#8E7D67]" strokeWidth={1.5} />;

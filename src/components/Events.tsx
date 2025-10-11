@@ -84,9 +84,9 @@ const Events: React.FC = () => {
 
       {/* Events content */}
       <div className="container mx-auto px-4 py-16 max-w-6xl">
-        <div className="text-center mb-12">
-          <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto">
-            Host your dream event at our exclusive Antiparos villas. With capacity for up to 16 guests across
+        <div className="mb-12">
+          <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto text-justify">
+            Host your dream event at our exclusive Antiparos villas. With capacity for up to 19 guests across
             8 luxurious bedrooms, our properties offer the perfect blend of privacy, elegance, and breathtaking
             natural beauty. From intimate wedding ceremonies to milestone birthdays, corporate retreats to family
             reunions, we provide an unforgettable backdrop for life's most precious celebrations. Our dedicated
@@ -140,10 +140,7 @@ const Events: React.FC = () => {
                   CORPORATE RETREATS
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  Elevate your next corporate gathering in an inspiring setting. Our villas provide
-                  versatile spaces for board meetings, team building, and creative workshops. With
-                  high-speed internet, multiple gathering areas, and complete privacy, combine productive
-                  sessions with poolside networking and sunset strategy discussions.
+                  Elevate your next corporate gathering in an inspiring setting. Our villas provide versatile spaces for team building, poolside networking and sunset strategy discussions.
                 </p>
               </div>
             </div>
@@ -168,10 +165,7 @@ const Events: React.FC = () => {
                   PRIVATE CHEF & CATERING
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  Elevate your event with exceptional cuisine crafted by our private chef. From traditional
-                  Greek feasts to international gourmet menus, every dish showcases the finest local ingredients.
-                  Whether it's a romantic dinner for two, a poolside BBQ, or an elegant reception, our culinary
-                  team creates memorable dining experiences tailored to your preferences.
+                  Elevate your event with exceptional cuisine crafted by our on demand chef. From traditional Greek feasts to international gourmet menus, every dish showcases the finest local ingredients. Whether it's a romantic dinner for two, a poolside BBQ, or an elegant reception, our promise is a memorable dining experiences tailored to your preferences.
                 </p>
               </div>
             </div>
