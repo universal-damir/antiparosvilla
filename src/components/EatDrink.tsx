@@ -57,7 +57,7 @@ const EatDrink: React.FC = () => {
       <section className="relative w-full h-[80vh] overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80"
+            src="/eat-drink-cover.jpg"
             alt="Mediterranean feast table with fresh food"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -77,12 +77,8 @@ const EatDrink: React.FC = () => {
       {/* Eat & Drink content */}
       <div className="container mx-auto px-4 py-16 max-w-6xl">
         <div className="text-center mb-12">
-          <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto">
-            At Villa Antiparos, we celebrate Greece's rich culinary heritage. From our in-villa dining 
-            experiences to the island's finest tavernas, every meal becomes a memorable part of your journey. 
-            Discover traditional recipes made with locally-sourced ingredients, paired with exceptional Greek wines 
-            and spirits. Whether dining in or exploring the island's gastronomic delights, we invite you to savor 
-            authentic flavors that tell the story of Greece's diverse regions and culinary traditions.
+          <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto text-justify">
+            At Indigo Chic Villas, every meal is a journey. Enjoy traditional recipes crafted from locally sourced ingredients, paired with exceptional Greek wines, whether in the intimacy of your villa or at the island's finest tavernas. Taste the authentic flavours of Greece and let every bite tell a story.
           </p>
         </div>
 
@@ -107,12 +103,7 @@ const EatDrink: React.FC = () => {
                   VILLA GASTRONOMY
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  Experience exceptional dining without leaving the comfort of your villa. Our chef 
-                  creates personalized menus featuring the finest local ingredients - from fresh seafood caught 
-                  that morning to vegetables from nearby organic farms. Enjoy intimate breakfasts on your terrace, 
-                  casual poolside lunches, or elegant dinners under the stars. Our team can arrange everything 
-                  from special celebration meals to cooking classes where you'll learn to prepare traditional 
-                  Greek specialties.
+                  Experience exceptional dining without leaving the comfort of your villa with our Chef on Demand service. Enjoy personalized menus crafted with the finest local ingredients — from freshly caught seafood to organic produce from nearby farms. Whether it's breakfast on your terrace, a relaxed poolside lunch, or a private dinner under the stars, our chef brings a restaurant-quality experience to your villa. We can also arrange special celebration meals or private cooking classes featuring traditional Greek cuisine.
                 </p>
               </div>
             </div>
@@ -121,7 +112,7 @@ const EatDrink: React.FC = () => {
             <div className="md:col-span-5 md:col-start-8 md:row-start-1 md:translate-y-28">
               <div className="overflow-hidden mb-4" style={{ height: "620px" }}>
                 <img
-                  src="https://images.pexels.com/photos/1010641/pexels-photo-1010641.jpeg"
+                  src="/local-recommendation.jpg"
                   alt="Greek island landscape with water and buildings"
                   className="w-full h-full object-cover"
                 />
@@ -131,16 +122,51 @@ const EatDrink: React.FC = () => {
                   ISLAND FLAVORS
                 </p>
                 <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-                  LOCAL RECOMMENDATIONS
+                  LOCAL RECOMMENDATION
                 </h2>
-                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  Explore Antiparos' vibrant culinary scene with our carefully curated recommendations:
+                <p className="text-[#3A3532] mb-4 font-['Roboto'] leading-relaxed">
+                  Explore Antiparos' vibrant culinary scene with our curated recommendations:
                 </p>
-                <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
-                  <li><span className="font-semibold">Captain Pipinos</span> - Waterfront taverna famous for fresh-caught fish and octopus dried in the Aegean sun.</li>
-                  <li><span className="font-semibold">Kalokeri</span> - Farm-to-table dining featuring produce from their organic garden.</li>
-                  <li><span className="font-semibold">Ageri</span> - Traditional meze with a modern twist in Antiparos Town's charming center.</li>
-                  <li><span className="font-semibold">The Beach House</span> - Relaxed beachside dining with spectacular sunset views.</li>
+                <ul className="space-y-3 text-[#3A3532] font-['Roboto'] leading-relaxed mb-6">
+                  <li>
+                    <span className="font-semibold">Mpakas taverna & Captain Pipinos</span> — Waterfront dining in Agios Georgios. Fresh fish and octopus dried in the Aegean sun.
+                  </li>
+                  <li>
+                    <span className="font-semibold">Rooster</span> — Fine dining with breathtaking views and organic farm-to-table produce.
+                  </li>
+                  <li>
+                    <span className="font-semibold">Cookoovaya</span> — Waterfront fine dining from chef Koskinas.
+                  </li>
+                  <li>
+                    <span className="font-semibold">Vasilainas Blue</span> — Award-winning comfort cuisine with serene views.
+                  </li>
+                  <li>
+                    <span className="font-semibold">Epestefe</span> — Traditional Greek dishes in a relaxed town atmosphere.
+                  </li>
+                </ul>
+
+                <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto'] mb-3 uppercase mt-8">Bars & Nightlife</h3>
+                <ul className="space-y-2 text-[#3A3532] font-['Roboto'] leading-relaxed mb-6">
+                  <li><span className="font-semibold">Citron Antiparos</span> — Chic vibes, cocktails, and dance beats.</li>
+                  <li><span className="font-semibold">Boogaloo Cocktail Bar</span> — Great DJs and energetic atmosphere.</li>
+                  <li><span className="font-semibold">Little Frog</span> — Fun bar with music and dancing.</li>
+                  <li><span className="font-semibold">Bardot</span> — Stylish bar with music.</li>
+                  <li><span className="font-semibold">10AM Apotheke</span> — Botanical bar with unique ambiance.</li>
+                  <li><span className="font-semibold">Tabula Rasa</span> — Hip nightlife spot.</li>
+                  <li><span className="font-semibold">Dancing Club Mill</span> — Island clubbing experience.</li>
+                  <li><span className="font-semibold">La Luna</span> — Late night 80s cult atmosphere.</li>
+                </ul>
+
+                <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto'] mb-3 uppercase mt-8">Beach Clubs</h3>
+                <ul className="space-y-2 text-[#3A3532] font-['Roboto'] leading-relaxed mb-6">
+                  <li><span className="font-semibold">Soros Beach</span> — Boho vibes, music, and seaside cocktails.</li>
+                  <li><span className="font-semibold">Beach House</span> — Chic beachside dining, home of Cookoovaya.</li>
+                </ul>
+
+                <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto'] mb-3 uppercase mt-8">Magical Sunset Places</h3>
+                <ul className="space-y-2 text-[#3A3532] font-['Roboto'] leading-relaxed">
+                  <li><span className="font-semibold">Sunset</span> — Mediterranean cuisine with panoramic Aegean views.</li>
+                  <li><span className="font-semibold">Rooster</span> — Exceptional sunset views with signature cocktails.</li>
                 </ul>
               </div>
             </div>
@@ -152,14 +178,14 @@ const EatDrink: React.FC = () => {
             <div className="md:col-span-5 md:col-start-2 md:row-start-1">
               <div className="overflow-hidden mb-4" style={{ height: "580px" }}>
                 <img
-                  src="https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg"
+                  src="/taste-of-antiparos.jpg"
                   alt="Greek salad with tomatoes and greens in white bowl"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="pt-4">
                 <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-                  TASTE OF GREECE
+                  TASTE OF ANTIPAROS
                 </p>
                 <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
                   TRADITIONAL RECIPES
@@ -169,16 +195,22 @@ const EatDrink: React.FC = () => {
                 </p>
                 <div className="space-y-6">
                   <div>
+                    <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto']">Cheese saganaki</h3>
+                    <p className="text-[#3A3532] font-['Roboto'] leading-relaxed">
+                      is the perfect Greek meze! This recipe is so simple and quick. Made with either kefalotyri or kefalograviera coated in flour and a touch of breadcrumbs, the result is a crispy on the outside, oozy on the inside appetizer. The best way to serve cheese saganaki is with a fresh squeeze of lemon.
+                    </p>
+                  </div>
+                  <div>
                     <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto']">Authentic Greek Salad (Horiatiki)</h3>
                     <p className="text-[#3A3532] font-['Roboto'] leading-relaxed">
-                      Combine ripe tomatoes, cucumber, green bell pepper, red onion, Kalamata olives, and a thick slice of feta. 
+                      Combine ripe tomatoes, cucumber, green bell pepper, red onion, Kalamata olives, and a thick slice of feta.
                       Dress with extra virgin olive oil, a splash of red wine vinegar, dried oregano, and sea salt.
                     </p>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto']">Tzatziki</h3>
                     <p className="text-[#3A3532] font-['Roboto'] leading-relaxed">
-                      Strain Greek yogurt, then mix with grated cucumber (water squeezed out), minced garlic, 
+                      Strain Greek yogurt, then mix with grated cucumber (water squeezed out), minced garlic,
                       olive oil, fresh dill, and a splash of lemon juice. Perfect with grilled meats or as a dip.
                     </p>
                   </div>
@@ -190,7 +222,7 @@ const EatDrink: React.FC = () => {
             <div className="md:col-span-6 md:col-start-7 md:row-start-1 md:translate-y-32">
               <div className="overflow-hidden mb-4" style={{ height: "450px" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1609950547346-a4f431435b2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80"
+                  src="/local-delicacies.jpg"
                   alt="Greek olive oil, herbs and local products"
                   className="w-full h-full object-cover"
                 />

@@ -1,10 +1,99 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { galleryImages } from "../data/galleryData";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const Destination: React.FC = () => {
   const location = useLocation();
   const isDestinationPage = location.pathname === "/destination";
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const galleryImages = [
+    { src: "/antiparos-1.jpg", alt: "Antiparos 1" },
+    { src: "/antiparos-2.jpg", alt: "Antiparos 2" },
+    { src: "/antiparos-3.jpg", alt: "Antiparos 3" },
+    { src: "/antiparos-4.jpg", alt: "Antiparos 4" },
+    { src: "/antiparos-5.jpg", alt: "Antiparos 5" },
+    { src: "/antiparos-6.png", alt: "Antiparos 6" },
+    { src: "/antiparos-7.jpg", alt: "Antiparos 7" },
+  ];
+
+  const minSwipeDistance = 50;
+
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImageIndex(null);
+  };
+
+  const handlePrevImage = useCallback(() => {
+    if (selectedImageIndex === null) return;
+    setSelectedImageIndex((prevIndex) => {
+      if (prevIndex === null) return 0;
+      return prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1;
+    });
+  }, [selectedImageIndex, galleryImages.length]);
+
+  const handleNextImage = useCallback(() => {
+    if (selectedImageIndex === null) return;
+    setSelectedImageIndex((prevIndex) => {
+      if (prevIndex === null) return 0;
+      return prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1;
+    });
+  }, [selectedImageIndex, galleryImages.length]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedImageIndex === null) return;
+
+      switch (e.key) {
+        case "ArrowLeft":
+          handlePrevImage();
+          break;
+        case "ArrowRight":
+          handleNextImage();
+          break;
+        case "Escape":
+          handleCloseModal();
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImageIndex, handlePrevImage, handleNextImage]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isSwipe = Math.abs(distance) > minSwipeDistance;
+
+    if (isSwipe) {
+      if (distance > 0) {
+        handleNextImage();
+      } else {
+        handlePrevImage();
+      }
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   // This is the section displayed on the homepage
   if (!isDestinationPage) {
@@ -56,7 +145,7 @@ const Destination: React.FC = () => {
       <section className="relative w-full h-[80vh] overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="https://images.pexels.com/photos/1711326/pexels-photo-1711326.jpeg"
+            src="/destination-antiparos.jpg"
             alt="Beautiful aerial view of Greek island with blue sea"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -76,11 +165,8 @@ const Destination: React.FC = () => {
       {/* Destination content */}
       <div className="container mx-auto px-4 py-16 max-w-6xl">
         <div className="text-center mb-12">
-          <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto">
-            Antiparos is a small island in the heart of the Cyclades, offering authentic Greek charm without the crowds. 
-            Just a short ferry ride from its larger neighbor Paros, this tranquil paradise combines pristine beaches, crystal-clear waters, 
-            and traditional villages with a relaxed, unpretentious atmosphere. From the magnificent Cave of Antiparos to secluded coves 
-            and vibrant local tavernas, let Villa Antiparos be your gateway to experiencing this enchanting island's natural beauty and rich cultural heritage.
+          <p className="text-[#3A3532] text-lg md:text-xl font-['Roboto'] leading-relaxed max-w-4xl mx-auto text-justify">
+            Discover the charm of Antiparos, a serene island where golden beaches, hidden coves, and crystal-clear waters meet authentic Cycladic culture. This tranquil paradise invites you to slow down and promises you unforgettable moments—whether strolling at sunset, dining under the stars, exploring ancient archaeological sites or exploring by boat. Let Indigo Chic Villas be your gateway to experiencing the island's natural beauty, rich heritage, and timeless Cycladic allure.
           </p>
         </div>
 
@@ -92,7 +178,7 @@ const Destination: React.FC = () => {
             <div className="md:col-span-7 md:col-start-1 md:row-start-1">
               <div className="overflow-hidden mb-4" style={{ height: "500px" }}>
                 <img
-                  src="https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg"
+                  src="/story-of-antiparos.jpg"
                   alt="Traditional Greek village with white houses and blue domes"
                   className="w-full h-full object-cover"
                 />
@@ -119,7 +205,7 @@ const Destination: React.FC = () => {
             <div className="md:col-span-5 md:col-start-8 md:row-start-1 md:translate-y-28">
               <div className="overflow-hidden mb-4" style={{ height: "620px" }}>
                 <img
-                  src="https://images.pexels.com/photos/1711326/pexels-photo-1711326.jpeg"
+                  src="/pristine-beaches.jpg"
                   alt="Beautiful turquoise waters at a Greek beach"
                   className="w-full h-full object-cover"
                 />
@@ -135,10 +221,13 @@ const Destination: React.FC = () => {
                   Antiparos is ringed by spectacular beaches, each with its own distinct character. Our favorites include:
                 </p>
                 <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
-                  <li><span className="font-semibold">Soros Beach</span> - Fine golden sand and shallow turquoise waters, ideal for families.</li>
-                  <li><span className="font-semibold">Livadia</span> - The main beach near Antiparos Town, with beach bars and water sports.</li>
-                  <li><span className="font-semibold">Agios Georgios</span> - A tranquil bay with crystal-clear waters, perfect for snorkeling.</li>
-                  <li><span className="font-semibold">Faneromeni</span> - A secluded beach accessible by boat, offering privacy and natural beauty.</li>
+                  <li><span className="font-semibold">Soros</span> – Must-see / Lively crystal-clear waters. Vibrant seaside tavern line the shore, serving freshly prepared local dishes and chilled drinks in a lively atmosphere.</li>
+                  <li><span className="font-semibold">Sifneiko (Sunset)</span> – Sunset / Water Activities. Renowned for its spectacular sunsets and golden sands. Perfect for snorkelling with excellent taverns and restaurants just steps away.</li>
+                  <li><span className="font-semibold">Glyfa</span> – Unspoilt Nature / Confidential. A tranquil blend of sand and pebbles in an untouched natural setting. Ideal for families seeking peace, authenticity, and a relaxed day by the sea, with a few charming tavernas nearby.</li>
+                  <li><span className="font-semibold">Agios Georgios</span> – Confidential / Calm. A serene and secluded bay with crystal-clear waters. The perfect spot for those looking to escape the crowds and embrace nature's calm. Minimal tourist development — bring your own supplies for a peaceful day by the sea.</li>
+                  <li><span className="font-semibold">Psaralyki I & II</span> – Water Sports / Family Friendly. Lively, well-organized beaches close to the main town. Perfect for swimming, sunbathing, and water sports such as kayaking and wakeboarding, with beach bars and restaurants conveniently nearby.</li>
+                  <li><span className="font-semibold">Apantima Beach</span> – Relaxation / Gastronomy. A picturesque pebble beach ideal for unwinding and dining. Home to several seaside taverns and bars, and just a short distance from the famous Cave of Antiparos.</li>
+                  <li><span className="font-semibold">Faneromeni</span> – Relaxation / Hidden Gem / Calm. A secluded, unspoilt beach with crystal-clear waters, offering privacy, serenity, and natural beauty — the perfect hideaway for those seeking total tranquillity.</li>
                 </ul>
               </div>
             </div>
@@ -177,7 +266,7 @@ const Destination: React.FC = () => {
             <div className="md:col-span-6 md:col-start-7 md:row-start-1 md:translate-y-32">
               <div className="overflow-hidden mb-4" style={{ height: "450px" }}>
                 <img
-                  src="https://images.pexels.com/photos/31697588/pexels-photo-31697588.jpeg"
+                  src="/island-activities.jpg"
                   alt="Traditional Greek fishing boats in harbor"
                   className="w-full h-full object-cover"
                 />
@@ -193,10 +282,15 @@ const Destination: React.FC = () => {
                   Beyond beaches and landmarks, Antiparos offers numerous ways to experience its authentic charm:
                 </p>
                 <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
-                  <li><span className="font-semibold">Island Hopping</span> - Take a day trip to nearby uninhabited Despotiko with its archaeological site, or visit larger Paros.</li>
-                  <li><span className="font-semibold">Boat Tours</span> - Circle the island by traditional boat, discovering hidden coves and beaches inaccessible by land.</li>
-                  <li><span className="font-semibold">Sunset at Sifneikos Beach</span> - Watch the sun sink into the Aegean from this perfectly positioned western beach.</li>
-                  <li><span className="font-semibold">Stroll Antiparos Town</span> - Wander the bougainvillea-draped streets, discovering boutiques, cafés and the 15th-century Kastro.</li>
+                  <li><span className="font-semibold">Take a Boat Trip to Despotiko</span> — Sail across the deep-blue Aegean to the nearby uninhabited island of Despotiko. Drop anchor on its rocky shores and explore the remarkable archaeological site, including the Sanctuary of Apollo.</li>
+                  <li><span className="font-semibold">Step Back in Time at the Cave of Antiparos</span> — This extraordinary vertical cave, plunging 85 metres underground, is one of Europe's most unique natural wonders. Its centuries-old stalagmites and stalactites create a breathtaking scene, while carvings and inscriptions — including one by Lord Byron — tell stories of its long history as a place of worship and refuge.</li>
+                  <li><span className="font-semibold">Enjoy a Day at the Beach</span> — Antiparos boasts soft white sands and crystal-clear waters perfect for a day of relaxation. Bask in the sun, swim in the calm Aegean, or build sandcastles with your children. The island's beaches offer something for everyone — from peaceful coves to family-friendly shores.</li>
+                  <li><span className="font-semibold">Watch the Sunset from a Beach Bar</span> — End your day with a cocktail in hand as the sun sets over the Aegean. Whether from a seaside taverna or a relaxed beach bar, watch Antiparos glow in shades of gold, pink, and purple — the perfect close to a day on the island.</li>
+                  <li><span className="font-semibold">Evening Stroll, Shopping & Dining in the Village</span> — Wander through charming, cobbled streets lined with whitewashed houses, and blooming bougainvillea. Discover the 15th century Kastro, local boutiques for handmade jewellery, leather goods, and traditional crafts, then dine in a taverna and enjoy freshly caught seafood in true island-style.</li>
+                  <li><span className="font-semibold">Cooking lessons</span> — Learn authentic Greek recipes from locals.</li>
+                  <li><span className="font-semibold">Yoga sessions</span> — Reconnect with yourself in a serene island setting.</li>
+                  <li><span className="font-semibold">Pottery classes</span> — Create your own handmade Greek-style souvenirs.</li>
+                  <li><span className="font-semibold">Island hopping</span> — From Parikia, you can reach: Naxos (30 min), Mykonos (1 hr), Tinos (1 hr 25 min).</li>
                 </ul>
               </div>
             </div>
@@ -212,28 +306,83 @@ const Destination: React.FC = () => {
             </h2>
 
             <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-              {galleryImages.slice(0, 12).map((image) => (
-                <div key={image.id} className="break-inside-avoid overflow-hidden rounded-lg group cursor-pointer">
+              {galleryImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="break-inside-avoid overflow-hidden rounded-lg group cursor-pointer relative"
+                  onClick={() => handleImageClick(index)}
+                  tabIndex={0}
+                  aria-label={`View ${image.alt}`}
+                  onKeyDown={(e) => e.key === 'Enter' && handleImageClick(index)}
+                >
                   <img
                     src={image.src}
                     alt={image.alt}
                     className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <span className="text-white font-['Roboto'] text-lg">View</span>
+                  </div>
                 </div>
               ))}
-            </div>
-
-            <div className="text-center mt-8">
-              <Link
-                to="/gallery"
-                className="inline-block px-5 py-2 border border-[#3A3532] text-[#3A3532] hover:bg-[#3A3532] hover:text-white transition-colors font-['Roboto'] uppercase"
-              >
-                View Full Gallery
-              </Link>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImageIndex !== null && (
+        <div
+          className="fixed inset-0 bg-[#3A3532]/95 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={handleCloseModal}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <button
+            className="absolute top-6 right-6 text-[#F4F3EB]/50 z-10 hover:text-[#F4F3EB]/80 transition-colors"
+            onClick={handleCloseModal}
+            aria-label="Close image"
+          >
+            <X size={20} strokeWidth={1} />
+          </button>
+
+          <button
+            className="absolute left-8 top-1/2 -translate-y-1/2 text-[#F4F3EB]/50 hover:text-[#F4F3EB]/80 transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrevImage();
+            }}
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={40} strokeWidth={1} />
+          </button>
+
+          <div className="relative max-w-6xl max-h-[90vh] w-full h-full flex items-center justify-center">
+            <img
+              src={galleryImages[selectedImageIndex].src}
+              alt={galleryImages[selectedImageIndex].alt}
+              className="max-h-full max-w-full object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+
+          <button
+            className="absolute right-8 top-1/2 -translate-y-1/2 text-[#F4F3EB]/50 hover:text-[#F4F3EB]/80 transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNextImage();
+            }}
+            aria-label="Next image"
+          >
+            <ChevronRight size={40} strokeWidth={1} />
+          </button>
+
+          <div className="absolute bottom-6 left-0 right-0 text-center text-[#F4F3EB]/40 font-['Roboto'] text-xs tracking-wider">
+            {selectedImageIndex + 1} — {galleryImages.length}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
