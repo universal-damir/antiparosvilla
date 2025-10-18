@@ -57,7 +57,7 @@ const EatDrink: React.FC = () => {
       <section className="relative w-full h-[80vh] overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/eat-drink-cover.jpg"
+            src="/eat-drink/eat-and-drink-header.jpeg"
             alt="Mediterranean feast table with fresh food"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -82,11 +82,11 @@ const EatDrink: React.FC = () => {
           </p>
         </div>
 
-        {/* Magazine-style layout */}
+        {/* Magazine-style layout - Zigzag pattern */}
         <div className="mt-16">
-          {/* First Row - Villa Dining & Local Restaurants */}
-          <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-32">
-            {/* Villa Dining Section */}
+          {/* Zigzag Editorial Grid */}
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-0">
+            {/* 1. Top Left - Villa Dining */}
             <div className="md:col-span-7 md:col-start-1 md:row-start-1">
               <div className="overflow-hidden mb-4" style={{ height: "500px" }}>
                 <img
@@ -108,77 +108,11 @@ const EatDrink: React.FC = () => {
               </div>
             </div>
 
-            {/* Local Restaurants Section */}
+            {/* 2. Middle Right - Traditional Recipes (offset down) */}
             <div className="md:col-span-5 md:col-start-8 md:row-start-1 md:translate-y-28">
-              <div className="overflow-hidden mb-4" style={{ height: "620px" }}>
-                <img
-                  src="/local-recommendation.jpg"
-                  alt="Greek island landscape with water and buildings"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-                  ISLAND FLAVORS
-                </p>
-                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-                  LOCAL RECOMMENDATION
-                </h2>
-                <p className="text-[#3A3532] mb-4 font-['Roboto'] leading-relaxed">
-                  Explore Antiparos' vibrant culinary scene with our curated recommendations:
-                </p>
-                <ul className="space-y-3 text-[#3A3532] font-['Roboto'] leading-relaxed mb-6">
-                  <li>
-                    <span className="font-semibold">Mpakas taverna & Captain Pipinos</span> — Waterfront dining in Agios Georgios. Fresh fish and octopus dried in the Aegean sun.
-                  </li>
-                  <li>
-                    <span className="font-semibold">Rooster</span> — Fine dining with breathtaking views and organic farm-to-table produce.
-                  </li>
-                  <li>
-                    <span className="font-semibold">Cookoovaya</span> — Waterfront fine dining from chef Koskinas.
-                  </li>
-                  <li>
-                    <span className="font-semibold">Vasilainas Blue</span> — Award-winning comfort cuisine with serene views.
-                  </li>
-                  <li>
-                    <span className="font-semibold">Epestefe</span> — Traditional Greek dishes in a relaxed town atmosphere.
-                  </li>
-                </ul>
-
-                <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto'] mb-3 uppercase mt-8">Bars & Nightlife</h3>
-                <ul className="space-y-2 text-[#3A3532] font-['Roboto'] leading-relaxed mb-6">
-                  <li><span className="font-semibold">Citron Antiparos</span> — Chic vibes, cocktails, and dance beats.</li>
-                  <li><span className="font-semibold">Boogaloo Cocktail Bar</span> — Great DJs and energetic atmosphere.</li>
-                  <li><span className="font-semibold">Little Frog</span> — Fun bar with music and dancing.</li>
-                  <li><span className="font-semibold">Bardot</span> — Stylish bar with music.</li>
-                  <li><span className="font-semibold">10AM Apotheke</span> — Botanical bar with unique ambiance.</li>
-                  <li><span className="font-semibold">Tabula Rasa</span> — Hip nightlife spot.</li>
-                  <li><span className="font-semibold">Dancing Club Mill</span> — Island clubbing experience.</li>
-                  <li><span className="font-semibold">La Luna</span> — Late night 80s cult atmosphere.</li>
-                </ul>
-
-                <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto'] mb-3 uppercase mt-8">Beach Clubs</h3>
-                <ul className="space-y-2 text-[#3A3532] font-['Roboto'] leading-relaxed mb-6">
-                  <li><span className="font-semibold">Soros Beach</span> — Boho vibes, music, and seaside cocktails.</li>
-                  <li><span className="font-semibold">Beach House</span> — Chic beachside dining, home of Cookoovaya.</li>
-                </ul>
-
-                <h3 className="text-lg font-semibold text-[#3A3532] font-['Roboto'] mb-3 uppercase mt-8">Magical Sunset Places</h3>
-                <ul className="space-y-2 text-[#3A3532] font-['Roboto'] leading-relaxed">
-                  <li><span className="font-semibold">Sunset</span> — Mediterranean cuisine with panoramic Aegean views.</li>
-                  <li><span className="font-semibold">Rooster</span> — Exceptional sunset views with signature cocktails.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Second Row - Recipes & Local Products */}
-          <div className="grid md:grid-cols-12 gap-8 md:gap-12">
-            {/* Traditional Recipes Section */}
-            <div className="md:col-span-5 md:col-start-2 md:row-start-1">
               <div className="overflow-hidden mb-4" style={{ height: "580px" }}>
                 <img
-                  src="/taste-of-antiparos.jpg"
+                  src="/eat-drink/traditional-recipies.jpeg"
                   alt="Greek salad with tomatoes and greens in white bowl"
                   className="w-full h-full object-cover"
                 />
@@ -218,11 +152,11 @@ const EatDrink: React.FC = () => {
               </div>
             </div>
 
-            {/* Local Products Section */}
-            <div className="md:col-span-6 md:col-start-7 md:row-start-1 md:translate-y-32">
+            {/* 3. Bottom Left - Local Delicacies (offset down more) */}
+            <div className="md:col-span-5 md:col-start-2 md:row-start-2 md:-translate-y-80">
               <div className="overflow-hidden mb-4" style={{ height: "450px" }}>
                 <img
-                  src="/local-delicacies.jpg"
+                  src="/eat-drink/local-delicacies.jpeg"
                   alt="Greek olive oil, herbs and local products"
                   className="w-full h-full object-cover"
                 />
@@ -235,7 +169,7 @@ const EatDrink: React.FC = () => {
                   LOCAL DELICACIES
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  The Cycladic islands are known for their exceptional local products. During your stay, 
+                  The Cycladic islands are known for their exceptional local products. During your stay,
                   be sure to sample these specialties:
                 </p>
                 <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
@@ -249,6 +183,80 @@ const EatDrink: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Local Recommendations - Full Width Section */}
+      <section className="bg-[#F4F3EB] pt-0 pb-16 -mt-72">
+        <div className="container mx-auto px-4 max-w-6xl">
+          {/* Header Image */}
+          <div className="overflow-hidden mb-8 rounded-lg" style={{ height: "400px" }}>
+            <img
+              src="/eat-drink/local-recommendations.jpeg"
+              alt="Local dining recommendations in Antiparos"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
+              ISLAND FLAVORS
+            </p>
+            <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
+              LOCAL RECOMMENDATIONS
+            </h2>
+            <p className="text-[#3A3532] mb-8 font-['Roboto'] leading-relaxed max-w-3xl mx-auto">
+              Explore Antiparos' vibrant culinary scene with our curated recommendations:
+            </p>
+          </div>
+
+          {/* Three Column Layout */}
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+            {/* Tavernas & Fine Dining */}
+            <div>
+              <h3 className="text-xl font-semibold text-[#3A3532] font-['Roboto'] mb-4 uppercase">Tavernas & Fine Dining</h3>
+              <ul className="space-y-3 text-[#3A3532] font-['Roboto'] leading-relaxed">
+                <li>
+                  <span className="font-semibold">Mpakas taverna & Captain Pipinos</span> — Waterfront dining in Agios Georgios. Fresh fish and octopus dried in the Aegean sun.
+                </li>
+                <li>
+                  <span className="font-semibold">Rooster</span> — Fine dining with breathtaking views and organic farm-to-table produce.
+                </li>
+                <li>
+                  <span className="font-semibold">Cookoovaya</span> — Waterfront fine dining from chef Koskinas.
+                </li>
+                <li>
+                  <span className="font-semibold">Vasilainas Blue</span> — Award-winning comfort cuisine with serene views.
+                </li>
+                <li>
+                  <span className="font-semibold">Epestefe</span> — Traditional Greek dishes in a relaxed town atmosphere.
+                </li>
+              </ul>
+            </div>
+
+            {/* Bars & Nightlife */}
+            <div>
+              <h3 className="text-xl font-semibold text-[#3A3532] font-['Roboto'] mb-4 uppercase">Bars & Nightlife</h3>
+              <ul className="space-y-3 text-[#3A3532] font-['Roboto'] leading-relaxed">
+                <li><span className="font-semibold">Citron Antiparos</span> — Chic vibes, cocktails, and dance beats.</li>
+                <li><span className="font-semibold">Boogaloo Cocktail Bar</span> — Great DJs and energetic atmosphere.</li>
+                <li><span className="font-semibold">Bardot</span> — Stylish bar with music.</li>
+                <li><span className="font-semibold">10AM Apotheke</span> — Botanical bar with unique ambiance.</li>
+                <li><span className="font-semibold">Dancing Club Mill</span> — Island clubbing experience.</li>
+                <li><span className="font-semibold">La Luna</span> — Late night 80s cult atmosphere.</li>
+              </ul>
+            </div>
+
+            {/* Beach Clubs */}
+            <div>
+              <h3 className="text-xl font-semibold text-[#3A3532] font-['Roboto'] mb-4 uppercase">Beach Clubs</h3>
+              <ul className="space-y-3 text-[#3A3532] font-['Roboto'] leading-relaxed">
+                <li><span className="font-semibold">Soros Beach</span> — Boho vibes, music, and seaside cocktails.</li>
+                <li><span className="font-semibold">Beach House</span> — Chic beachside dining, home of Cookoovaya.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

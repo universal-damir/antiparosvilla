@@ -1,99 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const Destination: React.FC = () => {
   const location = useLocation();
   const isDestinationPage = location.pathname === "/destination";
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const galleryImages = [
-    { src: "/antiparos-1.jpg", alt: "Antiparos 1" },
-    { src: "/antiparos-2.jpg", alt: "Antiparos 2" },
-    { src: "/antiparos-3.jpg", alt: "Antiparos 3" },
-    { src: "/antiparos-4.jpg", alt: "Antiparos 4" },
-    { src: "/antiparos-5.jpg", alt: "Antiparos 5" },
-    { src: "/antiparos-6.png", alt: "Antiparos 6" },
-    { src: "/antiparos-7.jpg", alt: "Antiparos 7" },
+    { src: "/destination-web/alkistis-calich-0YXWmi0U7KE-unsplash.jpg", alt: "Antiparos view" },
+    { src: "/destination-web/alkistis-calich-8ICgc_RJ5ow-unsplash.jpg", alt: "Antiparos coastline" },
+    { src: "/destination-web/ashley-ebersberger--g1F-azXGLE-unsplash.jpg", alt: "Antiparos landscape" },
+    { src: "/destination-web/dimitris-kiriakakis-NPau7aw4IB4-unsplash.jpg", alt: "Antiparos scenery" },
+    { src: "/destination-web/dimitris-kiriakakis-u2MshMVTvqY-unsplash.jpg", alt: "Antiparos beach" },
+    { src: "/destination-web/petros-kaltsis-DrA41__VKoE-unsplash.jpg", alt: "Antiparos waters" },
+    { src: "/destination-web/destintation-antiparos.jpeg", alt: "Destination Antiparos" },
+    { src: "/destination-web/destintation-antiparos-1.jpeg", alt: "Destination Antiparos 1" },
   ];
-
-  const minSwipeDistance = 50;
-
-  const handleImageClick = (index: number) => {
-    setSelectedImageIndex(index);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedImageIndex(null);
-  };
-
-  const handlePrevImage = useCallback(() => {
-    if (selectedImageIndex === null) return;
-    setSelectedImageIndex((prevIndex) => {
-      if (prevIndex === null) return 0;
-      return prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1;
-    });
-  }, [selectedImageIndex, galleryImages.length]);
-
-  const handleNextImage = useCallback(() => {
-    if (selectedImageIndex === null) return;
-    setSelectedImageIndex((prevIndex) => {
-      if (prevIndex === null) return 0;
-      return prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1;
-    });
-  }, [selectedImageIndex, galleryImages.length]);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (selectedImageIndex === null) return;
-
-      switch (e.key) {
-        case "ArrowLeft":
-          handlePrevImage();
-          break;
-        case "ArrowRight":
-          handleNextImage();
-          break;
-        case "Escape":
-          handleCloseModal();
-          break;
-        default:
-          break;
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedImageIndex, handlePrevImage, handleNextImage]);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const distance = touchStart - touchEnd;
-    const isSwipe = Math.abs(distance) > minSwipeDistance;
-
-    if (isSwipe) {
-      if (distance > 0) {
-        handleNextImage();
-      } else {
-        handlePrevImage();
-      }
-    }
-
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
 
   // This is the section displayed on the homepage
   if (!isDestinationPage) {
@@ -145,7 +66,7 @@ const Destination: React.FC = () => {
       <section className="relative w-full h-[80vh] overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/destination-antiparos.jpg"
+            src="/destination-web/town-antiparos.jpg"
             alt="Beautiful aerial view of Greek island with blue sea"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -205,7 +126,7 @@ const Destination: React.FC = () => {
             <div className="md:col-span-5 md:col-start-8 md:row-start-1 md:translate-y-28">
               <div className="overflow-hidden mb-4" style={{ height: "620px" }}>
                 <img
-                  src="/pristine-beaches.jpg"
+                  src="/destination-web/faneromeni.jpg"
                   alt="Beautiful turquoise waters at a Greek beach"
                   className="w-full h-full object-cover"
                 />
@@ -235,35 +156,8 @@ const Destination: React.FC = () => {
 
           {/* Second Row - Cave & Local Experiences */}
           <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-28">
-            {/* Cave Section */}
-            <div className="md:col-span-5 md:col-start-2 md:row-start-1">
-              <div className="overflow-hidden mb-4" style={{ height: "580px" }}>
-                <img
-                  src="https://images.pexels.com/photos/18380194/pexels-photo-18380194.jpeg"
-                  alt="Beautiful cave with rock formations"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="pt-4">
-                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-                  NATURAL WONDER
-                </p>
-                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-                  THE CAVE OF ANTIPAROS
-                </h2>
-                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  One of the island's most impressive attractions is the Cave of Antiparos, a spectacular natural formation 
-                  located about 8 km from Antiparos Town. Descending 100 meters below ground through a natural entrance, visitors discover 
-                  a magical world of stalactites and stalagmites formed over millions of years. The cave has been known since ancient times, 
-                  with inscriptions dating back to 1673. Notable visitors through history include King Otto of Greece and Lord Byron, who carved their 
-                  names into the formations. The carefully illuminated chambers reveal extraordinary shapes and colors, making this geological 
-                  treasure a must-visit during your stay.
-                </p>
-              </div>
-            </div>
-
-            {/* Local Experiences Section */}
-            <div className="md:col-span-6 md:col-start-7 md:row-start-1 md:translate-y-32">
+            {/* Island Activities Section - Now on Left */}
+            <div className="md:col-span-6 md:col-start-2 md:row-start-1 md:-translate-y-[32rem]">
               <div className="overflow-hidden mb-4" style={{ height: "450px" }}>
                 <img
                   src="/island-activities.jpg"
@@ -290,14 +184,41 @@ const Destination: React.FC = () => {
                   <li><span className="font-semibold">Cooking lessons</span> — Learn authentic Greek recipes from locals.</li>
                   <li><span className="font-semibold">Yoga sessions</span> — Reconnect with yourself in a serene island setting.</li>
                   <li><span className="font-semibold">Pottery classes</span> — Create your own handmade Greek-style souvenirs.</li>
-                  <li><span className="font-semibold">Island hopping</span> — From Parikia, you can reach: Naxos (30 min), Mykonos (1 hr), Tinos (1 hr 25 min).</li>
+                  <li><span className="font-semibold">Island hopping</span> — From Parikia, you can reach: Naxos (30 min), <br />Mykonos (1 hr), Tinos (1 hr 25 min).</li>
                 </ul>
+              </div>
+            </div>
+
+            {/* Cave Section - Now on Right */}
+            <div className="md:col-span-5 md:col-start-8 md:row-start-1 md:translate-y-32">
+              <div className="overflow-hidden mb-4" style={{ height: "580px" }}>
+                <img
+                  src="/destination-web/iStock-880534880.jpg"
+                  alt="Beautiful cave with rock formations"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="pt-4">
+                <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
+                  NATURAL WONDER
+                </p>
+                <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
+                  THE CAVE OF ANTIPAROS
+                </h2>
+                <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
+                  One of the island's most impressive attractions is the Cave of Antiparos, a spectacular natural formation
+                  located about 8 km from Antiparos Town. Descending 100 meters below ground through a natural entrance, visitors discover
+                  a magical world of stalactites and stalagmites formed over millions of years. The cave has been known since ancient times,
+                  with inscriptions dating back to 1673. Notable visitors through history include King Otto of Greece and Lord Byron, who carved their
+                  names into the formations. The carefully illuminated chambers reveal extraordinary shapes and colors, making this geological
+                  treasure a must-visit during your stay.
+                </p>
               </div>
             </div>
           </div>
 
           {/* Photo Gallery */}
-          <div className="mt-8 mb-16">
+          <div className="-mt-96 mb-20">
             <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-4 text-center font-['Roboto']">
               DISCOVER ANTIPAROS
             </p>
@@ -309,80 +230,19 @@ const Destination: React.FC = () => {
               {galleryImages.map((image, index) => (
                 <div
                   key={index}
-                  className="break-inside-avoid overflow-hidden rounded-lg group cursor-pointer relative"
-                  onClick={() => handleImageClick(index)}
-                  tabIndex={0}
-                  aria-label={`View ${image.alt}`}
-                  onKeyDown={(e) => e.key === 'Enter' && handleImageClick(index)}
+                  className="break-inside-avoid overflow-hidden rounded-lg"
                 >
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-auto"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <span className="text-white font-['Roboto'] text-lg">View</span>
-                  </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Image Modal */}
-      {selectedImageIndex !== null && (
-        <div
-          className="fixed inset-0 bg-[#3A3532]/95 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={handleCloseModal}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <button
-            className="absolute top-6 right-6 text-[#F4F3EB]/50 z-10 hover:text-[#F4F3EB]/80 transition-colors"
-            onClick={handleCloseModal}
-            aria-label="Close image"
-          >
-            <X size={20} strokeWidth={1} />
-          </button>
-
-          <button
-            className="absolute left-8 top-1/2 -translate-y-1/2 text-[#F4F3EB]/50 hover:text-[#F4F3EB]/80 transition-colors"
-            onClick={(e) => {
-              e.stopPropagation();
-              handlePrevImage();
-            }}
-            aria-label="Previous image"
-          >
-            <ChevronLeft size={40} strokeWidth={1} />
-          </button>
-
-          <div className="relative max-w-6xl max-h-[90vh] w-full h-full flex items-center justify-center">
-            <img
-              src={galleryImages[selectedImageIndex].src}
-              alt={galleryImages[selectedImageIndex].alt}
-              className="max-h-full max-w-full object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </div>
-
-          <button
-            className="absolute right-8 top-1/2 -translate-y-1/2 text-[#F4F3EB]/50 hover:text-[#F4F3EB]/80 transition-colors"
-            onClick={(e) => {
-              e.stopPropagation();
-              handleNextImage();
-            }}
-            aria-label="Next image"
-          >
-            <ChevronRight size={40} strokeWidth={1} />
-          </button>
-
-          <div className="absolute bottom-6 left-0 right-0 text-center text-[#F4F3EB]/40 font-['Roboto'] text-xs tracking-wider">
-            {selectedImageIndex + 1} — {galleryImages.length}
-          </div>
-        </div>
-      )}
     </div>
   );
 };
