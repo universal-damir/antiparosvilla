@@ -93,7 +93,7 @@ const Destination: React.FC = () => {
 
         {/* Magazine-style layout */}
         <div className="mt-16">
-          {/* First Row - Island History & Beaches */}
+          {/* First Row - Island History & Cave */}
           <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-32">
             {/* Island History Section */}
             <div className="md:col-span-7 md:col-start-1 md:row-start-1">
@@ -112,52 +112,48 @@ const Destination: React.FC = () => {
                   THE STORY OF ANTIPAROS
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  Antiparos has been inhabited since antiquity, with archaeological finds dating back to the Early Cycladic period. 
-                  In medieval times, the island was fortified against pirate raids, with the Castle of Antiparos (Kastro) at its heart. 
-                  This Venetian castle, built in the 15th century, forms the historic center of Antiparos Town, with its concentric arrangement 
-                  of houses creating a defensive perimeter. Throughout its history, Antiparos has maintained its authentic character while 
-                  welcoming travelers seeking the unspoiled beauty of the Cyclades. Today, it perfectly balances tradition with modern comforts, 
+                  Antiparos has been inhabited since antiquity, with archaeological finds dating back to the Early Cycladic period.
+                  In medieval times, the island was fortified against pirate raids, with the Castle of Antiparos (Kastro) at its heart.
+                  This Venetian castle, built in the 15th century, forms the historic center of Antiparos Town, with its concentric arrangement
+                  of houses creating a defensive perimeter. Throughout its history, Antiparos has maintained its authentic character while
+                  welcoming travelers seeking the unspoiled beauty of the Cyclades. Today, it perfectly balances tradition with modern comforts,
                   offering a genuine Greek island experience away from mass tourism.
                 </p>
               </div>
             </div>
 
-            {/* Beaches Section */}
+            {/* Cave Section */}
             <div className="md:col-span-5 md:col-start-8 md:row-start-1 md:translate-y-28">
               <div className="overflow-hidden mb-4" style={{ height: "620px" }}>
                 <img
-                  src="/destination-web/faneromeni.jpg"
-                  alt="Beautiful turquoise waters at a Greek beach"
+                  src="/destination-web/iStock-880534880.jpg"
+                  alt="Beautiful cave with rock formations"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="pt-4">
                 <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-                  COASTAL PARADISE
+                  NATURAL WONDER
                 </p>
                 <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-                  PRISTINE BEACHES
+                  THE CAVE OF ANTIPAROS
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  Antiparos is ringed by spectacular beaches, each with its own distinct character. Our favorites include:
+                  One of the island's most impressive attractions is the Cave of Antiparos, a spectacular natural formation
+                  located about 8 km from Antiparos Town. Descending 100 meters below ground through a natural entrance, visitors discover
+                  a magical world of stalactites and stalagmites formed over millions of years. The cave has been known since ancient times,
+                  with inscriptions dating back to 1673. Notable visitors through history include King Otto of Greece and Lord Byron, who carved their
+                  names into the formations. The carefully illuminated chambers reveal extraordinary shapes and colors, making this geological
+                  treasure a must-visit during your stay.
                 </p>
-                <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
-                  <li><span className="font-semibold">Soros</span> – Must-see / Lively crystal-clear waters. Vibrant seaside tavern line the shore, serving freshly prepared local dishes and chilled drinks in a lively atmosphere.</li>
-                  <li><span className="font-semibold">Sifneiko (Sunset)</span> – Sunset / Water Activities. Renowned for its spectacular sunsets and golden sands. Perfect for snorkelling with excellent taverns and restaurants just steps away.</li>
-                  <li><span className="font-semibold">Glyfa</span> – Unspoilt Nature / Confidential. A tranquil blend of sand and pebbles in an untouched natural setting. Ideal for families seeking peace, authenticity, and a relaxed day by the sea, with a few charming tavernas nearby.</li>
-                  <li><span className="font-semibold">Agios Georgios</span> – Confidential / Calm. A serene and secluded bay with crystal-clear waters. The perfect spot for those looking to escape the crowds and embrace nature's calm. Minimal tourist development — bring your own supplies for a peaceful day by the sea.</li>
-                  <li><span className="font-semibold">Psaralyki I & II</span> – Water Sports / Family Friendly. Lively, well-organized beaches close to the main town. Perfect for swimming, sunbathing, and water sports such as kayaking and wakeboarding, with beach bars and restaurants conveniently nearby.</li>
-                  <li><span className="font-semibold">Apantima Beach</span> – Relaxation / Gastronomy. A picturesque pebble beach ideal for unwinding and dining. Home to several seaside taverns and bars, and just a short distance from the famous Cave of Antiparos.</li>
-                  <li><span className="font-semibold">Faneromeni</span> – Relaxation / Hidden Gem / Calm. A secluded, unspoilt beach with crystal-clear waters, offering privacy, serenity, and natural beauty — the perfect hideaway for those seeking total tranquillity.</li>
-                </ul>
               </div>
             </div>
           </div>
 
-          {/* Second Row - Cave & Local Experiences */}
+          {/* Second Row - Beaches & Local Experiences */}
           <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-28">
             {/* Island Activities Section - Now on Left */}
-            <div className="md:col-span-6 md:col-start-2 md:row-start-1 md:-translate-y-[32rem]">
+            <div className="md:col-span-6 md:col-start-2 md:row-start-1 md:-translate-y-[14rem]">
               <div className="overflow-hidden mb-4" style={{ height: "450px" }}>
                 <img
                   src="/island-activities.jpg"
@@ -189,36 +185,40 @@ const Destination: React.FC = () => {
               </div>
             </div>
 
-            {/* Cave Section - Now on Right */}
+            {/* Beaches Section - Now on Right */}
             <div className="md:col-span-5 md:col-start-8 md:row-start-1 md:translate-y-32">
               <div className="overflow-hidden mb-4" style={{ height: "580px" }}>
                 <img
-                  src="/destination-web/iStock-880534880.jpg"
-                  alt="Beautiful cave with rock formations"
+                  src="/destination-web/faneromeni.jpg"
+                  alt="Beautiful turquoise waters at a Greek beach"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="pt-4">
                 <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-2 font-['Roboto']">
-                  NATURAL WONDER
+                  COASTAL PARADISE
                 </p>
                 <h2 className="text-2xl md:text-3xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
-                  THE CAVE OF ANTIPAROS
+                  PRISTINE BEACHES
                 </h2>
                 <p className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed">
-                  One of the island's most impressive attractions is the Cave of Antiparos, a spectacular natural formation
-                  located about 8 km from Antiparos Town. Descending 100 meters below ground through a natural entrance, visitors discover
-                  a magical world of stalactites and stalagmites formed over millions of years. The cave has been known since ancient times,
-                  with inscriptions dating back to 1673. Notable visitors through history include King Otto of Greece and Lord Byron, who carved their
-                  names into the formations. The carefully illuminated chambers reveal extraordinary shapes and colors, making this geological
-                  treasure a must-visit during your stay.
+                  Antiparos is ringed by spectacular beaches, each with its own distinct character. Our favorites include:
                 </p>
+                <ul className="text-[#3A3532] mb-6 font-['Roboto'] leading-relaxed space-y-3">
+                  <li><span className="font-semibold">Soros</span> – Must-see / Lively crystal-clear waters. Vibrant seaside tavern line the shore, serving freshly prepared local dishes and chilled drinks in a lively atmosphere.</li>
+                  <li><span className="font-semibold">Sifneiko (Sunset)</span> – Sunset / Water Activities. Renowned for its spectacular sunsets and golden sands. Perfect for snorkelling with excellent taverns and restaurants just steps away.</li>
+                  <li><span className="font-semibold">Glyfa</span> – Unspoilt Nature / Confidential. A tranquil blend of sand and pebbles in an untouched natural setting. Ideal for families seeking peace, authenticity, and a relaxed day by the sea, with a few charming tavernas nearby.</li>
+                  <li><span className="font-semibold">Agios Georgios</span> – Confidential / Calm. A serene and secluded bay with crystal-clear waters. The perfect spot for those looking to escape the crowds and embrace nature's calm. Minimal tourist development — bring your own supplies for a peaceful day by the sea.</li>
+                  <li><span className="font-semibold">Psaralyki I & II</span> – Water Sports / Family Friendly. Lively, well-organized beaches close to the main town. Perfect for swimming, sunbathing, and water sports such as kayaking and wakeboarding, with beach bars and restaurants conveniently nearby.</li>
+                  <li><span className="font-semibold">Apantima Beach</span> – Relaxation / Gastronomy. A picturesque pebble beach ideal for unwinding and dining. Home to several seaside taverns and bars, and just a short distance from the famous Cave of Antiparos.</li>
+                  <li><span className="font-semibold">Faneromeni</span> – Relaxation / Hidden Gem / Calm. A secluded, unspoilt beach with crystal-clear waters, offering privacy, serenity, and natural beauty — the perfect hideaway for those seeking total tranquillity.</li>
+                </ul>
               </div>
             </div>
           </div>
 
           {/* Photo Gallery */}
-          <div className="-mt-96 mb-20">
+          <div className="-mt-30 mb-20">
             <p className="text-sm uppercase tracking-wider text-[#8E7D67] mb-4 text-center font-['Roboto']">
               DISCOVER ANTIPAROS
             </p>

@@ -434,6 +434,14 @@ const VillaKyma: React.FC = () => {
             </div>
           </div>
         ))}
+
+        {/* Back to Villas button at bottom */}
+        <div className="text-center mt-8">
+          <Link to="/rooms#villas" className="inline-flex items-center text-[#8E7D67] hover:text-[#3A3532] font-['Roboto'] uppercase text-sm tracking-wider">
+            <ChevronLeft className="w-4 h-4 mr-1" />
+            Back to Villas
+          </Link>
+        </div>
       </div>
 
       {/* Fullscreen Gallery Modal */}

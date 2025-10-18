@@ -33,7 +33,7 @@ const propertyHotspots = [
   { id: 4, label: "Kyma Room 8", x: 75.5, y: 56, width: 5, height: 6.5, villa: "kyma" },
   { id: 5, label: "Kyma Outdoor Dining Area", x: 50, y: 55.5, width: 7.5, height: 8, villa: "kyma" },
   { id: 6, label: "Kyma Kitchen & Living Area", x: 40, y: 58, width: 11, height: 7.5, villa: "kyma" },
-  { id: 7, label: "Kyma Pool & Bar Area", x: 59, y: 61.5, width: 20, height: 3, villa: "kyma" },
+  { id: 7, label: "Kyma Pool Area", x: 59, y: 61.5, width: 20, height: 3, villa: "kyma" },
   {id: 16, label: "Kyma Outdoor Sitting Area", x: 26, y: 61, width: 9, height: 5, villa: "kyma" },
 
   // Villa Ammos (Lower Level) - Rooms from left to right
@@ -44,7 +44,7 @@ const propertyHotspots = [
   { id: 12, label: "Ammos Outdoor Dining Area", x: 51.2, y: 70, width: 5, height: 7.5, villa: "ammos" },
   { id: 17, label: "Gym", x: 46.5, y: 70, width: 2.2, height: 7.5, villa: "ammos" },
   { id: 13, label: "Ammos Outdoor Sitting Area", x: 33, y: 84, width: 16, height: 7, villa: "ammos" },
-  { id: 14, label: "Ammos Pool & Bar Area", x: 55, y: 79, width: 19.5, height: 6, villa: "ammos" },
+  { id: 14, label: "Ammos Pool Area", x: 55, y: 79, width: 19.5, height: 6, villa: "ammos" },
   { id: 15, label: "Ammos Kitchen & Living Area", x: 36, y: 71, width: 16.5, height: 11, villa: "ammos" },
 ];
 
@@ -609,9 +609,10 @@ const Rooms: React.FC = () => {
             </div>
 
             {/* Map instruction text */}
-            <div className="pt-2 pb-4 px-4 hidden md:block bg-[#F4F3EB]">
+            <div className="pt-2 pb-4 px-4 bg-[#F4F3EB]">
               <p className="text-[#3A3532]/50 text-xs font-['Roboto'] text-center italic">
-                Hover over the photo to explore room locations and zoom into the layout
+                <span className="hidden md:inline">Hover over the photo to explore room locations and see the layout</span>
+                <span className="md:hidden">Tap on the photo to explore room locations and see the layout</span>
               </p>
             </div>
 
@@ -805,7 +806,7 @@ const Rooms: React.FC = () => {
                         to={`/rooms/${villa.id === 'villa-ammos' ? 'ammos' : 'kyma'}`}
                         className="inline-block bg-[#3A3532] text-white px-8 py-4 font-['Roboto'] uppercase text-xs tracking-[0.15em] hover:bg-[#8E7D67] transition-all duration-300 shadow-sm hover:shadow-md"
                       >
-                        Find Out More
+                        See the Rooms
                       </Link>
                     </div>
                   </div>

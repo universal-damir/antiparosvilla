@@ -10,10 +10,10 @@ export const propertyOverview = {
     "Perfect for couples, families, or groups of friends, this idyllic location blends tranquility with convenient access to nature, delectable dining, and the authentic spirit of Greece. Experience a seamless fusion of modern luxury and traditional Greek hospitality for an unforgettable stay."
   ],
   images: [
+    "/DJI_20250725182528_0544_D.jpg",
     "/DJI_20250725181816_0527_D.jpg",
     "/DJI_20250725182120_0532_D.jpg",
     "/DJI_20250725182210_0534_D2.jpeg",
-    "/DJI_20250725182528_0544_D.jpg",
     "/DJI_20250725193457_0557_D 2.jpg",
     "/DJI_20250725193545_0562_D 2.jpg",
     "/entrance-new.jpg",
@@ -190,7 +190,6 @@ export const roomData: RoomDetails[] = [
     amenities: [
       "King size bed",
       "Couch / Single bed",
-      "Pool access",
       "Air conditioning",
       "Ceiling Fan",
       "Premium linens",
@@ -217,8 +216,7 @@ export const roomData: RoomDetails[] = [
       features: "SEA VIEW · CONNECTING ROOM OPTION"
     },
     amenities: [
-      "Double bed",
-      "Pool access",
+      "Queen size bed",
       "Air conditioning",
       "Ceiling Fan",
       "Premium linens",
@@ -330,6 +328,7 @@ export const roomData: RoomDetails[] = [
     amenities: [
       "King size bed",
       "Couch / Single bed",
+      "Private outdoor shower",
       "Air conditioning",
       "Ceiling Fan",
       "Premium linens",
