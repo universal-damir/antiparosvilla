@@ -2,6 +2,7 @@ import { GalleryImage } from "../types";
 
 const photoFiles = [
   "00 MAIN BACKGROUND.jpg",
+  "antiparos-detail.jpeg",
   "DJI_20250725181816_0527_D.jpg",
   "DJI_20250725182120_0532_D.jpg",
   "DJI_20250725182210_0534_D2.jpeg",

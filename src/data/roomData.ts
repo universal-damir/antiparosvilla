@@ -18,7 +18,8 @@ export const propertyOverview = {
     "/DJI_20250725193545_0562_D 2.jpg",
     "/entrance-new.jpg",
     "/staircase.jpg",
-    "/villas-panoramic-view.jpeg"
+    "/villas-panoramic-view.jpeg",
+    "/antiparos-detail.jpeg"
   ]
 };
 
