@@ -12,8 +12,8 @@ dist
 dist-ssr
 *.local
 
-# Gallery order data
-gallery-order.json
+# Local Netlify folder
+.netlify
 
 # Editor directories and files
 .vscode/*

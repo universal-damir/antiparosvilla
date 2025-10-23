@@ -101,18 +101,18 @@ const Gallery: React.FC = () => {
   useEffect(() => {
     const loadGalleryOrder = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/gallery-order');
+        const response = await fetch('/api/get-gallery-order');
         const data = await response.json();
 
         if (data.order && Array.isArray(data.order)) {
           // Reorder images based on saved order
           const orderedImages = data.order
-            .map((id: string) => defaultGalleryImages.find(img => img.id === id))
-            .filter((img): img is GalleryImage => img !== undefined);
+            .map((id: string) => defaultGalleryImages.find((img: GalleryImage) => img.id === id))
+            .filter((img: GalleryImage | undefined): img is GalleryImage => img !== undefined);
 
           // Add any new images that weren't in the saved order
           const newImages = defaultGalleryImages.filter(
-            img => !data.order.includes(img.id)
+            (img: GalleryImage) => !data.order.includes(img.id)
           );
 
           setGalleryImages([...orderedImages, ...newImages]);
@@ -165,24 +165,27 @@ const Gallery: React.FC = () => {
   const handleSaveOrder = async () => {
     setIsSaving(true);
     try {
+      // Save both IDs and filenames for easier retrieval
       const order = galleryImages.map(img => img.id);
-      const response = await fetch('http://localhost:3001/api/gallery-order', {
+      const filenames = galleryImages.map(img => img.src.replace('/', ''));
+
+      const response = await fetch('/api/save-gallery-order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ order }),
+        body: JSON.stringify({ order, filenames }),
       });
 
       if (response.ok) {
         setIsEditMode(false);
-        alert('Gallery order saved successfully!');
+        alert('Gallery rearranged successfully!');
       } else {
         throw new Error('Failed to save');
       }
     } catch (error) {
       console.error('Failed to save gallery order:', error);
-      alert('Failed to save gallery order. Make sure the server is running.');
+      alert('Failed to save. Please try again.');
     } finally {
       setIsSaving(false);
     }

@@ -7,6 +7,7 @@ import EventsPage from './components/Events';
 import EatDrinkPage from './components/EatDrink';
 import DestinationPage from './components/Destination';
 import Gallery from './components/Gallery';
+import GalleryAdmin from './components/GalleryAdmin';
 import Rooms from './components/Rooms';
 import VillaAmmos from './pages/VillaAmmos';
 import VillaKyma from './pages/VillaKyma';
@@ -63,6 +64,7 @@ function App() {
           <Route path="/eat-drink" element={<EatDrinkPage />} />
           <Route path="/destination" element={<DestinationPage />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/gallery-admin" element={<GalleryAdmin />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/cookies-policy" element={<CookiesPolicy />} />
         </Routes>
