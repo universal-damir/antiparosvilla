@@ -112,8 +112,17 @@ const GalleryPreview: React.FC = () => {
   ];
 
   return (
-    <section id="gallery-preview" className="bg-[#F4F3EB] py-16">
+    <section id="gallery-preview" className="bg-[#F4F3EB] py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-['Roboto'] text-[#3A3532] mb-4 uppercase">
+            Step Inside
+          </h2>
+          <p className="text-[#3A3532] max-w-2xl mx-auto font-['Roboto'] leading-relaxed">
+            {isMobile ? "Scroll" : "Hover"} over the videos below to get a glimpse of your unforgettable stay
+          </p>
+        </div>
+
         {/* 2x2 Grid on Desktop, Stacked on Mobile */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
           {videos.map((video, index) => (
