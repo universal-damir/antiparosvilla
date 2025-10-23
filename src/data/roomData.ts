@@ -10,6 +10,7 @@ export const propertyOverview = {
     "Perfect for couples, families, or groups of friends, this idyllic location blends tranquility with convenient access to nature, delectable dining, and the authentic spirit of Greece. Experience a seamless fusion of modern luxury and traditional Greek hospitality for an unforgettable stay."
   ],
   images: [
+    "/antiparos-detail.jpeg",
     "/DJI_20250725182528_0544_D.jpg",
     "/DJI_20250725181816_0527_D.jpg",
     "/DJI_20250725182120_0532_D.jpg",
@@ -18,8 +19,7 @@ export const propertyOverview = {
     "/DJI_20250725193545_0562_D 2.jpg",
     "/entrance-new.jpg",
     "/staircase.jpg",
-    "/villas-panoramic-view.jpeg",
-    "/antiparos-detail.jpeg"
+    "/villas-panoramic-view.jpeg"
   ]
 };
 
