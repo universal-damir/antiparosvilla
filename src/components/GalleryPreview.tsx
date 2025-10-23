@@ -2,6 +2,17 @@ import React, { useRef, useEffect } from "react";
 
 const GalleryPreview: React.FC = () => {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Lazy loading observer for videos
   useEffect(() => {
@@ -32,7 +43,48 @@ const GalleryPreview: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Mobile: Auto-play video when in focus (TikTok/Reels style)
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target as HTMLVideoElement;
+          const thumbnailTime = parseFloat(video.dataset.thumbnail || "1");
+
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.7) {
+            // Video is in focus - play with sound
+            video.currentTime = 0;
+            video.muted = false;
+            video.play().catch(() => {
+              // If autoplay with sound fails, play muted
+              video.muted = true;
+              video.play();
+            });
+          } else {
+            // Video out of focus - stop and reset to thumbnail
+            video.pause();
+            video.currentTime = thumbnailTime;
+            video.muted = true;
+          }
+        });
+      },
+      {
+        threshold: [0, 0.7, 1],
+        rootMargin: "0px"
+      }
+    );
+
+    videoRefs.current.forEach((video) => {
+      if (video) observer.observe(video);
+    });
+
+    return () => observer.disconnect();
+  }, [isMobile]);
+
   const handleMouseEnter = (index: number) => {
+    if (isMobile) return; // Don't use hover on mobile
     const video = videoRefs.current[index];
     if (video) {
       video.currentTime = 0; // Start from beginning
@@ -42,6 +94,7 @@ const GalleryPreview: React.FC = () => {
   };
 
   const handleMouseLeave = (index: number) => {
+    if (isMobile) return; // Don't use hover on mobile
     const video = videoRefs.current[index];
     if (video) {
       video.pause();
