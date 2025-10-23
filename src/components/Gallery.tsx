@@ -1,130 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { galleryImages as defaultGalleryImages } from "../data/galleryData";
-import { ChevronLeft, ChevronRight, X, Edit3, Save, XCircle } from "lucide-react";
-import {
-  DndContext,
-  closestCenter,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  DragEndEvent,
-} from '@dnd-kit/core';
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  useSortable,
-  rectSortingStrategy,
-} from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { GalleryImage } from "../types";
 
-interface SortableImageProps {
-  image: GalleryImage;
-  index: number;
-  onImageClick: (index: number) => void;
-  isEditMode: boolean;
-}
-
-const SortableImage: React.FC<SortableImageProps> = ({ image, index, onImageClick, isEditMode }) => {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id: image.id });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    opacity: isDragging ? 0.5 : 1,
-  };
-
-  return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      className={`break-inside-avoid overflow-hidden group relative mb-4 ${
-        isEditMode ? 'cursor-move' : 'cursor-pointer'
-      } ${isDragging ? 'z-50' : ''}`}
-      {...(isEditMode ? { ...attributes, ...listeners } : {})}
-      onClick={() => !isEditMode && onImageClick(index)}
-      tabIndex={0}
-      aria-label={`View ${image.alt}`}
-      onKeyDown={(e) => !isEditMode && e.key === 'Enter' && onImageClick(index)}
-    >
-      <img
-        src={image.src}
-        alt={image.alt}
-        className={`w-full object-cover transition-transform duration-700 ${
-          !isEditMode ? 'group-hover:scale-110' : ''
-        }`}
-      />
-      {isEditMode && (
-        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-          <span className="text-white font-['Roboto'] text-sm bg-black/50 px-3 py-1 rounded">
-            Drag to reorder
-          </span>
-        </div>
-      )}
-      {!isEditMode && (
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-          <span className="text-white font-['Roboto'] text-lg">View</span>
-        </div>
-      )}
-    </div>
-  );
-};
-
 const Gallery: React.FC = () => {
-  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>(defaultGalleryImages);
+  const [galleryImages] = useState<GalleryImage[]>(defaultGalleryImages);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
-
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
 
   // Required swipe distance in pixels to register as a swipe
   const minSwipeDistance = 50;
 
-  // Load saved gallery order on mount
-  useEffect(() => {
-    const loadGalleryOrder = async () => {
-      try {
-        const response = await fetch('/api/get-gallery-order');
-        const data = await response.json();
-
-        if (data.order && Array.isArray(data.order)) {
-          // Reorder images based on saved order
-          const orderedImages = data.order
-            .map((id: string) => defaultGalleryImages.find((img: GalleryImage) => img.id === id))
-            .filter((img: GalleryImage | undefined): img is GalleryImage => img !== undefined);
-
-          // Add any new images that weren't in the saved order
-          const newImages = defaultGalleryImages.filter(
-            (img: GalleryImage) => !data.order.includes(img.id)
-          );
-
-          setGalleryImages([...orderedImages, ...newImages]);
-        }
-      } catch (error) {
-        console.error('Failed to load gallery order:', error);
-        // Use default order if loading fails
-      }
-    };
-
-    loadGalleryOrder();
-  }, []);
+  // Gallery now uses the order from galleryData.ts
+  // No need to load from API anymore
 
   const handleImageClick = (index: number) => {
     setSelectedImageIndex(index);
@@ -150,51 +39,6 @@ const Gallery: React.FC = () => {
     });
   }, [selectedImageIndex, galleryImages.length]);
 
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-
-    if (over && active.id !== over.id) {
-      setGalleryImages((items) => {
-        const oldIndex = items.findIndex((item) => item.id === active.id);
-        const newIndex = items.findIndex((item) => item.id === over.id);
-        return arrayMove(items, oldIndex, newIndex);
-      });
-    }
-  };
-
-  const handleSaveOrder = async () => {
-    setIsSaving(true);
-    try {
-      // Save both IDs and filenames for easier retrieval
-      const order = galleryImages.map(img => img.id);
-      const filenames = galleryImages.map(img => img.src.replace('/', ''));
-
-      const response = await fetch('/api/save-gallery-order', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ order, filenames }),
-      });
-
-      if (response.ok) {
-        setIsEditMode(false);
-        alert('Gallery rearranged successfully!');
-      } else {
-        throw new Error('Failed to save');
-      }
-    } catch (error) {
-      console.error('Failed to save gallery order:', error);
-      alert('Failed to save. Please try again.');
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  const handleCancelEdit = () => {
-    // Reload the page to reset to saved order
-    window.location.reload();
-  };
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -270,62 +114,32 @@ const Gallery: React.FC = () => {
           </p>
         </div>
 
-        {/* Edit Mode Controls */}
-        <div className="flex justify-center mt-8 gap-4">
-          {!isEditMode ? (
-            <button
-              onClick={() => setIsEditMode(true)}
-              className="flex items-center gap-2 px-6 py-3 bg-[#8E7D67] text-white font-['Roboto'] uppercase tracking-wider hover:bg-[#7A6B57] transition-colors"
-            >
-              <Edit3 size={18} />
-              Edit Gallery Order
-            </button>
-          ) : (
-            <>
-              <button
-                onClick={handleSaveOrder}
-                disabled={isSaving}
-                className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-['Roboto'] uppercase tracking-wider hover:bg-green-700 transition-colors disabled:opacity-50"
-              >
-                <Save size={18} />
-                {isSaving ? 'Saving...' : 'Save Order'}
-              </button>
-              <button
-                onClick={handleCancelEdit}
-                className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-['Roboto'] uppercase tracking-wider hover:bg-red-700 transition-colors"
-              >
-                <XCircle size={18} />
-                Cancel
-              </button>
-            </>
-          )}
-        </div>
+        {/* Edit mode removed - gallery order is now permanent */}
       </div>
 
       {/* Pinterest-style Gallery */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <DndContext
-          sensors={sensors}
-          collisionDetection={closestCenter}
-          onDragEnd={handleDragEnd}
-        >
-          <SortableContext
-            items={galleryImages.map(img => img.id)}
-            strategy={rectSortingStrategy}
-          >
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-              {galleryImages.map((image, index) => (
-                <SortableImage
-                  key={image.id}
-                  image={image}
-                  index={index}
-                  onImageClick={handleImageClick}
-                  isEditMode={isEditMode}
-                />
-              ))}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          {galleryImages.map((image, index) => (
+            <div
+              key={image.id}
+              className="break-inside-avoid overflow-hidden group relative cursor-pointer mb-4"
+              onClick={() => handleImageClick(index)}
+              tabIndex={0}
+              aria-label={`View ${image.alt}`}
+              onKeyDown={(e) => e.key === 'Enter' && handleImageClick(index)}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                <span className="text-white font-['Roboto'] text-lg">View</span>
+              </div>
             </div>
-          </SortableContext>
-        </DndContext>
+          ))}
+        </div>
       </div>
 
       {/* Image Modal */}
