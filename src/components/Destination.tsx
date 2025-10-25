@@ -77,7 +77,7 @@ const Destination: React.FC = () => {
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center px-4 sm:px-6 max-w-3xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-['Roboto'] text-white mb-4 leading-tight uppercase">
-              DISCOVER THE HIDDEN GEM OF THE CYCLADES
+              DISCOVER THE HIDDEN GEM OF CYCLADES
             </h1>
           </div>
         </div>
@@ -116,7 +116,7 @@ const Destination: React.FC = () => {
                   In medieval times, the island was fortified against pirate raids, with the Castle of Antiparos (Kastro) at its heart.
                   This Venetian castle, built in the 15th century, forms the historic center of Antiparos Town, with its concentric arrangement
                   of houses creating a defensive perimeter. Throughout its history, Antiparos has maintained its authentic character while
-                  welcoming travelers seeking the unspoiled beauty of the Cyclades. Today, it perfectly balances tradition with modern comforts,
+                  welcoming travelers seeking the unspoiled beauty of Cyclades. Today, it perfectly balances tradition with modern comforts,
                   offering a genuine Greek island experience away from mass tourism.
                 </p>
               </div>
